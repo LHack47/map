@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AssaultMap</title>
+	<meta charset="UTF-8">
+
+	<meta name=viewport content="width=device-width, initial-scale=1">
+  <!-- FIREBASE CDN -->
+<script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+
+<!-- JQUERY -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+<!-- Date Range Moment.js -->
+<script type="text/javascript" src="scripts/moment.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+<!-- DATE RANGE PICKER JS & CSS -->
+<script type="text/javascript" src="scripts/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="styles/daterangepicker.css" />
+
+<!-- FONT FAMILY LORA -->
+<link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+
+<!-- custom css page -->
+	<link rel ="stylesheet" type ="text/css" href ="styles/custom.css">
+<!-- custom javascript page -->
+	<script src="scripts/custom.js" type="text/javascript"></script>
+	<!-- map javascript page -->
+	<script src="scripts/map.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+	<div class="container">
+		<div id="googleMap">
+		</div> <!-- #googleMap -->
+
+		<div id="homePage-Elements">
+      <img id="logo" src="styles/images/BeAwareLogo.png">
+				<!-- <h2 id="logo"> BE(A)WARE </h2> -->
+			<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+		</div> <!-- #homePage-Elements -->				
+<!-- **************SEARCH BOX************** -->
+    <div id="input-container">
+			<input id="pac-input" class="controls" type="text" placeholder="Search the location here">
+    </div>
+    	
+    <div id="transparent-overlay">
+   </div>
+   <div id="homePage-overlay">
+     <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+		 <h3>Mission:</h3>
+		 <p> Create a database of anonymous sexual assault reports that improve understanding and help warn others. </p>
+			
+		 <h3>How it works:</h3>
+		 <p>Type in or click on a location to add your report.</p>
+		 <button type="button" class="btn btn-default" id="addEvent">Add Report</button>
+				<!-- <p>Click map to view events.</p> -->
+    </div> <!-- #homePage-overlay -->
+
+	  <div id="homePage-overlay-bar">
+        <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+        <p id="annieCannons">This site was built by <a href="http//wwww.AnnieCannons.com">AnnieCannons</a></p>
+      </div> <!-- #homePage-overlay-bar -->
+	</div> <!-- .container -->
+
+	<div id="hamburger-overlay">
+		<a href="#"><h2>About Us</h2></a>
+		<a href="#"><h2>Resources</h2></a>
+	</div> <!-- #hamburger-overlay -->
+
+
+	<div class="form-overlay" id="form-start-overlay">
+		<p id="">Would you like to tell us more about the circumstances?</p>
+		<br>
+		<div class="btn-group btn-group-lg" role="group" aria-label="...">
+  			<button type="button" class="btn btn-default" id="deny">No</button>
+ 			  <button type="button" class="btn btn-default" id="accept">Yes</button>
+  	</div> <!-- .btn-group-lg -->
+  		<br>
+  		<br>
+  		<p>This is still anonymous.</p>
+		  <a href="#" id="privacy-policy">Privacy Policy</a>
+	</div> <!-- #form-start-overlay -->
+<!-- -->
+  <!-- #form-guidance -->
+  <div class="form-overlay" id="form-guidance">
+    <div id="guidance-container">
+    </div> <!-- #guidnace-container -->
+     <button type="button" class="btn btn-default"id="gotIt">Got It!</button>
+  </div> <!-- #form-guidance -->
+
+<!--***USER ************************* -->
+<!--************************************* -->
+	<div class="form-overlay" id="form-userInfo">
+		<h3>Please Tell Us About Yourself.</h3>
+		<br>
+		<p>What is your gender?</p>
+    <div class="selectDiv">
+      <select class="btn-default" id="userGender">
+        <option value="selectOne">Select one...</option>
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+        <option value="trans Female">Transgender Female</option>
+        <option value="trans Male">Transgender Male</option>
+        <option value="It's complicated">It's more complicated</option>
+      </select>
+    </div> <!-- .selectDiv -->
+		<br>
+		<br>
+		<p>When it happened, I was:</p>
+    <div class="selectDiv">
+      <select class="btn-default" id="userAge">
+        <option value="selectOne">Select one...</option>
+        <option value="0-5">0-5</option>
+        <option value="6-10">6-10</option>
+        <option value="11-15">11-15</option>
+        <option value="16-18">16-18</option>
+        <option value="19-22">19-22</option>
+        <option value="23-28">23-28</option>
+        <option value="29-34">29-34</option>
+        <option value="35-44">35-44</option>
+        <option value="45-54">45-54</option>
+        <option value="55+">55+</option>
+      </select>
+    </div> <!-- .selectDiv -->
+		<div class="btn-group-controls userInfo-controls" role="group">
+  		<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+  		<span class="glyphicon glyphicon-floppy-saved" aria-hidden="true" onClick="post()"></span>
+  		<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+  		<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+		</div> <!-- .btn-group-controls -->
+	</div> <!-- #form-userInfo -->
+
+<!--***ATTACKER ************************* -->
+<!--************************************* -->
+  <div class="form-overlay" id="form-attackerInfo">
+		<h3>About Your Attacker</h3>
+		<br>
+		<p>What was the attacker's gender?</p>
+    <div class="selectDiv">
+      <select class="btn-default" id="attackerGender">
+        <option value="selectOne">Select one...</option>
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+        <option value="trans Female">Transgender Female</option>
+        <option value="trans Male">Transgender Male</option>
+        <option value="It's complicated">It's more complicated</option>
+      </select>
+    </div> <!-- .selectDiv -->
+		<br>
+		<p>I was attacked by:</p>
+    <div class="selectDiv">
+      <select class="btn-default" id="attackedBy">
+        <option value="selectOne">Select one...</option>
+        <option value="oneAttacker">1 Attacker</option>
+        <option value="multipleAttackers">1+ Attackers</option>
+      </select>
+    </div> <!-- .selectDiv -->
+  	<br>
+		<p>How would you describe your relationship with your attacker(s)?</p>
+    <div class="selectDiv">
+      <select class="btn-default" id="attackerRelationship">
+        <option value="selectOne">Select one...</option>
+        <option value="stranger">A Stranger</option>
+        <option value="aquaintance">A Acquaintance</option>
+        <option value="friend">A Friend</option>
+        <option value="coworker">A Coworker</option>
+        <option value="family Member">A Family Member</option>
+        <option value="partner">A Partner/Spouse</option>
+        <option value="police">A police Officer</option>
+      </select>
+    </div> <!-- .selectDiv -->
+    <div class="btn-group-controls attackerInfo-controls" role="group">
+  			<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+  			<span class="glyphicon glyphicon-floppy-saved" aria-hidden="true" onClick="post()"></span>
+  			<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+  			<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+		</div> <!-- .btn-group-controls -->
+	</div> <!-- #form-attackerInfo -->
+
+<!--***CIRCUMSTANCES ******************** -->
+<!--************************************* -->
+	<div class="form-overlay" id="form-circumstances">
+		<h3>About The Circumstances..</h3>
+    <br>
+		<p>Please indicate the date or time period when this assault occurred:</p>
+  <!-- **DATE INPUT********************** -->
+  <div id="dateContainer">
+    <input type="text" name="dateRange" id="dateRange" size="23"/>
+  </div>
+  <br>
+	<br>
+  <p>Did you experience more than one assault at this place in this period of time?</p>
+  <div class="selectDiv">
+    <select class="btn-default" id="multipleAssaults">
+      <option value="selectOne">Select one...</option>
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select>
+  </div> <!-- .selectDiv -->
+  
+	<div class="btn-group-controls circumstances-controls" role="group">
+  			<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+  			<span class="glyphicon glyphicon-floppy-saved" aria-hidden="true" onClick="post()"></span>
+  			<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+  			<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+		</div> <!-- .btn-group-controls -->
+  </div> <!-- #form-circumstances -->
+
+<!--***CIRCUMSTANCES 2 ****************** -->
+<!--************************************* -->
+  <div class="form-overlay" id="form-circumstances-2">
+    <h3>Just a couple more questions...</h3>
+    <br>
+    <p>Were you on a school campus? </p>
+    <div class="selectDiv">
+      <select class="btn-default" id="schoolCampus">
+        <option value="selectOne">Select one...</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+    </div> <!-- .selectDiv -->
+    <br>
+    <p>Did you report this? (Most don't)</p>
+    <div class="selectDiv">
+      <select class="btn-default" id="reported">
+        <option value="selectOne">Select one...</option>
+        <option value="yes, to police">Yes, to law enforcement</option>
+        <option value="yes, campus cops">Yes, to campus cops</option>
+        <option value="someone else">To someone else</option>
+      </select>
+    </div> <!-- .selectDiv -->
+
+    <p id="smallText">Please add a comment to tell us more about the campus location or any enforcement response. </p>
+
+    <div class="btn-group-controls circumstances-2-controls" role="group">
+      <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+      <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true" onClick="post()"></span>
+      <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+      <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+    </div> <!-- .btn-group-controls -->
+  </div> <!-- #form-circumstances-2 -->
+
+<!-- Form Pg5 -->
+
+<!-- Comment Box's Page -->
+	<div class="form-overlay" id="form-comments">
+		<h3>Additional details </h3>
+		<br>
+		<div class="form-group">
+  			<label for="comment">Comment:</label>
+  			<textarea class="form-control" rows="8" id="comments"></textarea>
+		</div> <!-- .form-group -->
+		<div class="btn-group btn-group-lg comment-buttons" role="group" aria-label="...">
+  			<button type="button" class="btn btn-default" id="comment-exit">Exit Comment</button>
+ 			  <button type="button" class="btn btn-default" id="comment-save" onClick="document.getElementById('comments').val='';">Save Comment</button>
+  		</div> <!-- .btn-group-lg -->
+	</div> <!-- #form-comments -->
+
+	<div class="form-overlay" id="form-end">
+		<h3>Would you like to comment with more details about the assault you’re reporting - or add your email to a comment if you’d like to get updates about this event or this map?</h3>
+		<br>
+		<div class="btn-group btn-group-lg" role="group">
+		  	<button type="button" class="btn btn-default end-comment">Comment</button>
+		</div> <!-- .end-btns -->
+    <br>
+    <div class="btn-group btn-group-lg endGroup-btns" role="group" aria-label="...">
+      <button type="button" class="btn btn-default end-restart" onClick="firebase.set(null)">Restart Without Submitting</button>
+      <button type="button" class="btn btn-default end-submit" onclick="post()">Submit Report</button>
+    </div> <!-- .btn-group-lg .end-btns -->
+
+
+    <div class="btn-group-controls form-end-controls" role="group">
+      <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+    </div> <!-- .form-end-controls -->
+	</div> <!-- #form-end -->
+<!-- Form end pg-->
+	
+		<div class="form-overlay" id="form-thankYou">
+				<h3>Thank you!</h3>
+				<p>Your report will help us build a database that truly represents how sexual assault is perpetrated - and warn others of dangerous areas and circumstances. <br> <br> Click anywhere to view all reports.</p>
+
+        <p id="annieCannons">This site was built by <a href="http//wwww.AnnieCannons.com">AnnieCannons</a></p>
+	</div> <!-- #form-thankYou -->
+
+<!-- SEARCH BOX API -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBR4zok3yXv8syWZ2bkle_SZh5YJJD4UcQ&libraries=places&callback=initAutocomplete"
+         async defer></script>
+<script>
+ var userGender ;
+
+  var userAge ;
+
+  var attackerGender ;
+
+  var attackedBy ;
+
+  var attackerRelationship ;
+ 
+  var date ;
+ 
+  var multipleAssaults ;
+
+  var schoolCampus ;
+
+  var reported ;
+  
+  var userLocation = "";
+  
+  var userComment = "";
+  
+  var attackerComment = "";
+  
+  var circumstancesComment = "";
+  
+   var circumstances2Comment = "";
+   
+   var lastComment = "";
+  
+
+  
+/* SEND OBJECT TO FIREBASE */
+  var post = function(){
+  //firebase.push({
+    firebase.push({
+        location: userLocation, 
+        user_gender: userGender,
+        user_age: userAge,
+          user_page_comment: userComment,
+        attacker_gender: attackerGender,
+        num_of_attackers: attackedBy,
+        attacker_relationship: attackerRelationship,
+          attacker_page_comment: attackerComment,
+        time_period: date,
+        multiple_assaults: multipleAssaults,
+          circumstances_page_comment: circumstancesComment,
+        school_campus: schoolCampus,
+        reported: reported,
+          circumstances_page2_comment: circumstances2Comment,
+          last_page_comment: lastComment
+      }) //firebase.push
+  } //post function()
+  </script>
+</body>
+</html>
