@@ -275,7 +275,7 @@
 		</div> <!-- .end-btns -->
     <br>
     <div class="btn-group btn-group-lg endGroup-btns" role="group" aria-label="...">
-      <button type="button" class="btn btn-default end-restart" onClick="firebase.set(null)">Restart Without Submitting</button>
+      <button type="button" class="btn btn-default end-restart" onClick="">Restart Without Submitting</button>
       <button type="button" class="btn btn-default end-submit" onclick="post()">Submit Report</button>
     </div> <!-- .btn-group-lg .end-btns -->
 
@@ -332,7 +332,7 @@
 /* SEND OBJECT TO FIREBASE */
   var post = function(){
   //firebase.push({
-    firebase.push({
+    firebaseRef.push({
         location: userLocation, 
         user_gender: userGender,
         user_age: userAge,
@@ -348,7 +348,7 @@
         reported: reported,
           circumstances_page2_comment: circumstances2Comment,
           last_page_comment: lastComment
-      }) //firebase.push
+      }) //firebaseRef.push
   } //post function()
   </script>
 </body>

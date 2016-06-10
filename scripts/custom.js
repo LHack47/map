@@ -31,14 +31,6 @@ $(document).ready(function(){
     $("#pac-input").fadeIn("fast"); 
     $("#homePage-overlay").fadeIn("fast");   
   });
-   // $(".container").on("click", function){
-   //    $("")
-   // }
-
-   // $("#googleMap").one("click", function(){
-   //  $("#homePage-overlay").slideToggle("fast");
-   //  $("#homePage-overlay-bar").show("slow");
-   // });
 
   $("#homePage-overlay > .glyphicon-chevron-down , #homePage-overlay > #addEvent").on("click", function(){
     $("#transparent-overlay").hide();
@@ -94,7 +86,6 @@ $(document).ready(function(){
         $("#form-comments").fadeOut("slow");
 
   userComment = $("#comments").val();
-  return userComment;
 
          //userComment = $("#comments").val();
         // firebase.child({user_page_comment: userComment});

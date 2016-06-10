@@ -1,4 +1,4 @@
-var firebase = new Firebase("https://maptester.firebaseio.com/");
+var firebaseRef = new Firebase("https://maptester.firebaseio.com/");
 
 /* SEARCH BOX + MAP*/
  function initAutocomplete() {
@@ -66,6 +66,7 @@ var firebase = new Firebase("https://maptester.firebaseio.com/");
 
         //question-window open
         questionWindow.open(map, marker);
+        infoWindow.close();
   // SEND TO FIREBASE
       $("#pinDrop-window > #fireBase-yes").on("click", function(e){
         userLocation = {lat: place.geometry.location.lat(), lng: place.geometry.location.lng()};
@@ -96,6 +97,7 @@ var firebase = new Firebase("https://maptester.firebaseio.com/");
     map: map
     }); // var marker
       questionWindow.open(map, marker);
+      infoWindow.close();
 
  //ADD PINDROP OVERLAY 
       $("#pinDrop-window > #fireBase-yes").on("click", function(){
@@ -115,42 +117,44 @@ var firebase = new Firebase("https://maptester.firebaseio.com/");
       });
     }); //map.addListener
 
+var infoWindow = new google.maps.InfoWindow();
+
 
 
 //DROP A MARKER WHEN MAP IS CLICKED 
-  firebase.on("child_added", function(snapshot, prevChildKey) {
+  firebaseRef.on("child_added", function(snapshot, prevChildKey) {
     // Get latitude and longitude from the cloud.
-    var newPosition = snapshot.val();
-
+    var eventObject = snapshot.val();
+    
     // Create a google.maps.LatLng object for the position of the marker.
-    var latLng = new google.maps.LatLng(newPosition.location.lat, newPosition.location.lng);
+    var latLng = new google.maps.LatLng(eventObject.location.lat, eventObject.location.lng);
 
     // Place a marker at that location.
     var marker = new google.maps.Marker({
       position: latLng,
-      map: map
+      map: map,
+      title: eventObject.user_gender
     });
 
   //info box when you click a pin
-    var infoWindow = new google.maps.InfoWindow();
-
-     infoWindow.setContent(
+console.log(infoWindow);
+// TODO: TAKE OUT CALL BACK FUNCTION AND PUT INSIDE A CLICK HANDLER FUNCTION!
+    google.maps.event.addListener(marker, 'click', function() {
+      // infoWindow.close();
+      infoWindow.setContent(
        '<div id="infoContent">'+
        '<h3>' + 
-         location.userLocation + 
        '</h3>' +
-       '<p>'+ userGender + ' , '+ 
-       userAge +' , '+ date + ' , '+ 
-       attackedBy + ' , ' + attackerGender + 
-      ' , ' + attackerRelationship + ' , ' + 
-      schoolCampus + ' , ' + reported +
+       '<p>'+ eventObject.user_gender + ' , '+ 
+       eventObject.user_age +' , '+ eventObject.time_period + ' , '+ 
+       eventObject.num_of_attackers + ' , ' + eventObject.attacker_gender + 
+      ' , ' + eventObject.attacker_relationship + ' , ' + 
+      eventObject.school_campus + ' , ' + eventObject.reported +
         '</p>'+
       '</div>'
       );
-
-    google.maps.event.addListener(marker, 'click', function() {
-      infoWindow.close(map, marker);
-      infoWindow.open(map, this);
+      infoWindow.open(map, marker);
+      questionWindow.close();
     }); // addListender(marker)
 
   }); //firebase.on function
