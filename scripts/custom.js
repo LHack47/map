@@ -9,6 +9,10 @@ $(document).ready(function(){
   // $("#form-circumstances").show();
     /* **VALUES***************************** */
 
+    function fadeThisIn(element){
+    
+    };
+
 // homePage-overlay
    $("#homePage-overlay-bar").on("click", function(){
     $("#homePage-overlay-bar").hide();
@@ -77,7 +81,7 @@ $(document).ready(function(){
   });  
 
   $(".userInfo-controls > .glyphicon-comment").on("click", function(){
-    $("#form-comments").fadeIn("slow");
+    $("#user-comments").fadeIn("fast");
     
       $("#form-comments > .comment-buttons > #comment-exit").on("click", function(){
         $("#form-comments").fadeOut("slow");

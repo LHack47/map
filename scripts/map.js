@@ -137,7 +137,7 @@ var infoWindow = new google.maps.InfoWindow();
     });
 
   //info box when you click a pin
-console.log(infoWindow);
+// console.log(infoWindow);
 // TODO: TAKE OUT CALL BACK FUNCTION AND PUT INSIDE A CLICK HANDLER FUNCTION!
     google.maps.event.addListener(marker, 'click', function() {
       // infoWindow.close();

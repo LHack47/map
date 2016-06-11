@@ -288,6 +288,23 @@ body{
 	font-size: 100%;
 }
 
+.form-comments {
+	background-color: black;
+	z-index: 22;
+}
+
+textarea {
+	margin: 0% auto;
+	width: 300px;
+	font-size: 100%;
+}
+
+.comment-buttons {
+	position: absolute;
+	bottom: 3%;
+	left: 10%;
+}
+
 #form-end {
 	z-index: 19;
 }
@@ -297,20 +314,4 @@ body{
    	align-items: center;
    	justify-content: center;
    	flex-direction: column;
-}
-
-#form-comments {
-	background-color: black;
-	z-index: 22;
-}
-
-#comments {
-	margin: 0% auto;
-	width: 300px;
-	font-size: 100%;
-}
-.comment-buttons {
-	position: absolute;
-	bottom: 3%;
-	left: 10%;
 }
