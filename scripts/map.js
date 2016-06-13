@@ -70,12 +70,8 @@ var firebaseRef = new Firebase("https://maptester.firebaseio.com/");
   // SEND TO FIREBASE
       $("#pinDrop-window > #fireBase-yes").on("click", function(e){
         userLocation = {lat: place.geometry.location.lat(), lng: place.geometry.location.lng()};
-
-        $("#pinDrop-window").hide();
-        $("#homePage-Elements").fadeOut("fast");
-        $("#pac-input").fadeOut("fast");
-        $("#homePage-overlay-bar").fadeOut("fast");
-        $("#form-start-overlay").fadeIn("fast");
+        fadeThisOut($("#pinDrop-window"));
+        fadeThisIn($("#form-start-overlay"));
         questionWindow.close();
       });
       $("#pinDrop-window > #fireBase-no").on("click", function(){
@@ -102,23 +98,17 @@ var firebaseRef = new Firebase("https://maptester.firebaseio.com/");
  //ADD PINDROP OVERLAY 
       $("#pinDrop-window > #fireBase-yes").on("click", function(){
        userLocation = {lat: e.latLng.lat(), lng: e.latLng.lng()};
-
-        $("#pinDrop-window").hide();
-        $("#homePage-Elements").fadeOut("fast");
-        $("#pac-input").fadeOut("fast");
-        $("#homePage-overlay-bar").fadeOut("fast");
-        $("#form-start-overlay").fadeIn("fast");
+        fadeThisOut($("#pinDrop-window"));
+        fadeThisIn($("#form-start-overlay"));
         questionWindow.close();
       });
       $("#pinDrop-window > #fireBase-no").on("click", function(){
         questionWindow.close();
-        //REMOVE MARKER WHEN USER SELECTS NO!!
         marker.setVisible(false);
       });
     }); //map.addListener
 
 var infoWindow = new google.maps.InfoWindow();
-
 
 
 //DROP A MARKER WHEN MAP IS CLICKED 
@@ -136,6 +126,23 @@ var infoWindow = new google.maps.InfoWindow();
       title: eventObject.user_gender
     });
 
+    // function geocodeThis(){
+    //   var geocoder = new google.maps.Geocoder;
+    //   var latLng = userLocation;
+
+    //     geocoder.geocode({'location': latLng}, function(results, status) {
+    //       if (status === google.maps.GeocoderStatus.OK) {
+    //         if (results[1]) {
+    //           var address = results[1].formatted_address;
+    //           console.log(address);
+    //         } 
+    //       }
+    //       else {
+    //           console.log('No results found');
+    //       }
+    //     });
+    //   }; //geocodeThis()
+
   //info box when you click a pin
 // console.log(infoWindow);
 // TODO: TAKE OUT CALL BACK FUNCTION AND PUT INSIDE A CLICK HANDLER FUNCTION!
@@ -143,7 +150,7 @@ var infoWindow = new google.maps.InfoWindow();
       // infoWindow.close();
       infoWindow.setContent(
        '<div id="infoContent">'+
-       '<h3>' + 
+       '<h3>' + ' ' +
        '</h3>' +
        '<p>'+ eventObject.user_gender + ' , '+ 
        eventObject.user_age +' , '+ eventObject.time_period + ' , '+ 

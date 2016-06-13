@@ -141,17 +141,17 @@
 		</div> <!-- .btn-group-controls -->
 	</div> <!-- #form-userInfo -->
 
-  <!-- Comment Box's Page -->
+  <!-- User Comment Box Page -->
 	<div class="form-overlay form-comments" id="user-comments">
 		<h3>Additional details </h3>
 		<br>
 		<div class="form-group">
   			<label for="comment">Comment:</label>
-  			<textarea class="form-control" rows="8" id="comments"></textarea>
+  			<textarea class="form-control" rows="8" id="user-comment-box"></textarea>
 		</div> <!-- .form-group -->
 		<div class="btn-group btn-group-lg comment-buttons" role="group" aria-label="...">
   			<button type="button" class="btn btn-default" id="comment-exit">Exit Comment</button>
- 			  <button type="button" class="btn btn-default" id="comment-save" onClick="document.getElementById('comments').val='';">Save Comment</button>
+ 			  <button type="button" class="btn btn-default" id="comment-save">Save Comment</button>
   		</div> <!-- .btn-group-lg -->
 	</div> <!-- #form-comments -->
 
@@ -202,17 +202,17 @@
 		</div> <!-- .btn-group-controls -->
 	</div> <!-- #form-attackerInfo -->
 
-  <!-- Comment Box's Page -->
+  <!-- Attacker Comment Box Page -->
 	<div class="form-overlay form-comments" id="attacker-comments">
 		<h3>Additional details </h3>
 		<br>
 		<div class="form-group">
   			<label for="comment">Comment:</label>
-  			<textarea class="form-control" rows="8" id="comments"></textarea>
+  			<textarea class="form-control" rows="8" id="attacker-comment-box"></textarea>
 		</div> <!-- .form-group -->
 		<div class="btn-group btn-group-lg comment-buttons" role="group" aria-label="...">
   			<button type="button" class="btn btn-default" id="comment-exit">Exit Comment</button>
- 			  <button type="button" class="btn btn-default" id="comment-save" onClick="document.getElementById('comments').val='';">Save Comment</button>
+ 			  <button type="button" class="btn btn-default" id="comment-save">Save Comment</button>
   		</div> <!-- .btn-group-lg -->
 	</div> <!-- #form-comments -->
 
@@ -245,17 +245,17 @@
 		</div> <!-- .btn-group-controls -->
   </div> <!-- #form-circumstances -->
 
-  <!-- Comment Box's Page -->
+  <!-- Circumstances Comment Box Page -->
 	<div class="form-overlay form-comments" id="circumstances-comments">
 		<h3>Additional details </h3>
 		<br>
 		<div class="form-group">
   			<label for="comment">Comment:</label>
-  			<textarea class="form-control" rows="8" id="comments"></textarea>
+  			<textarea class="form-control" rows="8" id="circumstances-comment-box"></textarea>
 		</div> <!-- .form-group -->
 		<div class="btn-group btn-group-lg comment-buttons" role="group" aria-label="...">
   			<button type="button" class="btn btn-default" id="comment-exit">Exit Comment</button>
- 			  <button type="button" class="btn btn-default" id="comment-save" onClick="document.getElementById('comments').val='';">Save Comment</button>
+ 			  <button type="button" class="btn btn-default" id="comment-save" >Save Comment</button>
   		</div> <!-- .btn-group-lg -->
 	</div> <!-- #form-comments -->
 
@@ -293,17 +293,17 @@
     </div> <!-- .btn-group-controls -->
   </div> <!-- #form-circumstances-2 -->
 
-  <!-- Comment Box's Page -->
+  <!-- Circumstances2 Comment Box Page -->
 	<div class="form-overlay form-comments" id="circumstances2-comments">
 		<h3>Additional details </h3>
 		<br>
 		<div class="form-group">
   			<label for="comment">Comment:</label>
-  			<textarea class="form-control" rows="8" id="comments"></textarea>
+  			<textarea class="form-control" rows="8" id="circumstances2-comment-box"></textarea>
 		</div> <!-- .form-group -->
 		<div class="btn-group btn-group-lg comment-buttons" role="group" aria-label="...">
   			<button type="button" class="btn btn-default" id="comment-exit">Exit Comment</button>
- 			  <button type="button" class="btn btn-default" id="comment-save" onClick="document.getElementById('comments').val='';">Save Comment</button>
+ 			  <button type="button" class="btn btn-default" id="comment-save" >Save Comment</button>
   		</div> <!-- .btn-group-lg -->
 	</div> <!-- #form-comments -->
 
@@ -328,13 +328,13 @@
 	</div> <!-- #form-end -->
 <!-- Form end pg-->
 
-<!-- Comment Box's Page -->
+<!-- Last Page Comment Box Page -->
 	<div class="form-overlay form-comments" id="last-comment">
 		<h3>Additional details </h3>
 		<br>
 		<div class="form-group">
   			<label for="comment">Comment:</label>
-  			<textarea class="form-control" rows="8" id="comments"></textarea>
+  			<textarea class="form-control" rows="8" id="last-comment-box"></textarea>
 		</div> <!-- .form-group -->
 		<div class="btn-group btn-group-lg comment-buttons" role="group" aria-label="...">
   			<button type="button" class="btn btn-default" id="comment-exit">Exit Comment</button>
@@ -352,42 +352,22 @@
 <!-- SEARCH BOX API -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBR4zok3yXv8syWZ2bkle_SZh5YJJD4UcQ&libraries=places&callback=initAutocomplete"
          async defer></script>
-<script>
- var userGender ;
-
-  var userAge ;
-
-  var attackerGender ;
-
-  var attackedBy ;
-
-  var attackerRelationship ;
- 
-  var date ;
- 
-  var multipleAssaults ;
-
-  var schoolCampus ;
-
-  var reported ;
-  
-  var userLocation = "";
-  
-  var userComment = "";
-  
-  var attackerComment = "";
-  
-  var circumstancesComment = "";
-  
-   var circumstances2Comment = "";
-   
-   var lastComment = "";
-  
-
-  
+<script>  
+  var userGender;
+  var userAge;
+  var userComment;
+  var attackerGender;
+  var attackedBy;
+  var attackerRelationship;
+  var attackerComment;
+  var date;
+  var multipleAssaults;
+  var circumstancesComment;
+  var reported;
+  var circumstances2Comment;
+  var lastComment;
 /* SEND OBJECT TO FIREBASE */
-  var post = function(){
-  //firebase.push({
+  function post(){
     firebaseRef.push({
         location: userLocation, 
         user_gender: userGender,
@@ -405,7 +385,7 @@
           circumstances_page2_comment: circumstances2Comment,
           last_page_comment: lastComment
       }) //firebaseRef.push
-  } //post function()
+  } //function post()
   </script>
 </body>
 </html>

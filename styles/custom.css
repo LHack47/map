@@ -85,7 +85,7 @@ body{
 	position: absolute;
 	top: 0;
 	z-index: 21;
-	background-color: rgba(0, 0, 0, 0.85);
+	background-color: black;
 	display: flex;
    	align-items: center;
    	justify-content: center;
@@ -184,7 +184,7 @@ body{
 .form-overlay {
 	width: 100vw;
 	height: 100vh;
-	background-color: rgba(0, 0, 0, 0.85);
+	background-color: black;
 	padding: 10px 10px;
 	position: absolute;
 	top: 0;
@@ -212,7 +212,6 @@ body{
 }
 
 #form-guidance {
-	background-color: black;
 	text-align: center;
 }
 
@@ -289,7 +288,6 @@ body{
 }
 
 .form-comments {
-	background-color: black;
 	z-index: 22;
 }
 

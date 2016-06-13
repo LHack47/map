@@ -4,251 +4,223 @@ $(document).ready(function(){
   $("#hamburger-overlay").hide();
   $(".form-overlay").hide();
   $(".dropdown-toggle").dropdown();
-
   $("#dateRange").daterangepicker();
-  // $("#form-circumstances").show();
-    /* **VALUES***************************** */
 
     function fadeThisIn(element){
-    
+      element.fadeIn("fast");
     };
-
-// homePage-overlay
-   $("#homePage-overlay-bar").on("click", function(){
-    $("#homePage-overlay-bar").hide();
-    $("#homePage-overlay").slideToggle("slow");
-  });
-/* END OF HOMEPAGE OVERLAY */
+    function fadeThisOut(element){
+      element.fadeOut("fast");
+    };
 
 /* HAMBURGER OVERLAY   HAMBURGER OVERLAY */
   $(".glyphicon-menu-hamburger").on("click", function(){
-    $("#homePage-Elements").fadeOut("fast");
-    $("#pac-input").fadeOut("fast");
-    $("#homePage-overlay").fadeOut("fast")
-    $("#homePage-overlay-bar").fadeOut("fast");
-    $("#hamburger-overlay").show("slow");
+    fadeThisOut($("#homePage-Elements"));
+    fadeThisIn($("#hamburger-overlay"));
   });
 
   $("#hamburger-overlay").on("click", function(){
-    $("#hamburger-overlay").fadeOut("fast");
-    $("#homePage-Elements").fadeIn("fast");
-    $("#pac-input").fadeIn("fast"); 
-    $("#homePage-overlay").fadeIn("fast");   
+    fadeThisOut($("#hamburger-overlay"));
   });
-
+ // homePage-overlay
   $("#homePage-overlay > .glyphicon-chevron-down , #homePage-overlay > #addEvent").on("click", function(){
-    $("#transparent-overlay").hide();
-    $("#homePage-overlay").slideToggle("fast");
-    $("#homePage-overlay-bar").show("slow");
+    fadeThisOut($("#transparent-overlay"));
+    fadeThisOut($("#homePage-overlay"));
+    fadeThisIn($("#homePage-overlay-bar"));
   });
 
   $("#transparent-overlay").on("click", function(){
-    $("#transparent-overlay").hide();
-    $("#homePage-overlay").slideToggle("fast");
-    $("#homePage-overlay-bar").show("slow");
+    fadeThisOut($("#transparent-overlay"));
+    fadeThisOut($("#homePage-overlay"));
+    fadeThisIn($("#homePage-overlay-bar"));
+  });
+
+  // homePage-overlay-bar
+   $("#homePage-overlay-bar").on("click", function(){
+    fadeThisOut($("#homePage-overlay-bar"));
+    fadeThisIn($("#homePage-overlay"));
   });
 
 /* USER DENYS TO ADD MORE DETAILS */
   $("#deny").on("click", function(){
-    $("#form-start-overlay").fadeOut("fast");
-    $("#form-thankYou").fadeIn("fast");
+    fadeThisOut($("#form-start-overlay"));
+    fadeThisIn($("#form-thankYou"));
   });   
 
 /* USER ACCEPTS TO ADD MORE DETAILS*/
   $("#accept").on("click", function(){
-   $("#form-start-overlay").fadeOut("fast");
-   // $("#form-userInfo").fadeIn("slow");
-   $("#form-guidance").fadeIn("slow");
+   fadeThisIn($("#form-guidance"));
+   fadeThisOut($("form-start-overlay"))
   });
 
 /* FORM-GUIDANCE BUTTON */
   $("#gotIt").on("click", function(){
-    $("#form-guidance").fadeOut("slow");
-    $("#form-userInfo").fadeIn("slow");
+    fadeThisOut($("#form-guidance"));
+    fadeThisIn($("#form-userInfo"));
   });
 
 /* USER INFO GLYPHICON CONTROL BUTTONS ***************************************************/
   $(".userInfo-controls > .glyphicon-arrow-left").on("click", function(){
-    $("#form-userInfo").fadeOut("fast");
-    $("#form-start-overlay").fadeIn("fast");
+    fadeThisOut($("#form-userInfo"));
+    fadeThisIn($("#form-start-overlay"));
   });
 
   $(".userInfo-controls > .glyphicon-floppy-saved").on("click", function(){
-    $("#form-userInfo").fadeOut("fast");
-    $("#homePage-Elements").fadeIn("fast");
-    $("#pac-input").fadeIn("fast");
-    $("#homePage-overlay-bar").fadeIn("slow");
+    fadeThisOut($("#form-userInfo"));
+    fadeThisIn($("#form-ThankYou"));
+    userGender = $("#userGender option:selected").val();
+     userAge = $("#userAge option:selected").val();
+     userComment = $("#user-comment-box").val();
   });  
 
   $(".userInfo-controls > .glyphicon-comment").on("click", function(){
-    $("#user-comments").fadeIn("fast");
-    
-      $("#form-comments > .comment-buttons > #comment-exit").on("click", function(){
-        $("#form-comments").fadeOut("slow");
+    fadeThisIn($('#user-comments'));
+      $("#user-comments > .comment-buttons > #comment-exit").on("click", function(){
+        fadeThisOut($("#user-comments"));
       });
-      $("#form-comments > .comment-buttons > #comment-save").on("click", function(){
-        $("#form-comments").fadeOut("slow");
-
-  userComment = $("#comments").val();
-
-         //userComment = $("#comments").val();
-        // firebase.child({user_page_comment: userComment});
-          //$("#comments").submit();
+      $("#user-comments > .comment-buttons > #comment-save").on("click", function(){
+        fadeThisOut($("#user-comments"));
       });
   }); 
 
   $(".userInfo-controls > .glyphicon-arrow-right").on("click", function(){
-    $("#form-userInfo").fadeOut("slow");
-    $("#form-attackerInfo").fadeIn("slow");
+    fadeThisOut($("#form-userInfo"));
+    fadeThisIn($("#form-attackerInfo"));
     userGender = $("#userGender option:selected").val();
-    userAge = $("#userAge option:selected").val();
+     userAge = $("#userAge option:selected").val();
+     userComment = $("#user-comment-box").val();
   });
-
 
 /* ATTACKER INFO GLYPHICONS CONTROL BUTTONS ************************************************************************************** */  
   $(".attackerInfo-controls > .glyphicon-arrow-left").on("click", function(){
-    $("#form-attackerInfo").fadeOut("slow");
-    $("#form-userInfo").fadeIn("slow");
+    fadeThisOut($("#form-attackerInfo"));
+    fadeThisIn($("#form-userInfo"));
   });
 
   $(".attackerInfo-controls > .glyphicon-floppy-saved").on("click", function(){
-    $("#form-attackerInfo").fadeOut("fast");
-    $("#homePage-Elements").fadeIn("fast");
-    $("#pac-input").fadeIn("fast");
-    $("#homePage-overlay-bar").fadeIn("slow");
+    fadeThisOut($("#form-attackerInfo"));
+    fadeThisIn($("#form-thankYou"));
+      attackerGender = $("#attackerGender option:selected").val();
+      attackedBy = $("#attackedBy option:selected").val();
+      attackerRelationship = $("#attackerRelationship option:selected").val();
+      attackerComment = $("#attacker-comment-box").val();
   }); 
 
   $(".attackerInfo-controls > .glyphicon-comment").on("click", function(){
-    $("#form-comments").fadeIn("slow");
-      
-      $("#form-comments > .comment-buttons > #comment-exit").on("click", function(){
-        $("#form-comments").fadeOut("slow");
+    fadeThisIn($("#attacker-comments"));
+      $("#attacker-comments > .comment-buttons > #comment-exit").on("click", function(){
+        fadeThisOut($("#attacker-comments"));
       });
-       $("#form-comments > .comment-buttons > #comment-save").on("click", function(){
-        $("#form-comments").fadeOut("slow");
-         attackerComment = $("#comments").val();
-         //firebase.update({attacker_page_comment: attackerComment});
-          $("#comments").submit();
+       $("#attacker-comments > .comment-buttons > #comment-save").on("click", function(){
+        fadeThisOut($("#attacker-comments"));
       });
   }); 
 
   $(".attackerInfo-controls > .glyphicon-arrow-right").on("click", function(){
-    $("#form-attackerInfo").fadeOut("slow");
-    $("#form-circumstances").fadeIn("slow");
-    attackerGender = $("#attackerGender option:selected").val();
-    attackedBy = $("#attackedBy option:selected").val();
-    attackerRelationship = $("#attackerRelationship option:selected").val();
+    fadeThisOut($("#form-attackerInfo"));
+    fadeThisIn($("#form-circumstances"));
+      attackerGender = $("#attackerGender option:selected").val();
+      attackedBy = $("#attackedBy option:selected").val();
+      attackerRelationship = $("#attackerRelationship option:selected").val();
+      attackerComment = $("#attacker-comment-box").val();
   });
-
   /* CIRCUMSTANCES GLYPHICON CONTROL BUTTONS
   ************************************************************************************** */
     $(".circumstances-controls > .glyphicon-arrow-left").on("click", function(){
-    $("#form-circumstances").fadeOut("slow");
-    $("#form-attackerInfo").fadeIn("slow");
+    fadeThisOut($("#form-circumstances"));
+    fadeThisIn($("#form-attackerInfo"));
   });
 
   $(".circumstances-controls > .glyphicon-floppy-saved").on("click", function(){
-    $("#form-circumstances").fadeOut("fast");
-    $("#homePage-Elements").fadeIn("fast");
-    $("#pac-input").fadeIn("fast");
-    $("#homePage-overlay-bar").fadeIn("slow");
+    fadeThisOut($("#form-circumstances"));
+    fadeThisIn($("#form-thankYou"));
+    date = document.getElementById("dateRange").value;
+    multipleAssaults = $("#multipleAssaults option:selected").val();
+    circumstancesComment = $("#comments").val();
   }); 
 
   $(".circumstances-controls > .glyphicon-comment").on("click", function(){
-    $("#form-comments").fadeIn("slow");
+    fadeThisIn($("#circumstances-comments"));
      
-      $("#form-comments > .comment-buttons > #comment-exit").on("click", function(){
-        $("#form-comments").fadeOut("slow");
+      $("#circumstances-comments > .comment-buttons > #comment-exit").on("click", function(){
+        fadeThisOut($("#circumstances-comments"));
       });
-       $("#form-comments > .comment-buttons > #comment-save").on("click", function(){
-        $("#form-comments").fadeOut("slow");
-         circumstancesComment = $("#comments").val();
-         //firebase.update({circumstances_page_comment: circumstancesComment});
-          $("#comments").submit();
+       $("#circumstances-comments > .comment-buttons > #comment-save").on("click", function(){
+        fadeThisOut($("#circumstances-comments"));
       });
   });
 
   $(".circumstances-controls > .glyphicon-arrow-right").on("click", function(){
-    $("#form-circumstances").fadeOut("slow");
-    $("#form-circumstances-2").fadeIn("slow");
+    fadeThisOut($("#form-circumstances"));
+    fadeThisIn($("#form-circumstances-2"));
     date = document.getElementById("dateRange").value;
     multipleAssaults = $("#multipleAssaults option:selected").val();
+    circumstancesComment = $("#comments").val();
   });
 
 /* FORM-CIRCUMSTANCES-2 GLYPHICON BUTTONS ******************************************** */
   $(".circumstances-2-controls > .glyphicon-arrow-left").on("click", function(){
-    $("#form-circumstances-2").fadeOut("slow");
-    $("#form-circumstances").fadeIn("slow");
+    fadeThisOut($("#form-circumstances-2"));
+    fadeThisIn($("#form-circumstances"));
   });
 
   $(".circumstances-2-controls > .glyphicon-floppy-saved").on("click", function(){
-    $("#form-circumstances-2").fadeOut("fast");
-    $("#homePage-Elements").fadeIn("fast");
-    $("#pac-input").fadeIn("fast");
-    $("#homePage-overlay-bar").fadeIn("slow");
+    fadeThisOut($("#form-circumstances-2"));
+    fadeThisIn($("#form-ThankYou"));
+     schoolCampus = $("#schoolCampus option:selected").val();
+     reported = $("#reported option:selected").val();
   }); 
 
   $(".circumstances-2-controls > .glyphicon-comment").on("click", function(){
-    $("#form-comments").fadeIn("slow");
-      
-      $("#form-comments > .comment-buttons > #comment-exit").on("click", function(){
-        $("#form-comments").fadeOut("slow");
+    fadeThisIn($("#circumstances2-comments"));
+      $("#circumstances2-comments > .comment-buttons > #comment-exit").on("click", function(){
+       fadeThisOut($("#circumstances2-comments"));
       });
-      $("#form-comments > .comment-buttons > #comment-save").on("click", function(){
-        $("#form-comments").fadeOut("slow");
-        circumstances2Comment = $("#comments").val();
-        //firebase.update({circumstances_page2_comment: circumstances2Comment});
-          $("#comments").submit();
+      $("#circumstances2-comments > .comment-buttons > #comment-save").on("click", function(){
+        fadeThisOut($("#circumstances2-comments"));
+        var circumstances2Comment = $("#comments").val();
       });
    });
 
   $(".circumstances-2-controls > .glyphicon-arrow-right").on("click", function(){
-    $("#form-circumstances-2").fadeOut("slow");
-    $("#form-end").fadeIn("slow");
-    schoolCampus = $("#schoolCampus option:selected").val();
-    reported = $("#reported option:selected").val();
+    fadeThisOut($("#form-circumstances-2"));
+    fadeThisIn($("#form-end"));
+     schoolCampus = $("#schoolCampus option:selected").val();
+     reported = $("#reported option:selected").val();
   });
 
 /* FORM END PAGE ********************************************************************* */
   $("#form-end > .btn-group-lg > .end-comment").on("click", function(){
-
-    $("#form-comments").fadeIn("slow");
-    
-      $("#form-comments > .comment-buttons > #comment-exit").on("click", function(){
-        $("#form-comments").fadeOut("slow");
+    fadeThisIn($("#last-comments"));
+      $("#last-comments > .comment-buttons > #comment-exit").on("click", function(){
+        fadeThisOut($("#last-comments"));
       });
-       $("#form-comments > .comment-buttons > #comment-save").on("click", function(){
-        $("#form-comments").fadeOut("slow");
-        lastComment = $("#comments").val();
-        //firebase.update({last_page_comment: lastComment});
-          $("#comments").submit();
+       $("#last-comments > .comment-buttons > #comment-save").on("click", function(){
+        fadeThisOut($("#last-comments"));
+        var lastComment = $("#comments").val();
       });
    });  
 
   $("#form-end > .btn-group-lg > .end-restart").on("click", function(){
-    $("#form-end").fadeOut("fast");
-    $("#form-userInfo").fadeIn("fast");
+    fadeThisOut($("#form-end"));
+    fadeThisIn($("#form-userInfo"));
   });
 
   $("#form-end > .btn-group-lg > .end-submit").on("click", function(){
-    $("#form-end").fadeOut("slow");
-    $("#form-thankYou").fadeIn("slow");
+    fadeThisOut($("#form-end"));
+    fadeThisIn($("#form-thankYou"));
   });  
 
   $(".form-end-controls > .glyphicon-arrow-left").on("click", function(){
-    $("#form-end").fadeOut("slow");
-    $("#form-circumstances-2").fadeIn("fast");
+    fadeThisOut($("#form-end"));
+    fadeThisIn($("#form-circumstances-2"));
   });
 
       $("#form-thankYou").on("click", function(){
-        $("#form-thankYou").fadeOut("slow");
-        $("#homePage-Elements").fadeIn("fast");
-        $("#pac-input").fadeIn("fast");
-        $("#homePage-overlay").hide();
-        $("#homePage-overlay-bar").fadeIn("slow");
-        
+        fadeThisOut($("#form-thankYou"));
+        fadeThisOut($("#homePage-overlay"));
+        fadeThisIn($("#homePage-overlay-bar"));  
       });   
-     
 }); /* DOCUMENT.READY(FUNCTION() */
 
 
