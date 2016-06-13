@@ -1,5 +1,60 @@
 var firebaseRef = new Firebase("https://maptester.firebaseio.com/");
+  var userLocation = " ";
+  var userGender = " ";
+  var userAge = " ";
+  var userComment = " ";
+  var attackerGender = " ";
+  var attackedBy = " ";
+  var attackerRelationship = " ";
+  var attackerComment = " ";
+  var date = " ";
+  var multipleAssaults = " ";
+  var circumstancesComment = " ";
+  var reported = " ";
+  var circumstances2Comment = " ";
+  var lastComment = " ";
+/* SEND OBJECT TO FIREBASE */
+  function post(){
+    firebaseRef.push({
+        location: userLocation,
+         event_address: address,
+        user_gender: userGender,
+        user_age: userAge,
+          user_page_comment: userComment,
+        attacker_gender: attackerGender,
+        num_of_attackers: attackedBy,
+        attacker_relationship: attackerRelationship,
+          attacker_page_comment: attackerComment,
+        time_period: date,
+        multiple_assaults: multipleAssaults,
+          circumstances_page_comment: circumstancesComment,
+        school_campus: schoolCampus,
+        reported: reported,
+          circumstances_page2_comment: circumstances2Comment,
+          last_page_comment: lastComment
+      }) //firebaseRef.push
+  } //function post()
 
+      var address;
+    function geocodeThis(){
+      var geocoder = new google.maps.Geocoder;
+      var latLng = userLocation;
+        geocoder.geocode({'location': latLng}, function(results, status) {
+          if (status === google.maps.GeocoderStatus.OK) {
+              address = results[0].formatted_address;
+              console.log(address);
+            } else {
+              console.log('No results found');
+          }
+        });
+      }; //geocodeThis()
+
+      function fadeThisIn(element){
+      element.fadeIn("fast");
+    };
+    function fadeThisOut(element){
+      element.fadeOut("fast");
+    };
 /* SEARCH BOX + MAP*/
  function initAutocomplete() {
     var map = new google.maps.Map(document.getElementById('googleMap'), {
@@ -17,7 +72,6 @@ var firebaseRef = new Firebase("https://maptester.firebaseio.com/");
           },
            streetViewControl: false
     }); //styles
-
 
   //info box when you click map
   var questionString = "<div id='pinDrop-window'>" +
@@ -70,6 +124,7 @@ var firebaseRef = new Firebase("https://maptester.firebaseio.com/");
   // SEND TO FIREBASE
       $("#pinDrop-window > #fireBase-yes").on("click", function(e){
         userLocation = {lat: place.geometry.location.lat(), lng: place.geometry.location.lng()};
+        geocodeThis();
         fadeThisOut($("#pinDrop-window"));
         fadeThisIn($("#form-start-overlay"));
         questionWindow.close();
@@ -98,6 +153,7 @@ var firebaseRef = new Firebase("https://maptester.firebaseio.com/");
  //ADD PINDROP OVERLAY 
       $("#pinDrop-window > #fireBase-yes").on("click", function(){
        userLocation = {lat: e.latLng.lat(), lng: e.latLng.lng()};
+       geocodeThis();
         fadeThisOut($("#pinDrop-window"));
         fadeThisIn($("#form-start-overlay"));
         questionWindow.close();
@@ -126,23 +182,6 @@ var infoWindow = new google.maps.InfoWindow();
       title: eventObject.user_gender
     });
 
-    // function geocodeThis(){
-    //   var geocoder = new google.maps.Geocoder;
-    //   var latLng = userLocation;
-
-    //     geocoder.geocode({'location': latLng}, function(results, status) {
-    //       if (status === google.maps.GeocoderStatus.OK) {
-    //         if (results[1]) {
-    //           var address = results[1].formatted_address;
-    //           console.log(address);
-    //         } 
-    //       }
-    //       else {
-    //           console.log('No results found');
-    //       }
-    //     });
-    //   }; //geocodeThis()
-
   //info box when you click a pin
 // console.log(infoWindow);
 // TODO: TAKE OUT CALL BACK FUNCTION AND PUT INSIDE A CLICK HANDLER FUNCTION!
@@ -152,17 +191,19 @@ var infoWindow = new google.maps.InfoWindow();
        '<div id="infoContent">'+
        '<h3>' + ' ' +
        '</h3>' +
-       '<p>'+ eventObject.user_gender + ' , '+ 
-       eventObject.user_age +' , '+ eventObject.time_period + ' , '+ 
+       '<p>'+ eventObject.event_address + "," + eventObject.user_gender + ' , '+ 
+       eventObject.user_age +' , '+ 
+       eventObject.user_page_comment+' , '+
+       eventObject.time_period + ' , '+ 
        eventObject.num_of_attackers + ' , ' + eventObject.attacker_gender + 
       ' , ' + eventObject.attacker_relationship + ' , ' + 
-      eventObject.school_campus + ' , ' + eventObject.reported +
+      eventObject.school_campus + ' , ' + eventObject.reported + ',' +
+      eventObject.circumstances_page2_comment + ','+ eventObject.last_page_comment +
         '</p>'+
       '</div>'
       );
       infoWindow.open(map, marker);
       questionWindow.close();
     }); // addListender(marker)
-
   }); //firebase.on function
 } //initAutocomplete()

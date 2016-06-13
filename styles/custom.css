@@ -72,7 +72,7 @@ body{
 
 #homePage-overlay-bar {
 	width: 100vw;
-	height: 64px;
+	height: 35px;
 	position: absolute;
 	z-index: 6;
 	bottom: 0;
@@ -222,7 +222,7 @@ body{
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: center;
-	z-index: 25;
+	/*z-index: 25;*/
 }
 
 #gotIt {
@@ -287,10 +287,6 @@ body{
 	font-size: 100%;
 }
 
-.form-comments {
-	z-index: 22;
-}
-
 textarea {
 	margin: 0% auto;
 	width: 300px;
@@ -301,10 +297,6 @@ textarea {
 	position: absolute;
 	bottom: 3%;
 	left: 10%;
-}
-
-#form-end {
-	z-index: 19;
 }
 
 #form-thankYou {

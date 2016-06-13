@@ -6,16 +6,8 @@ $(document).ready(function(){
   $(".dropdown-toggle").dropdown();
   $("#dateRange").daterangepicker();
 
-    function fadeThisIn(element){
-      element.fadeIn("fast");
-    };
-    function fadeThisOut(element){
-      element.fadeOut("fast");
-    };
-
 /* HAMBURGER OVERLAY   HAMBURGER OVERLAY */
   $(".glyphicon-menu-hamburger").on("click", function(){
-    fadeThisOut($("#homePage-Elements"));
     fadeThisIn($("#hamburger-overlay"));
   });
 
@@ -50,7 +42,7 @@ $(document).ready(function(){
 /* USER ACCEPTS TO ADD MORE DETAILS*/
   $("#accept").on("click", function(){
    fadeThisIn($("#form-guidance"));
-   fadeThisOut($("form-start-overlay"))
+   fadeThisOut($("#form-start-overlay"))
   });
 
 /* FORM-GUIDANCE BUTTON */
@@ -136,7 +128,7 @@ $(document).ready(function(){
     fadeThisIn($("#form-thankYou"));
     date = document.getElementById("dateRange").value;
     multipleAssaults = $("#multipleAssaults option:selected").val();
-    circumstancesComment = $("#comments").val();
+    circumstancesComment = $("#circumstances-comment-box").val();
   }); 
 
   $(".circumstances-controls > .glyphicon-comment").on("click", function(){
@@ -155,7 +147,7 @@ $(document).ready(function(){
     fadeThisIn($("#form-circumstances-2"));
     date = document.getElementById("dateRange").value;
     multipleAssaults = $("#multipleAssaults option:selected").val();
-    circumstancesComment = $("#comments").val();
+    circumstancesComment = $("#circumstances-comment-box").val();
   });
 
 /* FORM-CIRCUMSTANCES-2 GLYPHICON BUTTONS ******************************************** */
@@ -167,6 +159,7 @@ $(document).ready(function(){
   $(".circumstances-2-controls > .glyphicon-floppy-saved").on("click", function(){
     fadeThisOut($("#form-circumstances-2"));
     fadeThisIn($("#form-ThankYou"));
+    circumstances2Comment = $("#circumstances2-comment-box").val();    
      schoolCampus = $("#schoolCampus option:selected").val();
      reported = $("#reported option:selected").val();
   }); 
@@ -178,13 +171,13 @@ $(document).ready(function(){
       });
       $("#circumstances2-comments > .comment-buttons > #comment-save").on("click", function(){
         fadeThisOut($("#circumstances2-comments"));
-        var circumstances2Comment = $("#comments").val();
       });
    });
 
   $(".circumstances-2-controls > .glyphicon-arrow-right").on("click", function(){
     fadeThisOut($("#form-circumstances-2"));
     fadeThisIn($("#form-end"));
+    circumstances2Comment = $("#circumstances2-comment-box").val();
      schoolCampus = $("#schoolCampus option:selected").val();
      reported = $("#reported option:selected").val();
   });
@@ -197,7 +190,7 @@ $(document).ready(function(){
       });
        $("#last-comments > .comment-buttons > #comment-save").on("click", function(){
         fadeThisOut($("#last-comments"));
-        var lastComment = $("#comments").val();
+        lastComment = $("#last-comment-box").val();
       });
    });  
 
@@ -219,7 +212,8 @@ $(document).ready(function(){
       $("#form-thankYou").on("click", function(){
         fadeThisOut($("#form-thankYou"));
         fadeThisOut($("#homePage-overlay"));
-        fadeThisIn($("#homePage-overlay-bar"));  
+        fadeThisIn($("#homePage-overlay-bar")); 
+
       });   
 }); /* DOCUMENT.READY(FUNCTION() */
 

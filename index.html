@@ -69,7 +69,6 @@
 
 	  <div id="homePage-overlay-bar">
         <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-        <p id="annieCannons">This site was built by <a href="http//wwww.AnnieCannons.com">AnnieCannons</a></p>
       </div> <!-- #homePage-overlay-bar -->
 	</div> <!-- .container -->
 
@@ -329,7 +328,7 @@
 <!-- Form end pg-->
 
 <!-- Last Page Comment Box Page -->
-	<div class="form-overlay form-comments" id="last-comment">
+	<div class="form-overlay form-comments" id="last-comments">
 		<h3>Additional details </h3>
 		<br>
 		<div class="form-group">
@@ -340,7 +339,7 @@
   			<button type="button" class="btn btn-default" id="comment-exit">Exit Comment</button>
  			  <button type="button" class="btn btn-default" id="comment-save">Save Comment</button>
   		</div> <!-- .btn-group-lg -->
-	</div> <!-- #form-comments -->
+	</div> <!-- #last-comments -->
 	
 		<div class="form-overlay" id="form-thankYou">
 				<h3>Thank you!</h3>
@@ -352,40 +351,5 @@
 <!-- SEARCH BOX API -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBR4zok3yXv8syWZ2bkle_SZh5YJJD4UcQ&libraries=places&callback=initAutocomplete"
          async defer></script>
-<script>  
-  var userGender;
-  var userAge;
-  var userComment;
-  var attackerGender;
-  var attackedBy;
-  var attackerRelationship;
-  var attackerComment;
-  var date;
-  var multipleAssaults;
-  var circumstancesComment;
-  var reported;
-  var circumstances2Comment;
-  var lastComment;
-/* SEND OBJECT TO FIREBASE */
-  function post(){
-    firebaseRef.push({
-        location: userLocation, 
-        user_gender: userGender,
-        user_age: userAge,
-          user_page_comment: userComment,
-        attacker_gender: attackerGender,
-        num_of_attackers: attackedBy,
-        attacker_relationship: attackerRelationship,
-          attacker_page_comment: attackerComment,
-        time_period: date,
-        multiple_assaults: multipleAssaults,
-          circumstances_page_comment: circumstancesComment,
-        school_campus: schoolCampus,
-        reported: reported,
-          circumstances_page2_comment: circumstances2Comment,
-          last_page_comment: lastComment
-      }) //firebaseRef.push
-  } //function post()
-  </script>
 </body>
 </html>
