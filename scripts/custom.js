@@ -4,7 +4,6 @@ $(document).ready(function(){
   $("#hamburger-overlay").hide();
   $(".form-overlay").hide();
   $(".dropdown-toggle").dropdown();
-  $("#dateRange").daterangepicker();
 
 /* HAMBURGER OVERLAY   HAMBURGER OVERLAY */
   $(".glyphicon-menu-hamburger").on("click", function(){
@@ -128,6 +127,8 @@ $(document).ready(function(){
     fadeThisIn($("#form-thankYou"));
     date = document.getElementById("dateRange").value;
     multipleAssaults = $("#multipleAssaults option:selected").val();
+    dateStart = $("#dateStart").val();
+    dateEnd = $("#dateEnd").val();
     circumstancesComment = $("#circumstances-comment-box").val();
   }); 
 
@@ -145,8 +146,10 @@ $(document).ready(function(){
   $(".circumstances-controls > .glyphicon-arrow-right").on("click", function(){
     fadeThisOut($("#form-circumstances"));
     fadeThisIn($("#form-circumstances-2"));
-    date = document.getElementById("dateRange").value;
+    date = document.getElementById("dateStart").value , document.getElementById("dateEnd").value ;
     multipleAssaults = $("#multipleAssaults option:selected").val();
+    dateStart = $("#dateStart").val();
+    dateEnd = $("#dateEnd").val();
     circumstancesComment = $("#circumstances-comment-box").val();
   });
 

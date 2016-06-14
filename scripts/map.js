@@ -1,18 +1,20 @@
 var firebaseRef = new Firebase("https://maptester.firebaseio.com/");
-  var userLocation = " ";
-  var userGender = " ";
-  var userAge = " ";
-  var userComment = " ";
-  var attackerGender = " ";
-  var attackedBy = " ";
-  var attackerRelationship = " ";
-  var attackerComment = " ";
-  var date = " ";
-  var multipleAssaults = " ";
-  var circumstancesComment = " ";
-  var reported = " ";
-  var circumstances2Comment = " ";
-  var lastComment = " ";
+  var userLocation = "";
+  var userGender = "";
+  var userAge = "";
+  var userComment = "";
+  var attackerGender = "";
+  var attackedBy = "";
+  var attackerRelationship = "";
+  var attackerComment = "";
+  var date = "";
+  var multipleAsaults = "";
+  var dateStart = "";
+  var dateEnd= "";
+  var circumstancesComment = "";
+  var reported = "";
+  var circumstances2Comment = "";
+  var lastComment = "";
 /* SEND OBJECT TO FIREBASE */
   function post(){
     firebaseRef.push({
@@ -25,7 +27,7 @@ var firebaseRef = new Firebase("https://maptester.firebaseio.com/");
         num_of_attackers: attackedBy,
         attacker_relationship: attackerRelationship,
           attacker_page_comment: attackerComment,
-        time_period: date,
+        time_period: dateStart + "-" + dateEnd,
         multiple_assaults: multipleAssaults,
           circumstances_page_comment: circumstancesComment,
         school_campus: schoolCampus,

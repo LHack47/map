@@ -96,6 +96,10 @@ body{
 	color: white;
 }
 
+#addEvent {
+	font-size: 100%;
+}
+
 /* SEARCH BOX START*/
 .controls {
 	margin-top: 60px;
@@ -111,13 +115,14 @@ body{
 #pac-input {
 	background-color: #fff;
 	font-family: Roboto;
-	font-size: 15px;
-	color: grey;
+	font-size: 20px;
+	color: rgb(50,50,50);
 	font-weight: 300;
 	margin-left: 12px;
 	padding: 0 11px 0 13px;
 	text-overflow: ellipsis;
 	width: 300px;
+	height: 40px;
 	position: absolute;
 	z-index: 4;
 }
@@ -185,13 +190,14 @@ body{
 	width: 100vw;
 	height: 100vh;
 	background-color: black;
-	padding: 10px 10px;
+	padding: 13px;
 	position: absolute;
 	top: 0;
 	z-index: 20;
 	border-bottom: 1px solid black;
-	text-align: center;
-
+	display: flex;
+   	align-items: center;
+   	flex-direction: column;
 }
 
 #form-start-overlay {
@@ -230,7 +236,6 @@ body{
 	font-size: 120%;
 	position: center;
 	float: bottom;
-
 }
 
 .dropdown {
@@ -256,19 +261,8 @@ body{
 	height: 50px;
 }
 
-
-#form-circumstances {
-	padding-top: 1px;
-}
-
-#dateContainer #dateRange {
-	position: relative;
-	color: black !important;
-}
-
 #smallText {
-	position: absolute;
-	bottom: 20%;
+	margin-top: 140px;
 	font-size: 90%;
 }
 
@@ -287,16 +281,24 @@ body{
 	font-size: 100%;
 }
 
-textarea {
+.form-control {
 	margin: 0% auto;
 	width: 300px;
 	font-size: 100%;
+} /*comment box's'*/
+
+#dateContainer {
+	margin-bottom: 10px;
+}
+
+.dates{
+	color: black;
+	margin-bottom: 3px;
 }
 
 .comment-buttons {
-	position: absolute;
-	bottom: 3%;
-	left: 10%;
+	position: center;
+	float: bottom;
 }
 
 #form-thankYou {

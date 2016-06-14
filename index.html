@@ -11,9 +11,6 @@
 <!-- JQUERY -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 
-<!-- Date Range Moment.js -->
-<script type="text/javascript" src="scripts/moment.js"></script>
-
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -22,10 +19,6 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
-<!-- DATE RANGE PICKER JS & CSS -->
-<script type="text/javascript" src="scripts/daterangepicker.js"></script>
-<link rel="stylesheet" type="text/css" href="styles/daterangepicker.css" />
 
 <!-- FONT FAMILY LORA -->
 <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
@@ -105,7 +98,7 @@
 		<br>
 		<p>What is your gender?</p>
     <div class="selectDiv">
-      <select class="btn-default" id="userGender">
+      <select class="btn-default resetDropDowns" id="userGender">
         <option value="selectOne">Select one...</option>
         <option value="female">Female</option>
         <option value="male">Male</option>
@@ -118,7 +111,7 @@
 		<br>
 		<p>When it happened, I was:</p>
     <div class="selectDiv">
-      <select class="btn-default" id="userAge">
+      <select class="btn-default resetDropDowns" id="userAge">
         <option value="selectOne">Select one...</option>
         <option value="0-5">0-5</option>
         <option value="6-10">6-10</option>
@@ -146,7 +139,7 @@
 		<br>
 		<div class="form-group">
   			<label for="comment">Comment:</label>
-  			<textarea class="form-control" rows="8" id="user-comment-box"></textarea>
+  			<textarea class="form-control resetComments" rows="8" id="user-comment-box"></textarea>
 		</div> <!-- .form-group -->
 		<div class="btn-group btn-group-lg comment-buttons" role="group" aria-label="...">
   			<button type="button" class="btn btn-default" id="comment-exit">Exit Comment</button>
@@ -161,7 +154,7 @@
 		<br>
 		<p>What was the attacker's gender?</p>
     <div class="selectDiv">
-      <select class="btn-default" id="attackerGender">
+      <select class="btn-default resetDropDowns" id="attackerGender">
         <option value="selectOne">Select one...</option>
         <option value="female">Female</option>
         <option value="male">Male</option>
@@ -173,7 +166,7 @@
 		<br>
 		<p>I was attacked by:</p>
     <div class="selectDiv">
-      <select class="btn-default" id="attackedBy">
+      <select class="btn-default resetDropDowns" id="attackedBy">
         <option value="selectOne">Select one...</option>
         <option value="oneAttacker">1 Attacker</option>
         <option value="multipleAttackers">1+ Attackers</option>
@@ -182,7 +175,7 @@
   	<br>
 		<p>How would you describe your relationship with your attacker(s)?</p>
     <div class="selectDiv">
-      <select class="btn-default" id="attackerRelationship">
+      <select class="btn-default resetDropDowns" id="attackerRelationship">
         <option value="selectOne">Select one...</option>
         <option value="stranger">A Stranger</option>
         <option value="aquaintance">A Acquaintance</option>
@@ -207,7 +200,7 @@
 		<br>
 		<div class="form-group">
   			<label for="comment">Comment:</label>
-  			<textarea class="form-control" rows="8" id="attacker-comment-box"></textarea>
+  			<textarea class="form-control resetComments" rows="8" id="attacker-comment-box"></textarea>
 		</div> <!-- .form-group -->
 		<div class="btn-group btn-group-lg comment-buttons" role="group" aria-label="...">
   			<button type="button" class="btn btn-default" id="comment-exit">Exit Comment</button>
@@ -223,13 +216,13 @@
 		<p>Please indicate the date or time period when this assault occurred:</p>
   <!-- **DATE INPUT********************** -->
   <div id="dateContainer">
-    <input type="text" name="dateRange" id="dateRange" size="23"/>
+    <input type="date" class="dates" id="dateStart" size="23"/>
+		<input type="date" class="dates" id="dateEnd" size="23"/>
   </div>
-  <br>
 	<br>
   <p>Did you experience more than one assault at this place in this period of time?</p>
   <div class="selectDiv">
-    <select class="btn-default" id="multipleAssaults">
+    <select class="btn-default resetDropDowns" id="multipleAssaults">
       <option value="selectOne">Select one...</option>
       <option value="yes">Yes</option>
       <option value="no">No</option>
@@ -250,7 +243,7 @@
 		<br>
 		<div class="form-group">
   			<label for="comment">Comment:</label>
-  			<textarea class="form-control" rows="8" id="circumstances-comment-box"></textarea>
+  			<textarea class="form-control resetComments" rows="8" id="circumstances-comment-box"></textarea>
 		</div> <!-- .form-group -->
 		<div class="btn-group btn-group-lg comment-buttons" role="group" aria-label="...">
   			<button type="button" class="btn btn-default" id="comment-exit">Exit Comment</button>
@@ -265,7 +258,7 @@
     <br>
     <p>Were you on a school campus? </p>
     <div class="selectDiv">
-      <select class="btn-default" id="schoolCampus">
+      <select class="btn-default resetDropDowns" id="schoolCampus">
         <option value="selectOne">Select one...</option>
         <option value="yes">Yes</option>
         <option value="no">No</option>
@@ -274,7 +267,7 @@
     <br>
     <p>Did you report this? (Most don't)</p>
     <div class="selectDiv">
-      <select class="btn-default" id="reported">
+      <select class="btn-default resetDropDowns" id="reported">
         <option value="selectOne">Select one...</option>
         <option value="yes, to police">Yes, to law enforcement</option>
         <option value="yes, campus cops">Yes, to campus cops</option>
@@ -298,7 +291,7 @@
 		<br>
 		<div class="form-group">
   			<label for="comment">Comment:</label>
-  			<textarea class="form-control" rows="8" id="circumstances2-comment-box"></textarea>
+  			<textarea class="form-control resetComments" rows="8" id="circumstances2-comment-box"></textarea>
 		</div> <!-- .form-group -->
 		<div class="btn-group btn-group-lg comment-buttons" role="group" aria-label="...">
   			<button type="button" class="btn btn-default" id="comment-exit">Exit Comment</button>
@@ -333,7 +326,7 @@
 		<br>
 		<div class="form-group">
   			<label for="comment">Comment:</label>
-  			<textarea class="form-control" rows="8" id="last-comment-box"></textarea>
+  			<textarea class="form-control resetComments" rows="8" id="last-comment-box"></textarea>
 		</div> <!-- .form-group -->
 		<div class="btn-group btn-group-lg comment-buttons" role="group" aria-label="...">
   			<button type="button" class="btn btn-default" id="comment-exit">Exit Comment</button>
