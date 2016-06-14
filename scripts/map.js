@@ -1,50 +1,19 @@
 var firebaseRef = new Firebase("https://maptester.firebaseio.com/");
-  var userLocation = "";
-  var userGender = "";
-  var userAge = "";
-  var userComment = "";
-  var attackerGender = "";
-  var attackedBy = "";
-  var attackerRelationship = "";
-  var attackerComment = "";
-  var date = "";
-  var multipleAsaults = "";
-  var dateStart = "";
-  var dateEnd= "";
-  var circumstancesComment = "";
-  var reported = "";
-  var circumstances2Comment = "";
-  var lastComment = "";
+
+var userObject = {};
 /* SEND OBJECT TO FIREBASE */
   function post(){
-    firebaseRef.push({
-        location: userLocation,
-         event_address: address,
-        user_gender: userGender,
-        user_age: userAge,
-          user_page_comment: userComment,
-        attacker_gender: attackerGender,
-        num_of_attackers: attackedBy,
-        attacker_relationship: attackerRelationship,
-          attacker_page_comment: attackerComment,
-        time_period: dateStart + "-" + dateEnd,
-        multiple_assaults: multipleAssaults,
-          circumstances_page_comment: circumstancesComment,
-        school_campus: schoolCampus,
-        reported: reported,
-          circumstances_page2_comment: circumstances2Comment,
-          last_page_comment: lastComment
-      }) //firebaseRef.push
+    firebaseRef.push(userObject);//firebaseRef.push
+    userObject = {};
+     document.getElementById("resetForm").reset();
   } //function post()
 
-      var address;
     function geocodeThis(){
       var geocoder = new google.maps.Geocoder;
-      var latLng = userLocation;
+      var latLng = userObject.userLocation;
         geocoder.geocode({'location': latLng}, function(results, status) {
           if (status === google.maps.GeocoderStatus.OK) {
-              address = results[0].formatted_address;
-              console.log(address);
+              userObject.address = results[0].formatted_address;
             } else {
               console.log('No results found');
           }
@@ -74,17 +43,6 @@ var firebaseRef = new Firebase("https://maptester.firebaseio.com/");
           },
            streetViewControl: false
     }); //styles
-
-  //info box when you click map
-  var questionString = "<div id='pinDrop-window'>" +
-    "<h3>Report a sexual assault at this location?</h3>"+
-    "<button type='button' class='btn btn-default btn-clicked' id='fireBase-no'>No</button>"+
-    "<button type='button' class='btn btn-default btn-clicked' id='fireBase-yes'>Yes</button>" +
-    "</div>"; // #pinDrop-window 
-
-  var questionWindow = new google.maps.InfoWindow({
-    content: questionString
-  }); //Call by:: questionWindow.open(map, marker);
 
     // Create the search box and link it to the UI element.
     var input = document.getElementById('pac-input');
@@ -119,13 +77,21 @@ var firebaseRef = new Firebase("https://maptester.firebaseio.com/");
         } else {
           bounds.extend(place.geometry.location);
         }
-
         //question-window open
+      var questionString = "<div id='pinDrop-window'>" +
+      "<h3>Report a sexual assault at this location?</h3>"+
+     "<button type='button' class='btn btn-default btn-clicked' id='fireBase-no'>No</button>"+
+      "<button type='button' class='btn btn-default btn-clicked' id='fireBase-yes'>Yes</button>" +
+      "</div>"; // #pinDrop-window 
+
+      var questionWindow = new google.maps.InfoWindow({
+        content: questionString
+      }); //Call by:: questionWindow.open(map, marker);
         questionWindow.open(map, marker);
         infoWindow.close();
   // SEND TO FIREBASE
       $("#pinDrop-window > #fireBase-yes").on("click", function(e){
-        userLocation = {lat: place.geometry.location.lat(), lng: place.geometry.location.lng()};
+        userObject.userLocation = {lat: place.geometry.location.lat(), lng: place.geometry.location.lng()};
         geocodeThis();
         fadeThisOut($("#pinDrop-window"));
         fadeThisIn($("#form-start-overlay"));
@@ -149,12 +115,21 @@ var firebaseRef = new Firebase("https://maptester.firebaseio.com/");
     position: {lat: e.latLng.lat(), lng: e.latLng.lng()},
     map: map
     }); // var marker
+     //info box when you click map
+    var questionString = "<div id='pinDrop-window'>" +
+      "<h3>Report a sexual assault at this location?  </h3>"+
+      "<button type='button' class='btn btn-default btn-clicked' id='fireBase-no'>No</button>"+
+      "<button type='button' class='btn btn-default btn-clicked' id='fireBase-yes'>Yes</button>" +
+      "</div>"; // #pinDrop-window 
+
+    var questionWindow = new google.maps.InfoWindow({
+      content: questionString
+    }); //Call by:: questionWindow.open(map, marker);
       questionWindow.open(map, marker);
       infoWindow.close();
-
  //ADD PINDROP OVERLAY 
       $("#pinDrop-window > #fireBase-yes").on("click", function(){
-       userLocation = {lat: e.latLng.lat(), lng: e.latLng.lng()};
+       userObject.userLocation = {lat: e.latLng.lat(), lng: e.latLng.lng()};
        geocodeThis();
         fadeThisOut($("#pinDrop-window"));
         fadeThisIn($("#form-start-overlay"));
@@ -175,13 +150,12 @@ var infoWindow = new google.maps.InfoWindow();
     var eventObject = snapshot.val();
     
     // Create a google.maps.LatLng object for the position of the marker.
-    var latLng = new google.maps.LatLng(eventObject.location.lat, eventObject.location.lng);
+    var latLng = new google.maps.LatLng(eventObject.userLocation.lat, eventObject.userLocation.lng);
 
     // Place a marker at that location.
     var marker = new google.maps.Marker({
       position: latLng,
-      map: map,
-      title: eventObject.user_gender
+      map: map
     });
 
   //info box when you click a pin
@@ -193,19 +167,18 @@ var infoWindow = new google.maps.InfoWindow();
        '<div id="infoContent">'+
        '<h3>' + ' ' +
        '</h3>' +
-       '<p>'+ eventObject.event_address + "," + eventObject.user_gender + ' , '+ 
-       eventObject.user_age +' , '+ 
-       eventObject.user_page_comment+' , '+
-       eventObject.time_period + ' , '+ 
-       eventObject.num_of_attackers + ' , ' + eventObject.attacker_gender + 
-      ' , ' + eventObject.attacker_relationship + ' , ' + 
-      eventObject.school_campus + ' , ' + eventObject.reported + ',' +
-      eventObject.circumstances_page2_comment + ','+ eventObject.last_page_comment +
+       '<p>'+ eventObject.address + "," + eventObject.userGender + ' , '+ 
+       eventObject.userAge +' , '+ 
+       eventObject.userComment+' , '+
+       eventObject.dateStart + '-'+ eventObject.dateEnd + "," + 
+       eventObject.attackedBy + ' , ' + eventObject.attackerGender + 
+      ' , ' + eventObject.attackerRelationship + ' , ' + 
+      eventObject.schoolCampus + ' , ' + eventObject.reported + ',' +
+      eventObject.circumstances2Comment + ','+ eventObject.lastComment +
         '</p>'+
       '</div>'
       );
       infoWindow.open(map, marker);
-      questionWindow.close();
     }); // addListender(marker)
   }); //firebase.on function
 } //initAutocomplete()
