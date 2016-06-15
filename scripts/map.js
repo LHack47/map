@@ -35,11 +35,11 @@ var userObject = {};
           mapTypeControl: true,
           mapTypeControlOptions: {
             style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
-            position: google.maps.ControlPosition.LEFT_BOTTOM
+            position: google.maps.ControlPosition.RIGHT_BOTTOM
            },
           zoomControl: true,
           zoomControlOptions: {
-            position: google.maps.ControlPosition.RIGHT_BOTTOM
+            position: google.maps.ControlPosition.RIGHT_CENTER
           },
            streetViewControl: false
     }); //styles
@@ -49,6 +49,7 @@ var userObject = {};
     var searchBox = new google.maps.places.SearchBox(input);
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
   // Bias the SearchBox results towards current map's viewport.
+   var questionWindow = new google.maps.InfoWindow;
     map.addListener('bounds_changed', function() {
       searchBox.setBounds(map.getBounds());
     });
@@ -78,17 +79,16 @@ var userObject = {};
           bounds.extend(place.geometry.location);
         }
         //question-window open
-      var questionString = "<div id='pinDrop-window'>" +
+      questionWindow.setContent( "<div id='pinDrop-window'>" +
       "<h3>Report a sexual assault at this location?</h3>"+
      "<button type='button' class='btn btn-default btn-clicked' id='fireBase-no'>No</button>"+
       "<button type='button' class='btn btn-default btn-clicked' id='fireBase-yes'>Yes</button>" +
-      "</div>"; // #pinDrop-window 
-
-      var questionWindow = new google.maps.InfoWindow({
-        content: questionString
-      }); //Call by:: questionWindow.open(map, marker);
+      "</div>"); // #pinDrop-window 
         questionWindow.open(map, marker);
+        if(infoWindow.open()){
         infoWindow.close();
+        }
+        $(".gm-style-iw").next("div").hide();
   // SEND TO FIREBASE
       $("#pinDrop-window > #fireBase-yes").on("click", function(e){
         userObject.userLocation = {lat: place.geometry.location.lat(), lng: place.geometry.location.lng()};
@@ -106,9 +106,6 @@ var userObject = {};
     map.fitBounds(bounds);
       // console.log(bounds);
     }); //searchBox.addListener
-
-
-
      // Add marker on user click
   map.addListener('click', function(e) {
     var marker = new google.maps.Marker({
@@ -116,17 +113,19 @@ var userObject = {};
     map: map
     }); // var marker
      //info box when you click map
-    var questionString = "<div id='pinDrop-window'>" +
+    questionWindow.setContent( 
+      "<div id='pinDrop-window'>" +
       "<h3>Report a sexual assault at this location?  </h3>"+
       "<button type='button' class='btn btn-default btn-clicked' id='fireBase-no'>No</button>"+
       "<button type='button' class='btn btn-default btn-clicked' id='fireBase-yes'>Yes</button>" +
-      "</div>"; // #pinDrop-window 
+      "</div>"); // #pinDrop-window 
 
-    var questionWindow = new google.maps.InfoWindow({
-      content: questionString
-    }); //Call by:: questionWindow.open(map, marker);
+   //Call by:: questionWindow.open(map, marker);
       questionWindow.open(map, marker);
-      infoWindow.close();
+        if(infoWindow.open()){
+          infoWindow.close();
+        }
+      $(".gm-style-iw").next("div").hide();
  //ADD PINDROP OVERLAY 
       $("#pinDrop-window > #fireBase-yes").on("click", function(){
        userObject.userLocation = {lat: e.latLng.lat(), lng: e.latLng.lng()};
@@ -148,18 +147,14 @@ var infoWindow = new google.maps.InfoWindow();
   firebaseRef.on("child_added", function(snapshot, prevChildKey) {
     // Get latitude and longitude from the cloud.
     var eventObject = snapshot.val();
-    
     // Create a google.maps.LatLng object for the position of the marker.
     var latLng = new google.maps.LatLng(eventObject.userLocation.lat, eventObject.userLocation.lng);
-
     // Place a marker at that location.
     var marker = new google.maps.Marker({
       position: latLng,
       map: map
     });
-
   //info box when you click a pin
-// console.log(infoWindow);
 // TODO: TAKE OUT CALL BACK FUNCTION AND PUT INSIDE A CLICK HANDLER FUNCTION!
     google.maps.event.addListener(marker, 'click', function() {
       // infoWindow.close();
@@ -167,18 +162,23 @@ var infoWindow = new google.maps.InfoWindow();
        '<div id="infoContent">'+
        '<h3>' + ' ' +
        '</h3>' +
-       '<p>'+ eventObject.address + "," + eventObject.userGender + ' , '+ 
-       eventObject.userAge +' , '+ 
-       eventObject.userComment+' , '+
-       eventObject.dateStart + '-'+ eventObject.dateEnd + "," + 
-       eventObject.attackedBy + ' , ' + eventObject.attackerGender + 
-      ' , ' + eventObject.attackerRelationship + ' , ' + 
-      eventObject.schoolCampus + ' , ' + eventObject.reported + ',' +
-      eventObject.circumstances2Comment + ','+ eventObject.lastComment +
-        '</p>'+
-      '</div>'
+       '<p><strong>'+ eventObject.address + "</strong> <br>" + 
+       eventObject.userGender + ' <br> '+ 
+       eventObject.userAge +' <br> '+ 
+       eventObject.userComment+' <br> '+
+       eventObject.dateStart + '-'+ eventObject.dateEnd + "<br>" + 
+       eventObject.attackedBy + ' <br> ' + eventObject.attackerGender + 
+      '<br>' + 
+      eventObject.attackerRelationship + ' <br> ' + 
+      eventObject.schoolCampus + ' <br> ' + eventObject.reported + '<br>' +
+      eventObject.circumstances2Comment + '<br>'+ eventObject.lastComments +
+        '</p></div>'
       );
       infoWindow.open(map, marker);
+        if(questionWindow.open()){
+          questionWindow.close();
+          marker.setVisible(false);
+        }
     }); // addListender(marker)
   }); //firebase.on function
 } //initAutocomplete()

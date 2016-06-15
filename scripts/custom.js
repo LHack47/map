@@ -191,7 +191,7 @@ $(document).ready(function(){
       });
        $("#last-comments > .comment-buttons > #comment-save").on("click", function(){
         fadeThisOut($("#last-comments"));
-        userObject.lastComment = $("#last-comment-box").val();
+        userObject.lastComments = $("#last-comment-box").val();
       });
    });  
 
