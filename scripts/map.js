@@ -165,13 +165,13 @@ var infoWindow = new google.maps.InfoWindow();
        '<p><strong>'+ eventObject.address + "</strong> <br>" + 
        eventObject.userGender + ' <br> '+ 
        eventObject.userAge +' <br> '+ 
-       eventObject.userComment+' <br> '+
+      +' <br> '+
        eventObject.dateStart + '-'+ eventObject.dateEnd + "<br>" + 
        eventObject.attackedBy + ' <br> ' + eventObject.attackerGender + 
       '<br>' + 
-      eventObject.attackerRelationship + ' <br> ' + 
+      eventObject.attackerRelationship + ' <br> ' + userObject.dateStart + '<br>' + eventObject.dateEnd + '<br>' + eventObject.circumstancesComment + ' <br> ' +
       eventObject.schoolCampus + ' <br> ' + eventObject.reported + '<br>' +
-      eventObject.circumstances2Comment + '<br>'+ eventObject.lastComments +
+    
         '</p></div>'
       );
       infoWindow.open(map, marker);

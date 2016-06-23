@@ -180,7 +180,7 @@ $(document).ready(function(){
     fadeThisIn($("#form-end"));
     userObject.circumstances2Comment = $("#circumstances2-comment-box").val();
      userObject.schoolCampus = $("#schoolCampus option:selected").val();
-     userObject.userObject.reported = $("#reported option:selected").val();
+     userObject.reported = $("#reported option:selected").val();
   });
 
 /* FORM END PAGE ********************************************************************* */
