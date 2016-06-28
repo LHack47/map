@@ -177,7 +177,7 @@ var infoWindow = new google.maps.InfoWindow();
        eventObject.dateStart + ' -- '+ eventObject.dateEnd + "<br>" + 
        '<strong>On a school campus: </strong>' +
        eventObject.schoolCampus + ' <br> ' + 
-       '<strong>reported to: </strong>' +
+       '<strong>reported?: </strong>' +
        eventObject.reported + '<br>' +
        '</p></div>'
       );
