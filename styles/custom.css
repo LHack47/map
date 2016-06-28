@@ -58,12 +58,13 @@ body{
 	z-index: 5;
 	bottom: 0;
 	width: 100vw;
-	height: 48%;
+	height: 45%;
 	float: bottom;
 	background-color: rgba(0, 0, 0, 0.7);
 	padding: 0px 7px;
 	left: 0;
-	line-height: 1.1;
+	line-height: 1.4;
+	text-align: center;
 }
 
 #homePage-overlay h3 { 
@@ -302,9 +303,50 @@ body{
 	float: bottom;
 }
 
+.form-group {
+	width: 600px;
+}
+
 #form-thankYou {
 	display: flex;
    	align-items: center;
    	justify-content: center;
    	flex-direction: column;
+}
+
+#annieCannons a {
+	color: lightseagreen;
+}
+
+#form-end {
+	line-height: 1.4;
+}
+
+#form-end h3 {
+	max-width: 650px;
+}
+
+.form-overlay p{
+	max-width: 600px;
+}
+
+@media screen and (max-width: 678px) {
+	.glyphicon-menu-hamburger {
+		font-size: 26px;
+	}
+	.homePage-overlay {
+		height: 70%;
+		line-height: 1.1;
+		bottom: 0;
+	}
+
+	.btn-group-controls {
+		width: 100%;
+		position: center;
+		float: bottom;
+		word-spacing: 25px;
+	}
+	.glyphicon {
+		font-size: 16px;
+	}
 }
