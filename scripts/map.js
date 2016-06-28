@@ -160,19 +160,26 @@ var infoWindow = new google.maps.InfoWindow();
       // infoWindow.close();
       infoWindow.setContent(
        '<div id="infoContent">'+
-       '<h3>' + ' ' +
-       '</h3>' +
-       '<p><strong>'+ eventObject.address + "</strong> <br>" + 
+       '<p><strong>Assault Location: </strong> <br>'+ eventObject.address + '<br>' + 
+       '<strong>Survivor Gender: </strong>' +
        eventObject.userGender + ' <br> '+ 
-       eventObject.userAge +' <br> '+ 
-      +' <br> '+
-       eventObject.dateStart + '-'+ eventObject.dateEnd + "<br>" + 
-       eventObject.attackedBy + ' <br> ' + eventObject.attackerGender + 
-      '<br>' + 
-      eventObject.attackerRelationship + ' <br> ' + userObject.dateStart + '<br>' + eventObject.dateEnd + '<br>' + eventObject.circumstancesComment + ' <br> ' +
-      eventObject.schoolCampus + ' <br> ' + eventObject.reported + '<br>' +
-    
-        '</p></div>'
+       '<strong>Age upon assault: </strong>' +
+       eventObject.userAge +'<br>'+ 
+       '<strong>Attacker Gender: </strong>' +
+       eventObject.attackerGender +'<br>'+
+       '<strong>Multiple attackers?: </strong>' +
+       eventObject.attackedBy + ' <br> ' + 
+       '<strong>The attacker was a(n): </strong>' +
+       eventObject.attackerRelationship + ' <br> ' + 
+       '<strong>Multiple assaults here?: </strong>' +
+       eventObject.multipleAssaults + '<br>' +
+       '<strong>Date range: </strong>' + '<br>' +
+       eventObject.dateStart + ' -- '+ eventObject.dateEnd + "<br>" + 
+       '<strong>On a school campus: </strong>' +
+       eventObject.schoolCampus + ' <br> ' + 
+       '<strong>reported to: </strong>' +
+       eventObject.reported + '<br>' +
+       '</p></div>'
       );
       infoWindow.open(map, marker);
         if(questionWindow.open()){

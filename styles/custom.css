@@ -182,7 +182,8 @@ body{
 #infoContent{
 	color: black;
 	font-size: 140%;
-	width: 200px;
+	word-wrap: normal;
+	max-width: 280px;
 }
 /* HOME PAGE END */
 
