@@ -44,14 +44,6 @@ body{
 	font-size: 26px;
 }
 
-.glyphicon-menu-hamburger {
-	color: black;
-	position: absolute;
-	z-index: 10;
-	top: 6px;
-	right: 20px;
-}
-
 #homePage-overlay {
 	position: absolute;
 	z-index: 5;
@@ -79,6 +71,14 @@ body{
 	background-color: rgba(0, 0, 0, 0.7);
 }
 
+.glyphicon-menu-hamburger {
+	color: black;
+	position: absolute;
+	z-index: 10;
+	top: 6px;
+	right: 20px;
+}
+
 #hamburger-overlay {
 	width: 100vw;
 	height: 100vh;
@@ -86,6 +86,11 @@ body{
 	top: 0;
 	z-index: 21;
 	background-color: black;
+
+}
+
+#hamburger-content {
+	position: absolute;
 	display: flex;
    	align-items: center;
    	justify-content: center;
@@ -94,6 +99,7 @@ body{
 
 #hamburger-overlay a {
 	color: white;
+
 }
 
 #addEvent {
@@ -356,6 +362,15 @@ body{
 	.glyphicon-menu-hamburger {
 		font-size: 35px;
 	}
+
+	#hamburger-content {
+		position: absolute;
+		display: flex;
+   		align-items: center;
+   		justify-content: center;
+   		flex-direction: column;
+	}
+
 	#homePage-overlay {
 		height: 57%;
 		line-height: 1.1;
