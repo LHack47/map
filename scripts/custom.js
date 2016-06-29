@@ -3,7 +3,6 @@ $(document).ready(function(){
   $("#homePage-overlay-bar").hide();
   $("#hamburger-overlay").hide();
   $(".form-overlay").hide();
-  $(".dropdown-toggle").dropdown();
 
 /* HAMBURGER OVERLAY   HAMBURGER OVERLAY */
   $(".glyphicon-menu-hamburger").on("click", function(){
