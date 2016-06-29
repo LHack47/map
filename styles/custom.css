@@ -195,7 +195,6 @@ body{
 	position: absolute;
 	top: 0;
 	z-index: 20;
-	border-bottom: 1px solid black;
 	display: flex;
    	align-items: center;
    	flex-direction: column;
@@ -357,7 +356,7 @@ body{
 		font-size: 35px;
 	}
 	#homePage-overlay {
-		height: 63%;
+		height: 57%;
 		line-height: 1.1;
 		bottom: 0;
 	}
@@ -379,7 +378,6 @@ body{
     	margin-right: auto;
 		bottom: 3%;
 		word-spacing: 25px;
-	
 	}
 
 	#smallText{
