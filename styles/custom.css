@@ -86,11 +86,6 @@ body{
 	top: 0;
 	z-index: 21;
 	background-color: black;
-
-}
-
-#hamburger-content {
-	position: absolute;
 	display: flex;
    	align-items: center;
    	justify-content: center;
@@ -361,14 +356,6 @@ body{
 
 	.glyphicon-menu-hamburger {
 		font-size: 35px;
-	}
-
-	#hamburger-content {
-		position: absolute;
-		display: flex;
-   		align-items: center;
-   		justify-content: center;
-   		flex-direction: column;
 	}
 
 	#homePage-overlay {
