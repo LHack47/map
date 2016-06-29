@@ -255,6 +255,7 @@ body{
     margin-right: auto;
 	bottom: 5%;
 	word-spacing: 40px;
+	text-align: center;
 }
 
 .btn-group-controls span {
@@ -378,6 +379,7 @@ body{
     	margin-right: auto;
 		bottom: 3%;
 		word-spacing: 25px;
+		text-align: center;
 	}
 
 	#smallText{
