@@ -20,8 +20,8 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-<!-- FONT FAMILY LORA -->
-<link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+<!-- FONT FAMILY JOSEFIN SANS -->
+<link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
 
 <!-- custom css page -->
 	<link rel ="stylesheet" type ="text/css" href ="styles/custom.css">
@@ -36,104 +36,135 @@
 	<div class="container">
 		<div id="googleMap">
 		</div> <!-- #googleMap -->
+			<div class="homeElements startedAForm" id="navBar">
+      	<img id="logo" src="">
+		
+				<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+			</div> <!-- #navBar -->		
 
-		<div id="homePage-Elements">
-      <img id="logo" src="styles/images/BeAwareLogo.png">
-				<!-- <h2 id="logo"> BE(A)WARE </h2> -->
-			<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
-		</div> <!-- #homePage-Elements -->				
+		<div class="startedAForm" id="seePrompt">
+			<p>Click any record dot to view the assault details reported to us.</p>
+		</div> <!-- #seePrompt -->
+
+		<div class="startedAForm" id="addPrompt">
+			<h3>Please drop a pin or enter a location to begin your assault record.</h3>
+		</div> <!-- #seePrompt -->		
 <!-- **************SEARCH BOX************** -->
-    <div id="input-container">
-			<input id="pac-input" class="controls" type="text" placeholder="Search the location here">
-    </div>
-    	
-    <div id="transparent-overlay">
-   </div>
-   <div id="homePage-overlay">
-     		<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-		 		<h3>Mission:</h3>
-				 <p> Create a database of anonymous sexual assault reports that improve understanding and help warn others. </p>
-		 		<h3>How it works:</h3>
-		 		<p>Type in or click on a location to add your report.</p>
-				<button type="button" class="btn btn-default" id="addEvent">Add Report</button>
-				<!-- <p>Click map to view events.</p> -->
-    </div> <!-- #homePage-overlay -->
+		<div class="homeElements" id="input-container">
+			<form>
+				<input class="controls homeElements startedAForm" id="pac-input" type="text" placeholder="Search a location here">
+			</form>
+		</div> <!-- #input-container -->
 
-	  <div id="homePage-overlay-bar">
-        <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-      </div> <!-- #homePage-overlay-bar -->
+
 	</div> <!-- .container -->
 
-	<div id="hamburger-overlay">
-			<a href="http://www.Anniecannons.com"><h2>About Us</h2></a>
-			<a href="http://www.nsvrc.org/"><h2>Resources</h2></a>
-	</div> <!-- #hamburger-overlay -->
+	<div class="form-overlay" id="homePage-overlay">
+  	<h3 style="color: #fff8e0">Welcome to Survivors.io!</h3>
+		<h4 style="color: #67ccde">We made this map to help the real story of rape culture.</h4>
+		<p style="color: #fff8e0"> You can record an assault you've experienced by inputting the approximate location.</p>
+		<p style="color: #fff8e0">You can also choose to share other details about your assault that will help us warn others and help our community better undersytand the reality of sexual assault.</p>
+		<p style="color: #9bd130"> All entries are 100% anonymous.</p>
+		<button type="button" class="buttons greenBtn btn" id="seeMap">See the Map</button>
+		<button type="button" class="buttons btn answerBtn" id="addEvent">Add Your Assault</button>
+  </div> <!-- #homePage-overlay -->
 
-	<form id="resetForm">
+	<div class="form-overlay" id="hamburger-overlay">
+		<p onClick="fadeThisIn($('#locationForm')), fadeThisOut($('#hamburger-overlay'))"> + Assault Report</p>
+		<a href="http://www.Anniecannons.com"><h2>About Us</h2></a>
+		<a href="http://www.nsvrc.org/"><h2>Resources</h2></a>
+	</div> <!-- #hamburger-overlay -->
+<div id="resetForm">
+<!-- *FORM START WITH LOCATION SPECIFITY PAGE* -->
+	<div class="form-overlay" id="locationForm">
+		<h3 style="margin-bottom: 20px">How specifically do you recall the location of the assault?</h3>
+    <input type="button" class="buttons navyBtn" value="The state" onClick="navyBtnFunction($('#locationForm'))">The State</input>
+    <input type="button" class="buttons navyBtn" value="The city" onClick="navyBtnFunction($('#locationForm'))">The City</input>
+    <input type="button" class="buttons navyBtn" value="Campus/Neighborhood" onClick="navyBtnFunction($('#locationForm'))">The Campus or Neighborhood</input>
+    <input type="button" class="buttons navyBtn" value="The address" onClick="navyBtnFunction($('#locationForm'))">The address</input>
+    <input type="button" class="buttons navyBtn" value="I don't know" onClick="navyBtnFunction($('#locationForm'))">I Don't Really Know Where</input>
+
+		<div class="formControls">
+			<input type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></input>
+		</div> <!-- .formControls -->
+	</div> <!-- #locationForm -->
+
 	<div class="form-overlay" id="form-start-overlay">
-		<p id="">Would you like to tell us more about the circumstances?</p>
+		<h3 id="">Would you like to tell us more about the circumstances?</h3>
+		<p style="color: #fff8e0">This is still anonymous.</p>
 		<br>
 		<div class="btn-group btn-group-lg" role="group" aria-label="...">
-  			<button type="button" class="btn btn-default" id="deny">No</button>
- 			  <button type="button" class="btn btn-default" id="accept">Yes</button>
+  			<input type="button" class="btn buttons blueBtn" id="deny" onClick="post()">No</input>
+ 			  <input type="button" class="btn buttons blueBtn" id="accept">Yes</input>
   	</div> <!-- .btn-group-lg -->
-  		<br>
-  		<br>
-  		<p>This is still anonymous.</p>
-		  <a href="#" id="privacy-policy">Privacy Policy</a>
+  	<a href="#" id="privacy-policy">Privacy Policy</a>
 	</div> <!-- #form-start-overlay -->
-<!-- -->
+
   <!-- #form-guidance -->
   <div class="form-overlay" id="form-guidance">
     <div id="guidance-container">
     </div> <!-- #guidnace-container -->
-     <button type="button" class="btn btn-default" id="gotIt">Got It!</button>
+     <input type="button" class="btn buttons greenBtn" id="gotIt">Got It!</input>
   </div> <!-- #form-guidance -->
 
-<!--***USER ************************* -->
-<!--************************************* -->
-	<div class="form-overlay" id="form-userInfo">
-		<h3>Please Tell Us About Yourself.</h3>
-		
-		<p>What is your gender?</p>
+	<!--<script src="userGender.html"></script>-->
 
-    <div class="selectDiv">
-      <select class="btn-default resetDropDowns" id="userGender">
-        <option value="No answer">Select one...</option>
-        <option value="Female">Female</option>
-        <option value="Male">Male</option>
-        <option value="Trans Female">Transgender Female</option>
-        <option value="Trans Male">Transgender Male</option>
-        <option value="It's complicated">It's more complicated</option>
-				<option value="I'd Rather Not Say">I'd rather not say</option>
-      </select>
-    </div> <!-- .selectDiv -->
-		<br>
+<!--***PAGE1 *************************************** -->
+	<div class="form-overlay" id="userGender">
+		<h3>Please Tell Us About Yourself.</h3>
+		<p>What is your gender?</p>
+    <input type="button" class="buttons answerBtn" value="Female">Female</input>
+  	<input type="button" class="buttons answerBtn" value="Male">Male</input>
+    <input type="button" class="buttons answerBtn" value="Trans Female">Transgender Female</input>
+    <input type="button" class="buttons answerBtn" value="Trans Male">Transgender Male</input>
+    <input type="button" class="buttons answerBtn" value="It's complicated">It's more complicated</input>
+		<input type="button" class="buttons answerBtn" value="I'd Rather Not Say">I'd rather not say</input>
+			
+		<button type="button" class="buttons greenBtn commentBtn">Comment</button>
+
+		<div class="formControls">
+			<span class="glyphicon glyphicon-arrow-left backBtn" aria-hidden="true"></span>
+			<input type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></input>
+			<input type="button" class="skipBtn">Skip</input>
+		</div> <!-- .formControls -->
+	</div>  <!-- #page1 -->
+
+	      <!-- userGender Comment Box Page -->
+	<div class="form-overlay form-comments" id="uG-comment">
+	    <h3>Additional details </h3>
+		<div class="form-group">
+  			<label for="comment">Comment:</label>
+  			<textarea class="form-control resetComments" rows="8" id="user-comment-box"></textarea>
+		</div> <!-- .form-group -->
+		<div class="btn-group btn-group-lg comment-buttons" role="group" aria-label="...">
+  			<input type="button" class="btn btn-default" id="comment-exit">Exit Comment</input>
+ 			<input type="button" class="btn btn-default" id="comment-save">Save Comment</input>
+  		</div> <!-- .btn-group-lg -->
+	</div> <!-- #uG-comment -->
+	<!-- ** USERAGE *********************** -->
+	<div class="form-overlay" id="userAge">
 		<p>When it happened, I was:</p>
-    <div class="selectDiv">
-      <select class="btn-default resetDropDowns" id="userAge">
-        <option value="No answer">Select one...</option>
-        <option value="0-5">0-5</option>
-        <option value="6-10">6-10</option>
-        <option value="11-15">11-15</option>
-        <option value="16-18">16-18</option>
-        <option value="19-22">19-22</option>
-        <option value="23-28">23-28</option>
-        <option value="29-34">29-34</option>
-        <option value="35-44">35-44</option>
-        <option value="45-54">45-54</option>
-        <option value="55+">55+</option>
-				<option value="I don't know'">I don't know</option>
-				<option value="I'd rather not say">I'd rather not say</option>
-      </select>
-    </div> <!-- .selectDiv -->
-		<div class="btn-group-controls userInfo-controls" role="group">
-  		<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
-  		<span class="glyphicon glyphicon-floppy-saved" aria-hidden="true" onClick="post()"></span>
-  		<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
-  		<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
-		</div> <!-- .btn-group-controls -->
-	</div> <!-- #form-userInfo -->
+    <input type="button" class="buttons answerBtn ageBtn"  value="0-5">0-5</input>
+  	<input type="button" class="buttons answerBtn ageBtn"  value="6-10">6-10</input>
+    <input type="button" class="buttons answerBtn ageBtn"  value="11-15">11-15</input>
+    <input type="button" class="buttons answerBtn ageBtn"  value="16-18">16-18</input>
+		<input type="button" class="buttons answerBtn ageBtn"  value="19-22">19-22</input>
+		<input type="button" class="buttons answerBtn ageBtn"  value="23-28">23-28</input>
+		<input type="button" class="buttons answerBtn ageBtn"  value="29-34">29-34</input>
+		<input type="button" class="buttons answerBtn ageBtn"  value="35-44">35-44</input>
+		<input type="button" class="buttons answerBtn ageBtn"  value="45-54">45-50</input>
+		<input type="button" class="buttons answerBtn ageBtn"  value="55+">50+</input>
+		<input type="button" class="buttons answerBtn ageBtn"  value="I don't know'">I don't know</input>
+		<input type="button" class="buttons answerBtn ageBtn"  value="I'd rather not say">I'd rather not say</input>
+     
+    <button type="button" class="buttons greenBtn commentBtn">Comment</button>
+
+		<div class="formControls">
+			<span class="glyphicon glyphicon-arrow-left backBtn" aria-hidden="true"></span>
+			<input type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></input>
+			<input type="button" class="skipBtn">Skip</input>
+		</div> <!-- .formControls -->
+	</div> <!-- #page2 -->
 
   <!-- User Comment Box Page -->
 	<div class="form-overlay form-comments" id="user-comments">
@@ -144,107 +175,117 @@
   			<textarea class="form-control resetComments" rows="8" id="user-comment-box"></textarea>
 		</div> <!-- .form-group -->
 		<div class="btn-group btn-group-lg comment-buttons" role="group" aria-label="...">
-  			<button type="button" class="btn btn-default" id="comment-exit">Exit Comment</button>
- 			  <button type="button" class="btn btn-default" id="comment-save">Save Comment</button>
+  			<input type="button" class="btn btn-default" id="comment-exit">Exit Comment</input>
+ 			  <input type="button" class="btn btn-default" id="comment-save">Save Comment</input>
   		</div> <!-- .btn-group-lg -->
 	</div> <!-- #form-comments -->
 
-<!--***ATTACKER ************************* -->
+<!--***ATTACKER ****************************** -->
 <!--************************************* -->
-  <div class="form-overlay" id="form-attackerInfo">
+  <div class="form-overlay" id="AttackerGender">
 		<h3>About Your Attacker</h3>
-		
 		<p>What was the attacker's gender?</p>
-    <div class="selectDiv">
-      <select class="btn-default resetDropDowns" id="attackerGender">
-        <option value="No answer">Select one...</option>
-        <option value="Female">Female</option>
-        <option value="Male">Male</option>
-        <option value="Trans Female">Transgender Female</option>
-        <option value="Trans Male">Transgender Male</option>
-        <option value="It's complicated">It's more complicated</option>
-				<option value="I don't know'">I don't know</option>
-				<option value="I'd rather not say">I'd rather not say</option>
-      </select>
-    </div> <!-- .selectDiv -->
-		<br>
-		<p>Were you attacked by one person or more than one person?</p>
-    <div class="selectDiv">
-      <select class="btn-default resetDropDowns" id="attackedBy">
-        <option value="No answer">Select one...</option>
-        <option value="No">1 Attacker</option>
-        <option value="Yes">1+ Attackers</option>
-				<option value="I Don't Know'">I don't know</option>
-				<option value="I'd Rather Not Say">I'd rather not say</option>
-      </select>
-    </div> <!-- .selectDiv -->
-  	<br>
-		<p>How would you describe your relationship with your attacker(s)?</p>
-    <div class="selectDiv">
-      <select class="btn-default resetDropDowns" id="attackerRelationship">
-        <option value="No answer">Select one...</option>
-        <option value="Stranger">A Stranger</option>
-        <option value="Aquaintance">An Acquaintance</option>
-        <option value="Friend">A Friend</option>
-        <option value="Coworker">A Coworker</option>
-        <option value="Family Member">A Family Member</option>
-        <option value="Partner">A Partner/Spouse</option>
-        <option value="Police officer">A police Officer</option>
-				<option value="I'd rather not say">I'd rather not say</option>
-      </select>
-    </div> <!-- .selectDiv -->
-    <div class="btn-group-controls attackerInfo-controls" role="group">
-  			<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
-  			<span class="glyphicon glyphicon-floppy-saved" aria-hidden="true" onClick="post()"></span>
-  			<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
-  			<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
-		</div> <!-- .btn-group-controls -->
-	</div> <!-- #form-attackerInfo -->
+        <input type="button" class="buttons answerBtn"  value="Female">Female</input>
+        <input type="button" class="buttons answerBtn"  value="Male">Male</input>
+        <input type="button" class="buttons answerBtn"  value="Trans Female">Transgender Female</input>
+        <input type="button" class="buttons answerBtn"  value="Trans Male">Transgender Male</input>
+        <input type="button" class="buttons answerBtn"  value="It's complicated">It's more complicated</input>
+				<input type="button" class="buttons answerBtn"  value="I don't know'">I don't know</input>
+				<input type="button" class="buttons answerBtn"  value="I'd rather not say">I'd rather not say</input>
+    
+				<button type="button" class="buttons greenBtn commentBtn">Comment</button>
+
+				<div class="formControls">
+					<span class="glyphicon glyphicon-arrow-left backBtn" aria-hidden="true"></span>
+					<input type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></input>
+					<input type="button" class="skipBtn">Skip</input>
+			</div> <!-- .formControls -->
+		</div> <!-- #page3 -->
+
+		<div class="form-overlay" id="page4">
+			<p>Were you attacked by more than one person?</p>
+			<input type="button" class="buttons answerBtn"  value="Yes">1+ Attackers</input>
+      <input type="button" class="buttons answerBtn"  value="No">1 Attacker</input>
+			<input type="button" class="buttons answerBtn"  value="I Don't Know'">I don't know</input>
+			<input type="button" class="buttons answerBtn"  value="I'd Rather Not Say">I'd rather not say</input>
+      
+			<button type="button" class="buttons greenBtn commentBtn">Comment</button>
+
+			<div class="formControls">
+				<span class="glyphicon glyphicon-arrow-left backBtn" aria-hidden="true"></span>
+				<input type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></input>
+				<input type="button" class="skipBtn">Skip</input>
+			</div> <!-- .formControls -->
+		</div> <!--#page4 -->
+
+		<div class="form-overlay" id="page5">
+			<p>How would you describe your relationship with your attacker(s)?</p>
+      <input type="button" class="buttons answerBtn"  value="Stranger">A Stranger</input>
+    	<input type="button" class="buttons answerBtn"  value="Aquaintance">An Acquaintance</input>
+      <input type="button" class="buttons answerBtn"  value="Friend">A Friend</input>
+      <input type="button" class="buttons answerBtn"  value="Coworker">A Coworker</input>
+      <input type="button" class="buttons answerBtn"  value="Family Member">A Family Member</input>
+      <input type="button" class="buttons answerBtn"  value="Partner">A Partner/Spouse</input>
+      <input type="button" class="buttons answerBtn"  value="Police officer">A police Officer</input>
+			<input type="button" class="buttons answerBtn"  value="I'd rather not say">I'd rather not say</input>
+       
+			<button type="button" class="buttons greenBtn commentBtn">Comment</button>
+
+			<div class="formControls">
+				<span class="glyphicon glyphicon-arrow-left backBtn" aria-hidden="true"></span>
+				<input type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></input>
+				<input type="button" class="skipBtn">Skip</input>
+			</div> <!-- .formControls -->
+  	</div> <!-- #page5 -->
 
   <!-- Attacker Comment Box Page -->
 	<div class="form-overlay form-comments" id="attacker-comments">
 		<h3>Additional details </h3>
 		
 		<div class="form-group">
-  			<label for="comment">Comment:</label>
-  			<textarea class="form-control resetComments" rows="8" id="attacker-comment-box"></textarea>
+  		<label for="comment">Comment:</label>
+  		<textarea class="form-control resetComments" rows="8" id="attacker-comment-box"></textarea>
 		</div> <!-- .form-group -->
 		<div class="btn-group btn-group-lg comment-buttons" role="group" aria-label="...">
-  			<button type="button" class="btn btn-default" id="comment-exit">Exit Comment</button>
- 			  <button type="button" class="btn btn-default" id="comment-save">Save Comment</button>
-  		</div> <!-- .btn-group-lg -->
+  		<input type="button" class="btn btn-default" id="comment-exit">Exit Comment</input>
+ 			<input type="button" class="btn btn-default" id="comment-save">Save Comment</input>
+  	</div> <!-- .btn-group-lg -->
 	</div> <!-- #form-comments -->
 
 <!--***CIRCUMSTANCES ******************** -->
 <!--************************************* -->
-	<div class="form-overlay" id="form-circumstances">
+	<div class="form-overlay" id="page6">
 		<h3>About The Circumstances..</h3>
-    
 		<p>Please indicate the date or time period when this assault occurred:</p>
   <!-- **DATE INPUT********************** -->
-  <div id="dateContainer">
-    <input type="date" class="dates" id="dateStart" size="23"/>
-		<input type="date" class="dates" id="dateEnd" size="23"/>
-  </div>
-	<br>
-  <p>Did you experience more than one assault at this place in this period of time?</p>
-  <div class="selectDiv">
-    <select class="btn-default resetDropDowns" id="multipleAssaults">
-      <option value="No answer">Select one...</option>
-      <option value="Yes">Yes</option>
-      <option value="No">No</option>
-			<option value="I don't know'">I don't know</option>
-			<option value="I'd rather not say">I'd rather not say</option>
-    </select>
-  </div> <!-- .selectDiv -->
-  
-	<div class="btn-group-controls circumstances-controls" role="group">
-  			<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
-  			<span class="glyphicon glyphicon-floppy-saved" aria-hidden="true" onClick="post()"></span>
-  			<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
-  			<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
-		</div> <!-- .btn-group-controls -->
-  </div> <!-- #form-circumstances -->
+  	<div id="dateContainer">
+    	<input type="date" class="dates" id="dateStart" size="23"/>
+			<input type="date" class="dates" id="dateEnd" size="23"/>
+  	</div>
+		<input type="button" class="buttons greenBtn commentBtn">Comment</button>
+
+		<div class="formControls">
+			<span class="glyphicon glyphicon-arrow-left backBtn" aria-hidden="true"></span>
+			<input type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></input>
+			<input type="button" class="skipBtn">Skip</input>
+		</div> <!-- .formControls -->
+	</div> <!-- #page6 -->
+
+	<div class="form-overlay" id="page7">
+  	<p>Did you experience more than one assault at this place in this period of time?</p>
+    <input type="button" class="buttons answerBtn"  value="Yes">Yes</input>
+    <input type="button" class="buttons answerBtn"  value="No">No</input>
+		<input type="button" class="buttons answerBtn"  value="I don't know'">I don't know</input>
+		<input type="button" class="buttons answerBtn"  value="I'd rather not say">I'd rather not say</input>
+     		
+		<input type="button" class="buttons greenBtn commentBtn">Comment</button>
+
+		<div class="formControls">
+			<span class="glyphicon glyphicon-arrow-left backBtn" aria-hidden="true"></span>
+			<input type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></input>
+			<input type="button" class="skipBtn">Skip</input>
+		</div> <!-- .formControls -->
+  </div> <!-- #page7 -->
 
   <!-- Circumstances Comment Box Page -->
 	<div class="form-overlay form-comments" id="circumstances-comments">
@@ -255,49 +296,46 @@
   			<textarea class="form-control resetComments" rows="8" id="circumstances-comment-box"></textarea>
 		</div> <!-- .form-group -->
 		<div class="btn-group btn-group-lg comment-buttons" role="group" aria-label="...">
-  			<button type="button" class="btn btn-default" id="comment-exit">Exit Comment</button>
- 			  <button type="button" class="btn btn-default" id="comment-save" >Save Comment</button>
+  			<input type="button" class="btn btn-default" id="comment-exit">Exit Comment</input>
+ 			  <input type="button" class="btn btn-default" id="comment-save" >Save Comment</input>
   		</div> <!-- .btn-group-lg -->
 	</div> <!-- #form-comments -->
 
 <!--***CIRCUMSTANCES 2 ****************** -->
 <!--************************************* -->
-  <div class="form-overlay" id="form-circumstances-2">
+  <div class="form-overlay" id="page8">
     <h3>Just a couple more questions...</h3>
-    
     <p>Were you on a school campus? </p>
-    <div class="selectDiv">
-      <select class="btn-default resetDropDowns" id="schoolCampus">
-        <option value="No answer">Select one...</option>
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-				<option value="I'd Rather Not Say">I'd rather not say</option>
-      </select>
-      </select>
-    </div> <!-- .selectDiv -->
-    <br>
-    <p>Did you report this? (Most don't)</p>
-    <div class="selectDiv">
-      <select class="btn-default resetDropDowns" id="reported">
-        <option value="No answer">Select one...</option>
-        <option value="Yes, to police">Yes, to law enforcement</option>
-        <option value="Yes, to campus cops">Yes, to campus cops</option>
-        <option value="Yes, not to law enforcement">Yes, not to law enforcement</option>
-				<option value="No">No</option>
-				<option value="I'd rather not say">I'd rather not say</option>
-      </select>
-      </select>
-    </div> <!-- .selectDiv -->
-		<br>
-    <p id="smallText">Please add a comment to tell us more about the campus location or any enforcement response. </p>
+    <input type="button" class="buttons answerBtn"  value="Yes">Yes</input>
+  	<input type="button" class="buttons answerBtn"  value="No">No</input>
+		<input type="button" class="buttons answerBtn"  value="I'd Rather Not Say">I'd rather not say</input>
+       
+		<input type="button" class="buttons greenBtn commentBtn">Comment</button>
 
-    <div class="btn-group-controls circumstances-2-controls" role="group">
-      <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
-      <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true" onClick="post()"></span>
-      <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
-      <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
-    </div> <!-- .btn-group-controls -->
-  </div> <!-- #form-circumstances-2 -->
+		<div class="formControls">
+			<span class="glyphicon glyphicon-arrow-left backBtn" aria-hidden="true"></span>
+			<input type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></input>
+			<input type="button" class="skipBtn">Skip</input>
+		</div> <!-- .formControls -->  
+  </div> <!-- #page8 -->
+   
+	 <div class="form-overlay" id="page9">
+    <p>Did you report this? (Most don't)</p>
+    <input type="button" class="buttons answerBtn"  value="Yes, to police">Yes, to law enforcement</input>
+    <input type="button" class="buttons answerBtn"  value="Yes, to campus cops">Yes, to campus cops</input>
+    <input type="button" class="buttons answerBtn"  value="Yes, not to law enforcement">Yes, not to law enforcement</input>
+		<input type="button" class="buttons answerBtn"  value="No">No</input>
+		<input type="button" class="buttons answerBtn"  value="I'd rather not say">I'd rather not say</input>
+    
+		<p id="smallText">Please add a comment to tell us more about the campus location or any enforcement response. </p>
+		<input type="button" class="buttons greenBtn commentBtn">Comment</button>
+
+		<div class="formControls">
+			<span class="glyphicon glyphicon-arrow-left backBtn" aria-hidden="true"></span>
+			<input type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></input>
+			<input type="button" class="skipBtn">Skip</input>
+		</div> <!-- .formControls -->   
+  </div> <!-- #page9 -->
 
   <!-- Circumstances2 Comment Box Page -->
 	<div class="form-overlay form-comments" id="circumstances2-comments">
@@ -308,51 +346,31 @@
   			<textarea class="form-control resetComments" rows="8" id="circumstances2-comment-box" placeholder="e.g.(School name, name of dorm/frat/building, e.t.c)"></textarea>
 		</div> <!-- .form-group -->
 		<div class="btn-group btn-group-lg comment-buttons" role="group" aria-label="...">
-  			<button type="button" class="btn btn-default" id="comment-exit">Exit Comment</button>
- 			  <button type="button" class="btn btn-default" id="comment-save" >Save Comment</button>
+  			<input type="button" class="btn btn-default" id="comment-exit">Exit Comment</input>
+ 			  <input type="button" class="btn btn-default" id="comment-save" >Save Comment</input>
   		</div> <!-- .btn-group-lg -->
 	</div> <!-- #form-comments -->
-
-<!-- Form Pg5 -->
-
+<!-- ***FORM END PAGE ******************************* -->
 	<div class="form-overlay" id="form-end">
-		<p>Would you like to comment with more details about the assault you’re reporting - or add your email to a comment if you’d like to get updates about this event or this map?</p>
-		<br>
-		<div class="btn-group btn-group-lg" role="group">
-		  	<button type="button" class="btn btn-default end-comment">Comment</button>
-		</div> <!-- .end-btns -->
+		<h3>Thanks for speaking up!</h3>
+		<p>Please confirm you want to add your record to our database.</p>
+		<textarea class="form-control resetComments" rows="5" id="endComment" placeholder=""></textarea>
     
-    <div class="btn-group btn-group-lg endGroup-btns" role="group" aria-label="...">
-      <button type="button" class="btn btn-default end-restart" onClick="">Restart Without Submitting</button>
-      <button type="button" class="btn btn-default end-submit" onclick="post()">Submit Report</button>
-    </div> <!-- .btn-group-lg .end-btns -->
+    <input type="button" class="btn greenBtn end-submit" onClick="post()">Add my anonymous record</input>
+		<p>Just trying us out?</p>
+    <input type="button" class="btn navyBtn end-restart" onclick="">Return without saving</input>
 
-
-    <div class="btn-group-controls form-end-controls" role="group">
-      <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
-    </div> <!-- .form-end-controls -->
+ 		<div class="formControls">
+			<span class="glyphicon glyphicon-arrow-left backBtn" aria-hidden="true"></span>
+    </div> <!-- .formControls -->
 	</div> <!-- #form-end -->
-<!-- Form end pg-->
+	</div> <!-- #resetForm -->
 
-<!-- Last Page Comment Box Page -->
-	<div class="form-overlay form-comments" id="last-comments">
-		<h3>Additional details </h3>
-		
-		<div class="form-group">
-  			<label for="comment">Comment:</label>
-  			<textarea class="form-control resetComments" rows="8" id="last-comment-box"></textarea>
-		</div> <!-- .form-group -->
-		<div class="btn-group btn-group-lg comment-buttons" role="group" aria-label="...">
-  			<button type="button" class="btn btn-default" id="comment-exit">Exit Comment</button>
- 			  <button type="button" class="btn btn-default" id="comment-save">Save Comment</button>
-  		</div> <!-- .btn-group-lg -->
-	</div> <!-- #last-comments -->
-	</form> 
 		<div class="form-overlay" id="form-thankYou">
-				<h3>Thank you!</h3>
-				<p>Your report will help us build a database that truly represents how sexual assault is perpetrated - and warn others of dangerous areas and circumstances. <br> <br> Click anywhere to view all reports.</p>
+				<h3>Thanks for being brave and sharing to help others!</h3>
+				<p>We'll fight sexual assault by adding your report to the map and analyzing its contents for outreach and awareness campaigns. <input class="" id="">Return to Map</input>
 
-        <p id="annieCannons">This site was built by <a href="http//wwww.AnnieCannons.com">AnnieCannons</a></p>
+        <div onClick="http//wwww.AnnieCannons.com"><p>More about the AnnieCannons team that buuilt this</p></div>
 	</div> <!-- #form-thankYou -->
 
 <!-- SEARCH BOX API -->

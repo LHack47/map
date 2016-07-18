@@ -1,35 +1,38 @@
 $(document).ready(function(){
 
-  $("#homePage-overlay-bar").hide();
   $("#hamburger-overlay").hide();
   $(".form-overlay").hide();
+  $(".homeElements").hide();
+  $("#homePage-overlay").show();
 
 /* HAMBURGER OVERLAY   HAMBURGER OVERLAY */
   $(".glyphicon-menu-hamburger").on("click", function(){
     fadeThisIn($("#hamburger-overlay"));
+    fadeThisOut($(".startedAForm"));
   });
 
   $("#hamburger-overlay").on("click", function(){
     fadeThisOut($("#hamburger-overlay"));
   });
  // homePage-overlay
-  $("#homePage-overlay > .glyphicon-chevron-down , #homePage-overlay > #addEvent").on("click", function(){
-    fadeThisOut($("#transparent-overlay"));
+  $("#seeMap").on("click", function(){
     fadeThisOut($("#homePage-overlay"));
-    fadeThisIn($("#homePage-overlay-bar"));
+    fadeThisIn($("#navBar"));
+    fadeThisIn($("#seePrompt"));
   });
 
-  $("#transparent-overlay").on("click", function(){
-    fadeThisOut($("#transparent-overlay"));
+  $("#addEvent").on("click", function(){
     fadeThisOut($("#homePage-overlay"));
-    fadeThisIn($("#homePage-overlay-bar"));
+    fadeThisIn($("#locationForm"));
   });
 
-  // homePage-overlay-bar
-   $("#homePage-overlay-bar").on("click", function(){
-    fadeThisOut($("#homePage-overlay-bar"));
+  $("#locationForm > .formControls > .exitBtn").on("click", function(){
+    fadeThisOut($("#locationForm"));
     fadeThisIn($("#homePage-overlay"));
+    console.log("it works!");
   });
+
+
 
 /* USER DENYS TO ADD MORE DETAILS */
   $("#deny").on("click", function(){
@@ -46,7 +49,7 @@ $(document).ready(function(){
 /* FORM-GUIDANCE BUTTON */
   $("#gotIt").on("click", function(){
     fadeThisOut($("#form-guidance"));
-    fadeThisIn($("#form-userInfo"));
+    fadeThisIn($("#userGender"));
   });
 
 /* USER INFO GLYPHICON CONTROL BUTTONS ***************************************************/

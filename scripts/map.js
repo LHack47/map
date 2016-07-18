@@ -20,18 +20,62 @@ var userObject = {};
         });
       }; //geocodeThis()
 
-      function fadeThisIn(element){
-      element.fadeIn("fast");
+    function fadeThisIn(element){
+      element.fadeIn("slow");
     };
     function fadeThisOut(element){
-      element.fadeOut("fast");
+      element.fadeOut("slow");
     };
+
+    function navyBtnFunction(element){
+      element.fadeOut("slow");
+      $("#pac-input").show();
+      $("#addPrompt").show();
+    };
+
 /* SEARCH BOX + MAP*/
  function initAutocomplete() {
     var map = new google.maps.Map(document.getElementById('googleMap'), {
       center: {lat: 37.734972, lng: -122.431297},
       zoom: 12,
-      styles: [{"featureType":"all","elementType":"labels","stylers":[{"lightness":63},{"hue":"#ff0000"}]},{"featureType":"administrative","elementType":"all","stylers":[{"hue":"#000bff"},{"visibility":"on"}]},{"featureType":"administrative","elementType":"geometry","stylers":[{"visibility":"on"}]},{"featureType":"administrative","elementType":"labels","stylers":[{"color":"#4a4a4a"},{"visibility":"on"}]},{"featureType":"administrative","elementType":"labels.text","stylers":[{"weight":"0.01"},{"color":"#727272"},{"visibility":"on"}]},{"featureType":"administrative.country","elementType":"labels","stylers":[{"color":"#ff0000"}]},{"featureType":"administrative.country","elementType":"labels.text","stylers":[{"color":"#ff0000"}]},{"featureType":"administrative.province","elementType":"geometry.fill","stylers":[{"visibility":"on"}]},{"featureType":"administrative.province","elementType":"labels.text","stylers":[{"color":"#545454"}]},{"featureType":"administrative.locality","elementType":"labels.text","stylers":[{"visibility":"on"},{"color":"#737373"}]},{"featureType":"administrative.neighborhood","elementType":"labels.text","stylers":[{"color":"#7c7c7c"},{"weight":"0.01"}]},{"featureType":"administrative.land_parcel","elementType":"labels.text","stylers":[{"color":"#404040"}]},{"featureType":"landscape","elementType":"all","stylers":[{"lightness":16},{"hue":"#ff001a"},{"saturation":-61}]},{"featureType":"poi","elementType":"labels.text","stylers":[{"color":"#828282"},{"weight":"0.01"}]},{"featureType":"poi.government","elementType":"labels.text","stylers":[{"color":"#4c4c4c"}]},{"featureType":"poi.park","elementType":"all","stylers":[{"hue":"#00ff91"}]},{"featureType":"poi.park","elementType":"labels.text","stylers":[{"color":"#7b7b7b"}]},{"featureType":"road","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"labels.text","stylers":[{"color":"#999999"},{"visibility":"on"},{"weight":"0.01"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"hue":"#ff0011"},{"lightness":53}]},{"featureType":"road.highway","elementType":"labels.text","stylers":[{"color":"#626262"}]},{"featureType":"transit","elementType":"labels.text","stylers":[{"color":"#676767"},{"weight":"0.01"}]},{"featureType":"water","elementType":"all","stylers":[{"hue":"#0055ff"}]}],
+      styles: [{
+        "featureType": "administrative",
+        "elementType": "labels.text.fill",
+        "stylers": [{"color": "#4b4b4b"}]},{"featureType": "administrative.province",
+        "elementType": "geometry",
+        "stylers": [{"saturation": "7"}]},{"featureType": "administrative.province",
+        "elementType": "geometry.fill",
+        "stylers": [{"visibility": "on"},{"saturation": "17"},{"lightness": "20"}]},{"featureType": "landscape",
+        "elementType": "all",
+        "stylers": [{"color": "#f2f2f2"}]},{"featureType": "landscape.man_made",
+        "elementType": "geometry.fill",
+        "stylers": [{"color": "#f2f2f2"}]},{"featureType": "poi",
+        "elementType": "all",
+        "stylers": [{"visibility": "off"}]},{"featureType": "road",
+        "elementType": "all",
+        "stylers": [{"saturation": -100},{"lightness": 45}]},{"featureType": "road.highway",
+        "elementType": "all",
+        "stylers": [{"visibility": "simplified"}]},{"featureType": "road.highway",
+        "elementType": "geometry.fill",
+        "stylers": [{"color": "#9fce48"}]},{"featureType": "road.highway",
+        "elementType": "geometry.stroke",
+        "stylers": [{"color": "#32879c"}]},{"featureType": "road.highway",
+        "elementType": "labels.text.fill",
+        "stylers": [{"invert_lightness": true}]},{"featureType": "road.highway",
+        "elementType": "labels.text.stroke",
+        "stylers": [{"color": "#ffffff"},{"visibility": "off"},{"weight": "0.57"}]},{"featureType": "road.arterial",
+        "elementType": "labels.icon",
+        "stylers": [{"visibility": "off"}]},{"featureType": "transit",
+        "elementType": "all",
+        "stylers": [{"visibility": "off"}]},{"featureType": "water",
+        "elementType": "all",
+        "stylers": [{"color": "#46bcec"},{"visibility": "on"}]},{"featureType": "water",
+        "elementType": "geometry.fill",
+        "stylers": [{"color": "#6bccdd"}]},{"featureType": "water",
+        "elementType": "labels.text.fill",
+        "stylers": [{"color": "#ffffff"}]},{ "featureType": "water",
+        "elementType": "labels.text.stroke",
+        "stylers": [{"visibility": "off"}]}],
           mapTypeControl: true,
           mapTypeControlOptions: {
             style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
@@ -44,6 +88,7 @@ var userObject = {};
            streetViewControl: false
     }); //styles
 
+    var pinIcon = "styles/images/";
     // Create the search box and link it to the UI element.
     var input = document.getElementById('pac-input');
     var searchBox = new google.maps.places.SearchBox(input);
@@ -69,7 +114,7 @@ var userObject = {};
         var marker = new google.maps.Marker({
           position: place.geometry.location,
           map: map,
-          fillColor: "green"
+          icon: pinIcon + "redStar.png"
         });
 
         if (place.geometry.viewport) {
@@ -81,8 +126,8 @@ var userObject = {};
         //question-window open
       questionWindow.setContent( "<div id='pinDrop-window'>" +
       "<h3>Report a sexual assault at this location?</h3>"+
-     "<button type='button' class='btn btn-default btn-clicked' id='fireBase-no'>No</button>"+
-      "<button type='button' class='btn btn-default btn-clicked' id='fireBase-yes'>Yes</button>" +
+     "<button type='button' class='btn btnGreen btn-clicked' id='fireBase-no'>No</button>"+
+      "<button type='button' class='btn btnGreen btn-clicked' id='fireBase-yes'>Yes</button>" +
       "</div>"); // #pinDrop-window 
         questionWindow.open(map, marker);
         if(infoWindow.open()){
@@ -96,7 +141,10 @@ var userObject = {};
         fadeThisOut($("#pinDrop-window"));
         fadeThisIn($("#form-start-overlay"));
         questionWindow.close();
+        $("#addPrompt").hide();
+        $("#pac-input").hide();
       });
+
       $("#pinDrop-window > #fireBase-no").on("click", function(){
         questionWindow.close();
         //REMOVE MARKER WHEN USER SELECTS NO
@@ -110,7 +158,8 @@ var userObject = {};
   map.addListener('click', function(e) {
     var marker = new google.maps.Marker({
     position: {lat: e.latLng.lat(), lng: e.latLng.lng()},
-    map: map
+    map: map,
+    icon: pinIcon + "redStar.png"
     }); // var marker
      //info box when you click map
     questionWindow.setContent( 
@@ -131,6 +180,7 @@ var userObject = {};
        userObject.userLocation = {lat: e.latLng.lat(), lng: e.latLng.lng()};
        geocodeThis();
         fadeThisOut($("#pinDrop-window"));
+        fadeThisOut($("#startedAForm"));
         fadeThisIn($("#form-start-overlay"));
         questionWindow.close();
       });
@@ -152,12 +202,13 @@ var infoWindow = new google.maps.InfoWindow();
     // Place a marker at that location.
     var marker = new google.maps.Marker({
       position: latLng,
-      map: map
+      map: map,
+      icon: pinIcon + "redStar.png"
     });
   //info box when you click a pin
 // TODO: TAKE OUT CALL BACK FUNCTION AND PUT INSIDE A CLICK HANDLER FUNCTION!
     google.maps.event.addListener(marker, 'click', function() {
-      // infoWindow.close();
+      
       infoWindow.setContent(
        '<div id="infoContent">'+
        '<p><strong>Assault Location: </strong> <br>'+ eventObject.address + '<br>' + 
@@ -180,6 +231,8 @@ var infoWindow = new google.maps.InfoWindow();
        '<strong>reported?: </strong>' +
        eventObject.reported + '<br>' +
        '</p></div>'
+
+// TODO: IF USER SAYS THEY DONT WANT TO ADD FURTHER DETAILS, SHOW ADDRESS AND SAY "NO FURTHER DETAILS" ONLY. (IF STATEMENT?)
       );
       infoWindow.open(map, marker);
         if(questionWindow.open()){
