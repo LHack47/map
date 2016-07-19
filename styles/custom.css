@@ -150,13 +150,17 @@ body{
 }
 
 .form-overlay {
-	width: 100vw;
-	height: 100vh;
+	width: 50vw;
+	height: 100%;
 	background-color: rgba(38, 70, 83, 0.95);
 	padding: 15px;
 	position: absolute;
 	top: 0;
 	z-index: 1;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
 	display: flex;
    	align-items: center;
    	flex-direction: column;
@@ -164,6 +168,7 @@ body{
 }
 
 #homePage-overlay {
+	width: 100vw;
 	line-height: 1.4;
 }
 
@@ -227,6 +232,12 @@ body{
 	z-index: 2;
 }
 
+#userAge {
+	/*flex-direction: unset;*/
+	/*display: table-cell;*/
+	/*display: initial;*/
+}
+
 .buttons{
 	color:#fff8e0;
 	padding: 10px;
@@ -274,6 +285,12 @@ body{
 	color: #264653;
 }
 
+.ageBtn {
+	width: 100px;
+	display: initial;
+	flex-direction: unset;
+}
+
 .commentBtn{
 	border: none;
 	margin-top: 6px;
@@ -288,14 +305,15 @@ body{
 }
 
 .backBtn{
-	color: #f25f5c;
-	width: 25px;
-	font-size: 24px;
+	width: 40px;
+	height: 40px;
+	border: none;
+	background: url("images/redArrow.png");
+	background-size: 100%;
 	padding: 0;
-	font-weight: 100;
 	display: table-cell; 
     vertical-align: middle;
-	text-align: left;
+	float: left;
 }
 
 .exitBtn{
@@ -320,15 +338,16 @@ body{
 }
 
 .skipBtn{
-	background-color: none;
+	background-color: transparent;
+	border: none;
 	color: #f25f5c;
 	padding: 0;
 	font-size: 24px;
-	font-weight: 550;
+	font-weight: 600;
 	display: table-cell; 
     vertical-align: middle;
 	float: right; 
-	text-shadow: 1px 1px 2px black;
+	text-shadow: 1.5px 1.5px 2px black;
 }
 
 #privacy-policy {
@@ -456,6 +475,10 @@ body{
 }
 
 @media screen and (max-width: 700px) {
+	.forn-overlay {
+		width: 100vw;
+	}
+
 	.gm-style-iw{
 		max-height: 260px;
 	}

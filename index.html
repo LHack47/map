@@ -63,9 +63,9 @@
   	<h3 style="color: #fff8e0">Welcome to Survivors.io!</h3>
 		<h4 style="color: #67ccde">We made this map to help the real story of rape culture.</h4>
 		<p style="color: #fff8e0"> You can record an assault you've experienced by inputting the approximate location.</p>
-		<p style="color: #fff8e0">You can also choose to share other details about your assault that will help us warn others and help our community better undersytand the reality of sexual assault.</p>
+		<p style="color: #fff8e0">You can also choose to share other details about your assault that will help us warn others and help our community better understand the reality of sexual assault.</p>
 		<p style="color: #9bd130"> All entries are 100% anonymous.</p>
-		<button type="button" class="buttons greenBtn btn" id="seeMap">See the Map</button>
+		<button type="button" class="buttons btn greenBtn" id="seeMap">See the Map</button>
 		<button type="button" class="buttons btn answerBtn" id="addEvent">Add Your Assault</button>
   </div> <!-- #homePage-overlay -->
 
@@ -78,14 +78,14 @@
 <!-- *FORM START WITH LOCATION SPECIFITY PAGE* -->
 	<div class="form-overlay" id="locationForm">
 		<h3 style="margin-bottom: 20px">How specifically do you recall the location of the assault?</h3>
-    <input type="button" class="buttons navyBtn" value="The state" onClick="navyBtnFunction($('#locationForm'))">The State</input>
-    <input type="button" class="buttons navyBtn" value="The city" onClick="navyBtnFunction($('#locationForm'))">The City</input>
-    <input type="button" class="buttons navyBtn" value="Campus/Neighborhood" onClick="navyBtnFunction($('#locationForm'))">The Campus or Neighborhood</input>
-    <input type="button" class="buttons navyBtn" value="The address" onClick="navyBtnFunction($('#locationForm'))">The address</input>
-    <input type="button" class="buttons navyBtn" value="I don't know" onClick="navyBtnFunction($('#locationForm'))">I Don't Really Know Where</input>
+    <input type="button" class="buttons navyBtn" value="The state" onClick="navyBtnFunction($('#locationForm'))"/>
+    <input type="button" class="buttons navyBtn" value="The city" onClick="navyBtnFunction($('#locationForm'))"/>
+    <input type="button" class="buttons navyBtn" value="Campus/Neighborhood" onClick="navyBtnFunction($('#locationForm'))"/>
+    <input type="button" class="buttons navyBtn" value="The address" onClick="navyBtnFunction($('#locationForm'))"/>
+    <input type="button" class="buttons navyBtn" value="I don't know" onClick="navyBtnFunction($('#locationForm'))"/>
 
 		<div class="formControls">
-			<input type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></input>
+			<button type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
 		</div> <!-- .formControls -->
 	</div> <!-- #locationForm -->
 
@@ -94,8 +94,8 @@
 		<p style="color: #fff8e0">This is still anonymous.</p>
 		<br>
 		<div class="btn-group btn-group-lg" role="group" aria-label="...">
-  			<input type="button" class="btn buttons blueBtn" id="deny" onClick="post()">No</input>
- 			  <input type="button" class="btn buttons blueBtn" id="accept">Yes</input>
+  			<button type="button" class="btn buttons blueBtn" id="deny" onClick="post()">No</button>
+ 			  <button type="button" class="btn buttons blueBtn" id="accept">Yes</button>
   	</div> <!-- .btn-group-lg -->
   	<a href="#" id="privacy-policy">Privacy Policy</a>
 	</div> <!-- #form-start-overlay -->
@@ -104,28 +104,26 @@
   <div class="form-overlay" id="form-guidance">
     <div id="guidance-container">
     </div> <!-- #guidnace-container -->
-     <input type="button" class="btn buttons greenBtn" id="gotIt">Got It!</input>
+     <button type="button" class="btn buttons greenBtn" id="gotIt">Got It!</button>
   </div> <!-- #form-guidance -->
 
-	<!--<script src="userGender.html"></script>-->
-
-<!--***PAGE1 *************************************** -->
+<!--***USER GENDER *************************************** -->
 	<div class="form-overlay" id="userGender">
 		<h3>Please Tell Us About Yourself.</h3>
 		<p>What is your gender?</p>
-    <input type="button" class="buttons answerBtn" value="Female">Female</input>
-  	<input type="button" class="buttons answerBtn" value="Male">Male</input>
-    <input type="button" class="buttons answerBtn" value="Trans Female">Transgender Female</input>
-    <input type="button" class="buttons answerBtn" value="Trans Male">Transgender Male</input>
-    <input type="button" class="buttons answerBtn" value="It's complicated">It's more complicated</input>
-		<input type="button" class="buttons answerBtn" value="I'd Rather Not Say">I'd rather not say</input>
+    <input type="button" class="buttons answerBtn" value="Female"/>
+  	<input type="button" class="buttons answerBtn" value="Male"/>
+    <input type="button" class="buttons answerBtn" value="Transgender Female"/>
+    <input type="button" class="buttons answerBtn" value="Transgender Male"/>
+    <input type="button" class="buttons answerBtn" value="It's complicated"/>
+		<input type="button" class="buttons answerBtn" value="I'd Rather Not Say"/>
 			
 		<button type="button" class="buttons greenBtn commentBtn">Comment</button>
 
 		<div class="formControls">
-			<span class="glyphicon glyphicon-arrow-left backBtn" aria-hidden="true"></span>
-			<input type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></input>
-			<input type="button" class="skipBtn">Skip</input>
+			<button type="button" class="backBtn"></button>
+			<button type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+			<button type="button" class="skipBtn">Skip</button>
 		</div> <!-- .formControls -->
 	</div>  <!-- #page1 -->
 
@@ -137,124 +135,178 @@
   			<textarea class="form-control resetComments" rows="8" id="user-comment-box"></textarea>
 		</div> <!-- .form-group -->
 		<div class="btn-group btn-group-lg comment-buttons" role="group" aria-label="...">
-  			<input type="button" class="btn btn-default" id="comment-exit">Exit Comment</input>
- 			<input type="button" class="btn btn-default" id="comment-save">Save Comment</input>
+  			<button type="button" class="btn btn-default" id="comment-exit">Exit Comment</button>
+ 			<button type="button" class="btn btn-default" id="comment-save">Save Comment</button>
   		</div> <!-- .btn-group-lg -->
 	</div> <!-- #uG-comment -->
 	<!-- ** USERAGE *********************** -->
 	<div class="form-overlay" id="userAge">
-		<p>When it happened, I was:</p>
-    <input type="button" class="buttons answerBtn ageBtn"  value="0-5">0-5</input>
-  	<input type="button" class="buttons answerBtn ageBtn"  value="6-10">6-10</input>
-    <input type="button" class="buttons answerBtn ageBtn"  value="11-15">11-15</input>
-    <input type="button" class="buttons answerBtn ageBtn"  value="16-18">16-18</input>
-		<input type="button" class="buttons answerBtn ageBtn"  value="19-22">19-22</input>
-		<input type="button" class="buttons answerBtn ageBtn"  value="23-28">23-28</input>
-		<input type="button" class="buttons answerBtn ageBtn"  value="29-34">29-34</input>
-		<input type="button" class="buttons answerBtn ageBtn"  value="35-44">35-44</input>
-		<input type="button" class="buttons answerBtn ageBtn"  value="45-54">45-50</input>
-		<input type="button" class="buttons answerBtn ageBtn"  value="55+">50+</input>
-		<input type="button" class="buttons answerBtn ageBtn"  value="I don't know'">I don't know</input>
-		<input type="button" class="buttons answerBtn ageBtn"  value="I'd rather not say">I'd rather not say</input>
+		<h3>When it happened, I was:</h3>
+    <input type="button" class="buttons answerBtn ageBtn"  value="0-5"/>
+  	<input type="button" class="buttons answerBtn ageBtn"  value="6-10"/>
+    <input type="button" class="buttons answerBtn ageBtn"  value="11-15"/>
+    <input type="button" class="buttons answerBtn ageBtn"  value="16-18"/>
+		<input type="button" class="buttons answerBtn ageBtn"  value="19-22"/>
+		<input type="button" class="buttons answerBtn ageBtn"  value="23-28"/>
+		<input type="button" class="buttons answerBtn ageBtn"  value="29-34"/>
+		<input type="button" class="buttons answerBtn ageBtn"  value="35-44"/>
+		<input type="button" class="buttons answerBtn ageBtn"  value="45-54"/>
+		<input type="button" class="buttons answerBtn ageBtn"  value="55+"/>
+		<input type="button" class="buttons answerBtn ageBtn"  value="I don't know"</input>
+		<input type="button" class="buttons answerBtn ageBtn"  value="I'd rather not say"/>
      
     <button type="button" class="buttons greenBtn commentBtn">Comment</button>
 
-		<div class="formControls">
-			<span class="glyphicon glyphicon-arrow-left backBtn" aria-hidden="true"></span>
-			<input type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></input>
-			<input type="button" class="skipBtn">Skip</input>
+		<div class="formControls ageControls">
+			<button type="button" class="backBtn"></button>
+			<button type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+			<button type="button" class="skipBtn">Skip</button>
 		</div> <!-- .formControls -->
-	</div> <!-- #page2 -->
+	</div> <!-- #userAge -->
 
-  <!-- User Comment Box Page -->
-	<div class="form-overlay form-comments" id="user-comments">
-		<h3>Additional details </h3>
-		
-		<div class="form-group">
-  			<label for="comment">Comment:</label>
-  			<textarea class="form-control resetComments" rows="8" id="user-comment-box"></textarea>
-		</div> <!-- .form-group -->
-		<div class="btn-group btn-group-lg comment-buttons" role="group" aria-label="...">
-  			<input type="button" class="btn btn-default" id="comment-exit">Exit Comment</input>
- 			  <input type="button" class="btn btn-default" id="comment-save">Save Comment</input>
-  		</div> <!-- .btn-group-lg -->
-	</div> <!-- #form-comments -->
-
-<!--***ATTACKER ****************************** -->
-<!--************************************* -->
-  <div class="form-overlay" id="AttackerGender">
-		<h3>About Your Attacker</h3>
-		<p>What was the attacker's gender?</p>
-        <input type="button" class="buttons answerBtn"  value="Female">Female</input>
-        <input type="button" class="buttons answerBtn"  value="Male">Male</input>
-        <input type="button" class="buttons answerBtn"  value="Trans Female">Transgender Female</input>
-        <input type="button" class="buttons answerBtn"  value="Trans Male">Transgender Male</input>
-        <input type="button" class="buttons answerBtn"  value="It's complicated">It's more complicated</input>
-				<input type="button" class="buttons answerBtn"  value="I don't know'">I don't know</input>
-				<input type="button" class="buttons answerBtn"  value="I'd rather not say">I'd rather not say</input>
-    
-				<button type="button" class="buttons greenBtn commentBtn">Comment</button>
-
-				<div class="formControls">
-					<span class="glyphicon glyphicon-arrow-left backBtn" aria-hidden="true"></span>
-					<input type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></input>
-					<input type="button" class="skipBtn">Skip</input>
-			</div> <!-- .formControls -->
-		</div> <!-- #page3 -->
-
-		<div class="form-overlay" id="page4">
-			<p>Were you attacked by more than one person?</p>
-			<input type="button" class="buttons answerBtn"  value="Yes">1+ Attackers</input>
-      <input type="button" class="buttons answerBtn"  value="No">1 Attacker</input>
-			<input type="button" class="buttons answerBtn"  value="I Don't Know'">I don't know</input>
-			<input type="button" class="buttons answerBtn"  value="I'd Rather Not Say">I'd rather not say</input>
-      
-			<button type="button" class="buttons greenBtn commentBtn">Comment</button>
-
-			<div class="formControls">
-				<span class="glyphicon glyphicon-arrow-left backBtn" aria-hidden="true"></span>
-				<input type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></input>
-				<input type="button" class="skipBtn">Skip</input>
-			</div> <!-- .formControls -->
-		</div> <!--#page4 -->
-
-		<div class="form-overlay" id="page5">
-			<p>How would you describe your relationship with your attacker(s)?</p>
-      <input type="button" class="buttons answerBtn"  value="Stranger">A Stranger</input>
-    	<input type="button" class="buttons answerBtn"  value="Aquaintance">An Acquaintance</input>
-      <input type="button" class="buttons answerBtn"  value="Friend">A Friend</input>
-      <input type="button" class="buttons answerBtn"  value="Coworker">A Coworker</input>
-      <input type="button" class="buttons answerBtn"  value="Family Member">A Family Member</input>
-      <input type="button" class="buttons answerBtn"  value="Partner">A Partner/Spouse</input>
-      <input type="button" class="buttons answerBtn"  value="Police officer">A police Officer</input>
-			<input type="button" class="buttons answerBtn"  value="I'd rather not say">I'd rather not say</input>
-       
-			<button type="button" class="buttons greenBtn commentBtn">Comment</button>
-
-			<div class="formControls">
-				<span class="glyphicon glyphicon-arrow-left backBtn" aria-hidden="true"></span>
-				<input type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></input>
-				<input type="button" class="skipBtn">Skip</input>
-			</div> <!-- .formControls -->
-  	</div> <!-- #page5 -->
-
-  <!-- Attacker Comment Box Page -->
-	<div class="form-overlay form-comments" id="attacker-comments">
+  <!-- UA Comment Box Page -->
+	<div class="form-overlay form-comments" id="uA-comments">
 		<h3>Additional details </h3>
 		
 		<div class="form-group">
   		<label for="comment">Comment:</label>
-  		<textarea class="form-control resetComments" rows="8" id="attacker-comment-box"></textarea>
+  		<textarea class="form-control resetComments" rows="8" id="user-comment-box"></textarea>
 		</div> <!-- .form-group -->
 		<div class="btn-group btn-group-lg comment-buttons" role="group" aria-label="...">
-  		<input type="button" class="btn btn-default" id="comment-exit">Exit Comment</input>
- 			<input type="button" class="btn btn-default" id="comment-save">Save Comment</input>
-  	</div> <!-- .btn-group-lg -->
-	</div> <!-- #form-comments -->
+  		<button type="button" class="btn btn-default" id="comment-exit">Exit Comment</button>
+ 			<button type="button" class="btn btn-default" id="comment-save">Save Comment</button>
+  		</div> <!-- .btn-group-lg -->
+	</div> <!-- #uA-comments -->
+<!-- ** MULTIPLE ATTACKERS ************************ -->
+	<div class="form-overlay" id="multipleAttackers">
+			<h3>Were you attacked by more than one person?</h3>
+			<input type="button" class="buttons answerBtn"  value="Yes"/>
+      <input type="button" class="buttons answerBtn"  value="No"/>
+			<input type="button" class="buttons answerBtn"  value="I Don't know"/>
+			<input type="button" class="buttons answerBtn"  value="I'd Rather Not Say"/>
+      
+			<button type="button" class="buttons greenBtn commentBtn">Comment</button>
 
-<!--***CIRCUMSTANCES ******************** -->
+			<div class="formControls">
+				<button type="button" class="backBtn"></button>
+				<button type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+				<button type="button" class="skipBtn">Skip</button>
+			</div> <!-- .formControls -->
+		</div> <!--#page4 -->
+
+		<div class="form-overlay form-comments" id="mA-comments">
+		<h3>Additional details </h3>
+		
+		<div class="form-group">
+  		<label for="comment">Comment:</label>
+  		<textarea class="form-control resetComments" rows="8" id="user-comment-box"></textarea>
+		</div> <!-- .form-group -->
+		<div class="btn-group btn-group-lg comment-buttons" role="group" aria-label="...">
+  		<button type="button" class="btn btn-default" id="comment-exit">Exit Comment</button>
+ 			<button type="button" class="btn btn-default" id="comment-save">Save Comment</button>
+  		</div> <!-- .btn-group-lg -->
+	</div> <!-- #mA-comments -->
+<!--***ATTACKER GENDER****************************** -->
+  <div class="form-overlay" id="AttackerGender">
+		<h3>About Your Attacker</h3>
+		<p>What was the attacker's gender?</p>
+        <input type="button" class="buttons answerBtn" value="Female"/>
+        <input type="button" class="buttons answerBtn" value="Male"/>
+        <input type="button" class="buttons answerBtn" value="Transgender Female"/>
+        <input type="button" class="buttons answerBtn" value="Transgender Male"/>
+        <input type="button" class="buttons answerBtn" value="It's complicated"/>
+				<input type="button" class="buttons answerBtn" value="I don't know"/>
+				<input type="button" class="buttons answerBtn" value="I'd rather not say"/>
+    
+				<button type="button" class="buttons greenBtn commentBtn">Comment</button>
+
+				<div class="formControls">
+					<button type="button" class="backBtn"></button>
+					<button type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+					<button type="button" class="skipBtn">Skip</button>
+			</div> <!-- .formControls -->
+		</div> <!-- #page3 -->
+
+		<div class="form-overlay form-comments" id="aG-comments">
+		<h3>Additional details </h3>
+		
+		<div class="form-group">
+  		<label for="comment">Comment:</label>
+  		<textarea class="form-control resetComments" rows="8" id="user-comment-box"></textarea>
+		</div> <!-- .form-group -->
+		<div class="btn-group btn-group-lg comment-buttons" role="group" aria-label="...">
+  		<button type="button" class="btn btn-default" id="comment-exit">Exit Comment</button>
+ 			<button type="button" class="btn btn-default" id="comment-save">Save Comment</button>
+  		</div> <!-- .btn-group-lg -->
+	</div> <!-- #aG-comments -->
+
+		<div class="form-overlay" id="relationship">
+			<p>How would you describe your relationship with your attacker(s)?</p>
+      <input type="button" class="buttons answerBtn"  value="Stranger"/>
+    	<input type="button" class="buttons answerBtn"  value="Aquaintance"/>
+      <input type="button" class="buttons answerBtn"  value="Friend"/>
+      <input type="button" class="buttons answerBtn"  value="Coworker"/>
+      <input type="button" class="buttons answerBtn"  value="Family Member"/>
+      <input type="button" class="buttons answerBtn"  value="Partner/Spouse"/>
+      <input type="button" class="buttons answerBtn"  value="Police officer"/>
+			<input type="button" class="buttons answerBtn"  value="I'd rather not say"/>
+       
+			<button type="button" class="buttons greenBtn commentBtn">Comment</button>
+
+			<div class="formControls">
+				<button type="button" class="backBtn"></button>
+				<button type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+				<button type="button" class="skipBtn">Skip</button>
+			</div> <!-- .formControls -->
+  	</div> <!-- #realtionship -->
+
+  <!-- #relationship Comment Page -->
+	<div class="form-overlay form-comments" id="r-comments">
+		<h3>Additional details </h3>
+		<div class="form-group">
+  		<label for="comment">Comment:</label>
+  		<textarea class="form-control resetComments" rows="8" id="relationship-c-box"></textarea>
+		</div> <!-- .form-group -->
+		<div class="btn-group btn-group-lg comment-buttons" role="group" aria-label="...">
+  		<button type="button" class="btn btn-default" id="comment-exit">Exit Comment</button>
+ 			<button type="button" class="btn btn-default" id="comment-save">Save Comment</button>
+  	</div> <!-- .btn-group-lg -->
+	</div> <!-- #r-comments -->
+
+<!-- ** DATE SPECIFICITY ******************* -->
+	<div class="form-overlay" id="dateSpecificity">
+			<h3>Can you describe when this happened...</h3>
+      <input type="button" class="buttons answerBtn"  value="By the decade"/>
+    	<input type="button" class="buttons answerBtn"  value="By the year"/>
+      <input type="button" class="buttons answerBtn"  value="By the month range"/>
+      <input type="button" class="buttons answerBtn"  value="By the date"/>
+      <input type="button" class="buttons answerBtn"  value="I don't know"/>
+       
+			<button type="button" class="buttons greenBtn commentBtn">Comment</button>
+
+			<div class="formControls">
+				<button type="button" class="backBtn"></button>
+				<button type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+				<button type="button" class="skipBtn">Skip</button>
+			</div> <!-- .formControls -->
+  	</div> <!-- #dateSpecificity -->
+
+  <!-- #relationship Comment Page -->
+	<div class="form-overlay form-comments" id="dateS-comments">
+		<h3>Additional details </h3>
+		<div class="form-group">
+  		<label for="comment">Comment:</label>
+  		<textarea class="form-control resetComments" rows="8" id="dateS-c-box"></textarea>
+		</div> <!-- .form-group -->
+		<div class="btn-group btn-group-lg comment-buttons" role="group" aria-label="...">
+  		<button type="button" class="btn btn-default" id="comment-exit">Exit Comment</button>
+ 			<button type="button" class="btn btn-default" id="comment-save">Save Comment</button>
+  	</div> <!-- .btn-group-lg -->
+	</div> <!-- #rdateS-comments -->
+
+<!-- **DATE RANGE ******************** -->
 <!--************************************* -->
-	<div class="form-overlay" id="page6">
+	<div class="form-overlay" id="dateRange">
 		<h3>About The Circumstances..</h3>
 		<p>Please indicate the date or time period when this assault occurred:</p>
   <!-- **DATE INPUT********************** -->
@@ -262,115 +314,225 @@
     	<input type="date" class="dates" id="dateStart" size="23"/>
 			<input type="date" class="dates" id="dateEnd" size="23"/>
   	</div>
-		<input type="button" class="buttons greenBtn commentBtn">Comment</button>
+		<button type="button" class="buttons greenBtn commentBtn">Comment</button>
 
 		<div class="formControls">
-			<span class="glyphicon glyphicon-arrow-left backBtn" aria-hidden="true"></span>
-			<input type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></input>
-			<input type="button" class="skipBtn">Skip</input>
+			<button type="button" class="backBtn"></button>
+			<button type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+			<button type="button" class="skipBtn">Skip</button>
 		</div> <!-- .formControls -->
-	</div> <!-- #page6 -->
+	</div> <!-- #dateRange -->
 
-	<div class="form-overlay" id="page7">
-  	<p>Did you experience more than one assault at this place in this period of time?</p>
-    <input type="button" class="buttons answerBtn"  value="Yes">Yes</input>
-    <input type="button" class="buttons answerBtn"  value="No">No</input>
-		<input type="button" class="buttons answerBtn"  value="I don't know'">I don't know</input>
-		<input type="button" class="buttons answerBtn"  value="I'd rather not say">I'd rather not say</input>
-     		
-		<input type="button" class="buttons greenBtn commentBtn">Comment</button>
-
-		<div class="formControls">
-			<span class="glyphicon glyphicon-arrow-left backBtn" aria-hidden="true"></span>
-			<input type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></input>
-			<input type="button" class="skipBtn">Skip</input>
-		</div> <!-- .formControls -->
-  </div> <!-- #page7 -->
-
-  <!-- Circumstances Comment Box Page -->
-	<div class="form-overlay form-comments" id="circumstances-comments">
+	  <!-- #dateRange Comment Page -->
+	<div class="form-overlay form-comments" id="dateRange-comments">
 		<h3>Additional details </h3>
-		
 		<div class="form-group">
-  			<label for="comment">Comment:</label>
-  			<textarea class="form-control resetComments" rows="8" id="circumstances-comment-box"></textarea>
+  		<label for="comment">Comment:</label>
+  		<textarea class="form-control resetComments" rows="8" id="dateRange-c-box"></textarea>
 		</div> <!-- .form-group -->
 		<div class="btn-group btn-group-lg comment-buttons" role="group" aria-label="...">
-  			<input type="button" class="btn btn-default" id="comment-exit">Exit Comment</input>
- 			  <input type="button" class="btn btn-default" id="comment-save" >Save Comment</input>
-  		</div> <!-- .btn-group-lg -->
-	</div> <!-- #form-comments -->
+  		<button type="button" class="btn btn-default" id="comment-exit">Exit Comment</button>
+ 			<button type="button" class="btn btn-default" id="comment-save">Save Comment</button>
+  	</div> <!-- .btn-group-lg -->
+	</div> <!-- #dateRange-comments -->
 
-<!--***CIRCUMSTANCES 2 ****************** -->
-<!--************************************* -->
-  <div class="form-overlay" id="page8">
+	<div class="form-overlay" id="multipleAssaults">
+  	<p>Did you experience more than one assault at this place in this period of time?</p>
+    <input type="button" class="buttons answerBtn"  value="Yes"/>
+    <input type="button" class="buttons answerBtn"  value="No"/>
+		<input type="button" class="buttons answerBtn"  value="I don't know"/>
+		<input type="button" class="buttons answerBtn"  value="I'd rather not say"/>
+     		
+		<button type="button" class="buttons greenBtn commentBtn">Comment</button>
+
+		<div class="formControls">
+			<button type="button" class="backBtn"></button>
+			<button type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+			<button type="button" class="skipBtn">Skip</button>
+		</div> <!-- .formControls -->
+  </div> <!-- #multipleAssaults -->
+
+  <!-- #multipleAssaults Comment Box Page -->
+	<div class="form-overlay form-comments" id="multipleAssaults-comments">
+		<h3>Additional details </h3>
+		<div class="form-group">
+  		<label for="comment">Comment:</label>
+  		<textarea class="form-control resetComments" rows="8" id="multipleAssaults-c-box"></textarea>
+		</div> <!-- .form-group -->
+		<div class="btn-group btn-group-lg comment-buttons" role="group" aria-label="...">
+  			<button type="button" class="btn btn-default" id="comment-exit">Exit Comment</button>
+ 			  <button type="button" class="btn btn-default" id="comment-save" >Save Comment</button>
+  		</div> <!-- .btn-group-lg -->
+	</div> <!-- #multipleAssaults-comments -->
+
+<!--*** #schoolCampus****************** -->
+  <div class="form-overlay" id="schoolCampus">
     <h3>Just a couple more questions...</h3>
     <p>Were you on a school campus? </p>
-    <input type="button" class="buttons answerBtn"  value="Yes">Yes</input>
-  	<input type="button" class="buttons answerBtn"  value="No">No</input>
-		<input type="button" class="buttons answerBtn"  value="I'd Rather Not Say">I'd rather not say</input>
+    <input type="button" class="buttons answerBtn"  value="Yes"/>
+  	<input type="button" class="buttons answerBtn"  value="No"/>
+		<input type="button" class="buttons answerBtn"  value="I don't know"/>
+		<input type="button" class="buttons answerBtn"  value="I'd Rather Not Say"/>
        
-		<input type="button" class="buttons greenBtn commentBtn">Comment</button>
+		<button type="button" class="buttons greenBtn commentBtn">Comment</button>
 
 		<div class="formControls">
-			<span class="glyphicon glyphicon-arrow-left backBtn" aria-hidden="true"></span>
-			<input type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></input>
-			<input type="button" class="skipBtn">Skip</input>
+			<button type="button" class="backBtn"></button>
+			<button type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+			<button type="button" class="skipBtn">Skip</button>
 		</div> <!-- .formControls -->  
-  </div> <!-- #page8 -->
-   
-	 <div class="form-overlay" id="page9">
-    <p>Did you report this? (Most don't)</p>
-    <input type="button" class="buttons answerBtn"  value="Yes, to police">Yes, to law enforcement</input>
-    <input type="button" class="buttons answerBtn"  value="Yes, to campus cops">Yes, to campus cops</input>
-    <input type="button" class="buttons answerBtn"  value="Yes, not to law enforcement">Yes, not to law enforcement</input>
-		<input type="button" class="buttons answerBtn"  value="No">No</input>
-		<input type="button" class="buttons answerBtn"  value="I'd rather not say">I'd rather not say</input>
-    
-		<p id="smallText">Please add a comment to tell us more about the campus location or any enforcement response. </p>
-		<input type="button" class="buttons greenBtn commentBtn">Comment</button>
+  </div> <!-- #schoolCampus -->
 
-		<div class="formControls">
-			<span class="glyphicon glyphicon-arrow-left backBtn" aria-hidden="true"></span>
-			<input type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></input>
-			<input type="button" class="skipBtn">Skip</input>
-		</div> <!-- .formControls -->   
-  </div> <!-- #page9 -->
-
-  <!-- Circumstances2 Comment Box Page -->
-	<div class="form-overlay form-comments" id="circumstances2-comments">
+	  <!-- #schoolCampus Comment Box Page -->
+	<div class="form-overlay form-comments" id="schoolCampus-comments">
 		<h3>Additional details </h3>
-		
 		<div class="form-group">
-  			<label for="comment">Comment:</label>
-  			<textarea class="form-control resetComments" rows="8" id="circumstances2-comment-box" placeholder="e.g.(School name, name of dorm/frat/building, e.t.c)"></textarea>
+  		<label for="comment">Comment:</label>
+  		<textarea class="form-control resetComments" rows="8" id="campus-c-box"></textarea>
 		</div> <!-- .form-group -->
 		<div class="btn-group btn-group-lg comment-buttons" role="group" aria-label="...">
-  			<input type="button" class="btn btn-default" id="comment-exit">Exit Comment</input>
- 			  <input type="button" class="btn btn-default" id="comment-save" >Save Comment</input>
+  			<button type="button" class="btn btn-default" id="comment-exit">Exit Comment</button>
+ 			  <button type="button" class="btn btn-default" id="comment-save" >Save Comment</button>
   		</div> <!-- .btn-group-lg -->
-	</div> <!-- #form-comments -->
-<!-- ***FORM END PAGE ******************************* -->
-	<div class="form-overlay" id="form-end">
+	</div> <!-- #schoolCampus-comments -->
+   
+	<div class="form-overlay" id="yesCampus">
+		<h3>Please tell us which campus and any related details.</h3>
+		<div class="form-group">
+  		<label for="comment">Comment:</label>
+  		<textarea class="form-control resetComments" rows="8" id="yesCampus-c-box"></textarea>
+		</div> <!-- .form-group -->
+
+		<button type="button" class="buttons greenBtn commentBtn">Save comment</button><!-- GO'S TO NEXT PAGE & saves the value of the comment box-->
+
+		<div class="formControls">
+			<button type="button" class="backBtn"></button>
+			<button type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+			<button type="button" class="skipBtn">Skip</button>
+		</div> <!-- .formControls --> 
+	</div> <!-- #yesCampus -->
+
+	 <div class="form-overlay" id="reported">
+    <h3>Did you report this assault to any authority? (Most don't)</h3>
+    <input type="button" class="buttons answerBtn"  value="Yes"/>
+    <input type="button" class="buttons answerBtn"  value="No"/>
+    
+		<button type="button" class="buttons greenBtn commentBtn">Comment</button>
+
+		<div class="formControls">
+			<button type="button" class="backBtn"></button>
+			<button type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+			<button type="button" class="skipBtn">Skip</button>
+		</div> <!-- .formControls -->   
+  </div> <!-- #reported -->
+
+	<!-- #reported Comment Box Page -->
+	<div class="form-overlay form-comments" id="reported-comments">
+		<h3>Additional details </h3>
+		<div class="form-group">
+  		<label for="comment">Comment:</label>
+  		<textarea class="form-control resetComments" rows="8" id="reported-c-box"></textarea>
+		</div> <!-- .form-group -->
+		<div class="btn-group btn-group-lg comment-buttons" role="group" aria-label="...">
+  			<button type="button" class="btn btn-default" id="comment-exit">Exit Comment</button>
+ 			  <button type="button" class="btn btn-default" id="comment-save" >Save Comment</button>
+  		</div> <!-- .btn-group-lg -->
+	</div> <!-- #reported-comments -->
+
+	<!--*** #schoolCampus****************** -->
+  <div class="form-overlay" id="reportedTo">
+    <h3>To whom did you report this assault to?</h3>
+ 		<input type="button" class="buttons answerBtn"  value="Police"/>
+    <input type="button" class="buttons answerBtn"  value="Campus cops"/>
+    <input type="button" class="buttons answerBtn"  value="Other"/>
+       
+		<button type="button" class="buttons greenBtn commentBtn">Comment</button>
+
+		<div class="formControls">
+			<button type="button" class="backBtn"></button>
+			<button type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+			<button type="button" class="skipBtn">Skip</button>
+		</div> <!-- .formControls -->  
+  </div> <!-- #reportedTo -->
+
+	  <!-- #schoolCampus Comment Box Page -->
+	<div class="form-overlay form-comments" id="reportedTo-comments">
+		<h3>Additional details </h3>
+		<div class="form-group">
+  		<label for="comment">Comment:</label>
+  		<textarea class="form-control resetComments" rows="8" id="reportedTo-c-box"></textarea>
+		</div> <!-- .form-group -->
+		<div class="btn-group btn-group-lg comment-buttons" role="group" aria-label="...">
+  			<button type="button" class="btn btn-default" id="comment-exit">Exit Comment</button>
+ 			  <button type="button" class="btn btn-default" id="comment-save" >Save Comment</button>
+  		</div> <!-- .btn-group-lg -->
+	</div> <!-- #reportedTo-comments -->
+
+<div class="form-overlay" id="persecuted">
+    <h3>Was your attacker persecuted?</h3>
+    <input type="button" class="buttons answerBtn"  value="Yes"/>
+    <input type="button" class="buttons answerBtn"  value="No"/>
+		<input type="button" class="buttons answerBtn"  value="I don't know'"/>
+    
+		<button type="button" class="buttons greenBtn commentBtn">Comment</button>
+
+		<div class="formControls">
+			<button type="button" class="backBtn"></button>
+			<button type="button" class="buttons exitBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+			<button type="button" class="skipBtn">Skip</button>
+		</div> <!-- .formControls -->   
+  </div> <!-- #persecuted-->
+
+	<!-- #persecuted Comment Box Page -->
+	<div class="form-overlay form-comments" id="persecuted-comments">
+		<h3>Additional details </h3>
+		<div class="form-group">
+  		<label for="comment">Comment:</label>
+  		<textarea class="form-control resetComments" rows="8" id="persecuted-c-box"></textarea>
+		</div> <!-- .form-group -->
+		<div class="btn-group btn-group-lg comment-buttons" role="group" aria-label="...">
+  			<button type="button" class="btn btn-default" id="comment-exit">Exit Comment</button>
+ 			  <button type="button" class="btn btn-default" id="comment-save" >Save Comment</button>
+  		</div> <!-- .btn-group-lg -->
+	</div> <!-- #persecuted-comments -->
+
+	
+<!-- ***CONFIRM SUBMIT******************************* -->
+	<div class="form-overlay" id="confirmSubmit">
 		<h3>Thanks for speaking up!</h3>
 		<p>Please confirm you want to add your record to our database.</p>
 		<textarea class="form-control resetComments" rows="5" id="endComment" placeholder=""></textarea>
     
-    <input type="button" class="btn greenBtn end-submit" onClick="post()">Add my anonymous record</input>
+    <button type="button" class="btn greenBtn end-submit" onClick="post()">Add my anonymous record</button>
 		<p>Just trying us out?</p>
-    <input type="button" class="btn navyBtn end-restart" onclick="">Return without saving</input>
+    <button type="button" class="btn navyBtn end-restart" onclick="">Return without saving</button>
 
  		<div class="formControls">
-			<span class="glyphicon glyphicon-arrow-left backBtn" aria-hidden="true"></span>
+			<button type="button" class="backBtn"></button>
     </div> <!-- .formControls -->
-	</div> <!-- #form-end -->
+	</div> <!-- #confirmSubmit -->
+
+	<div class="form-overlay" id="confirmExit">
+		<h3>Are you sure you want to quit without reporting?</h3>
+    <input type="button" class="buttons blueBtn"  value="Yes"/>
+    <input type="button" class="buttons blueBtn"  value="No"/>
+
+ 		<div class="formControls">
+			<button type="button" class="backBtn"></button>
+    </div> <!-- .formControls -->
+	</div> <!-- #confirmExit -->
 	</div> <!-- #resetForm -->
 
-		<div class="form-overlay" id="form-thankYou">
-				<h3>Thanks for being brave and sharing to help others!</h3>
-				<p>We'll fight sexual assault by adding your report to the map and analyzing its contents for outreach and awareness campaigns. <input class="" id="">Return to Map</input>
+	<div class="form-overlay" id="form-thankYou">
+		<h3>Thanks for being brave and sharing to help others!</h3>
+		<p>We'll fight sexual assault by adding your report to the map and analyzing its contents for outreach and awareness campaigns. 
+		<button class="buttons greenBtn" id="">Return to Map</button>
 
-        <div onClick="http//wwww.AnnieCannons.com"><p>More about the AnnieCannons team that buuilt this</p></div>
+    <a href="http//wwww.AnnieCannons.com">
+			<div>
+				<p>More about the AnnieCannons team that buuilt this</p>
+			</div>
+		</a>
 	</div> <!-- #form-thankYou -->
 
 <!-- SEARCH BOX API -->

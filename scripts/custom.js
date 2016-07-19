@@ -3,7 +3,8 @@ $(document).ready(function(){
   $("#hamburger-overlay").hide();
   $(".form-overlay").hide();
   $(".homeElements").hide();
-  $("#homePage-overlay").show();
+  $("#userAge").show();
+
 
 /* HAMBURGER OVERLAY   HAMBURGER OVERLAY */
   $(".glyphicon-menu-hamburger").on("click", function(){
