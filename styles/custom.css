@@ -151,24 +151,27 @@ body{
 
 .form-overlay {
 	width: 50vw;
-	height: 100%;
+	height: 92vh;
 	background-color: rgba(38, 70, 83, 0.95);
 	padding: 15px;
 	position: absolute;
-	top: 0;
+	bottom: 4%;
 	z-index: 1;
 	left: 0;
 	right: 0;
 	margin-left: auto;
 	margin-right: auto;
-	display: flex;
+	display: initial;
    	align-items: center;
-   	flex-direction: column;
+   	/*flex-direction: column;*/
 	text-shadow: 1px 1px 2px black;
+	box-shadow: 2px 0px 2px black;
 }
 
 #homePage-overlay {
 	width: 100vw;
+	height: 100vh;
+	top: 0;
 	line-height: 1.4;
 }
 
@@ -233,9 +236,8 @@ body{
 }
 
 #userAge {
-	/*flex-direction: unset;*/
-	/*display: table-cell;*/
-	/*display: initial;*/
+	display: initial;
+	/*flex-direction: row;*/
 }
 
 .buttons{
@@ -276,7 +278,6 @@ body{
 	color: #264653;
 	width: 250px;
 	height: 45px;
-	box-shadow: none;
 	border: none;
 	margin-bottom: 7px;
 }
@@ -287,21 +288,22 @@ body{
 
 .ageBtn {
 	width: 100px;
-	display: initial;
-	flex-direction: unset;
+	display: inline-block;
 }
 
 .commentBtn{
 	border: none;
-	margin-top: 6px;
+	/*margin-top: 6px;*/
 }
 
-.formControls{
-	position: relative;
-	display: table;
+.flowControls{
 	width: 280px;
-	margin-top: 11px;
-	padding: 10px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	bottom: 4%;
 }
 
 .backBtn{
@@ -314,14 +316,19 @@ body{
 	display: table-cell; 
     vertical-align: middle;
 	float: left;
+	-webkit-filter: drop-shadow(2px 2px 2px black);
+	filter: drop-shadow(2px 2px 2px black);
 }
 
 .exitBtn{
 	position: absolute;
 	width: 40px;
 	height: 40px;
-	background-color: #fff8e0;
+	background: url("images/close.png");
+	background-size: 100%;
 	color: #fff8e0;
+	-webkit-filter: drop-shadow(1px 1px 2px black);
+	filter: drop-shadow(2px 2px 2px black);
 	border-radius: 100%;
 	padding: 7px;
 	display: table-cell; 
@@ -391,18 +398,6 @@ body{
 	margin-bottom: 3px;
 }
 
-.btn-group-controls {
-	width: 300px;
-	position: absolute;
-   	left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-	bottom: 5%;
-	word-spacing: 40px;
-	text-align: center;
-}
-
 #smallText {
 	font-size: 90%;
 }
@@ -426,15 +421,15 @@ body{
 	width: 600px;
 }
 
-.form-control {
-	width: 500px;
+.form-control { /*textarea */
+	width: 88%;
 	font-size: 100%;
 	position: absolute;
 	left: 0;
     right: 0;
     margin-left: auto;
     margin-right: auto;
-} /*comment box's'*/
+}
 
 .comment-buttons {
 	width: 326px;
@@ -474,13 +469,12 @@ body{
 	max-width: 600px;
 }
 
-@media screen and (max-width: 700px) {
-	.forn-overlay {
-		width: 100vw;
-	}
 
-	.gm-style-iw{
-		max-height: 260px;
+@media screen and (max-width: 700px) {
+	.form-overlay {
+		width: 100vw;
+		height: 100vh;
+		top: 0;
 	}
 
 	#pac-input{
@@ -496,17 +490,13 @@ body{
 		position: relative;
 	}
 
+	/*.flowControls{
+
+	}*/
+
 	.form-group {
 		width: 100%;
 		text-align: center;
-	}
-	.form-control {
-		width: 300px;
-		position: absolute;
-   		left: 0;
-    	right: 0;
-    	margin-left: auto;
-    	margin-right: auto;
 	}
 
 	.comment-buttons {

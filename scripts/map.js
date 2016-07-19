@@ -143,6 +143,7 @@ var userObject = {};
         questionWindow.close();
         $("#addPrompt").hide();
         $("#pac-input").hide();
+
       });
 
       $("#pinDrop-window > #fireBase-no").on("click", function(){
