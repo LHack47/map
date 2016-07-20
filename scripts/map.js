@@ -33,20 +33,6 @@ var userObject = {};
       $("#addPrompt").show();
     };
 
-//output = current page fades out and the next page fades in 
-  // document.getElementsByClassName('answerBtn').onclick =
-   function aB(){
-      $(this).parent(".form-overlay").fadeOut('slow'); 
-      $(this).parent().next(".form-overlay").fadeIn('slow');
-      console.log($(this));
-    };
-
-    // $('.answerBtn').on('click', function() {
-    //   $(this).closest('.form-overlay').hide();
-    //   console.log("hi");
-    
-    // });
-
 /* SEARCH BOX + MAP*/
  function initAutocomplete() {
     var map = new google.maps.Map(document.getElementById('googleMap'), {
