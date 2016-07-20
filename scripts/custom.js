@@ -2,9 +2,10 @@ $(document).ready(function(){
 
   $("#hamburger-overlay").hide();
   $(".form-overlay").hide();
+  $(".form-comments").hide();
   $(".homeElements").hide();
   // $("#homePage-overlay").show();
-  $("#userGender").show();
+  $("#dateSpecificity").show();
 
 
 /* HAMBURGER OVERLAY   HAMBURGER OVERLAY */
