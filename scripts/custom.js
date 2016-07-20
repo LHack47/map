@@ -1,27 +1,28 @@
 $(document).ready(function(){
 
-  $("#hamburger-overlay").hide();
+  // $("#hamburger-overlay").hide();
   $(".form-overlay").hide();
   $(".form-comments").hide();
-  $(".homeElements").hide();
-  // $("#homePage-overlay").show();
-  $("#dateSpecificity").show();
+  $(".elements").hide();
+  $("#homePage-overlay").show();
+  // $("#dateSpecificity").show();
 
 
 /* HAMBURGER OVERLAY   HAMBURGER OVERLAY */
   $(".glyphicon-menu-hamburger").on("click", function(){
     fadeThisIn($("#hamburger-overlay"));
-    fadeThisOut($(".startedAForm"));
+    fadeThisOut($(".elements"));
   });
 
   $("#hamburger-overlay").on("click", function(){
     fadeThisOut($("#hamburger-overlay"));
+    fadeThisIn($(".seeMap-Elements"));
   });
  // homePage-overlay
   $("#seeMap").on("click", function(){
     fadeThisOut($("#homePage-overlay"));
-    fadeThisIn($("#navBar"));
-    fadeThisIn($("#seePrompt"));
+    fadeThisIn($(".seeMap-Elements"));
+    // fadeThisIn($("#seePrompt"));
   });
 
   $("#addEvent").on("click", function(){
@@ -45,17 +46,30 @@ $(document).ready(function(){
 
 /* USER ACCEPTS TO ADD MORE DETAILS*/
   $("#accept").on("click", function(){
-   fadeThisIn($("#form-guidance"));
+   fadeThisIn($("#userGender"));
    fadeThisOut($("#form-start-overlay"))
   });
 
-/* FORM-GUIDANCE BUTTON */
-  $("#gotIt").on("click", function(){
-    fadeThisOut($("#form-guidance"));
-    fadeThisIn($("#userGender"));
-  });
-
 /* USER INFO GLYPHICON CONTROL BUTTONS ***************************************************/
+     $(".navyBtn").click(function(){
+      $("#locationForm").fadeOut("slow");
+      $(".addAssault-Elements").show();
+      userObject.locationSpec = $(this).val();
+    });
+ 
+  $(".answerBtn").click(function(){
+   currentPage = $(this).parent();
+   nextPage = $(this).parent().next();
+   currentPage.fadeOut("slow");
+   nextPage.fadeIn("slow");
+   userKey = $(this).parent().data("value");
+   userObject[userKey] = $(this).val();
+
+ console.log(userObject);
+ });
+
+
+
   $(".userInfo-controls > .glyphicon-arrow-left").on("click", function(){
     fadeThisOut($("#form-userInfo"));
     fadeThisIn($("#form-start-overlay"));

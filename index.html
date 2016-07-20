@@ -36,28 +36,30 @@
 	<div class="container">
 		<div id="googleMap">
 		</div> <!-- #googleMap -->
-			<div class="homeElements startedAForm" id="navBar">
+			<div class="elements seeMap-Elements" id="navBar">
       	<img id="logo" src="">
 		
 				<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
 			</div> <!-- #navBar -->		
 
-		<div class="startedAForm" id="seePrompt">
-			<p>Click any record dot to view the assault details reported to us.</p>
-		</div> <!-- #seePrompt -->
+			<button type="button" class="elements seeMap-Elements buttons btn greenBtn" id="mapAddBtn">See the Map</button>
 
-		<div class="startedAForm" id="addPrompt">
-			<h3>Please drop a pin or enter a location to begin your assault record.</h3>
-		</div> <!-- #seePrompt -->		
+			<div class="elements seeMap-Elements" id="seePrompt">
+				<p>Click any record dot to view the assault details reported to us.</p>
+			</div> <!-- .seeMapElements #seePrompt -->
+
+			<div class="elements addAssault-Elements" id="addPrompt">
+				<h4>Please drop a pin or enter a location to begin your assault record.</h4>
+			</div> <!-- #addPrompt -->		
+			<!--<div class="flowControls addAssault-Elements">-->
+				<button type="button" class="elements addAssault-Elements buttons exitBtn" id="mapExit-button"></button>
+			<!--</div>  .flowControls -->
 <!-- **************SEARCH BOX************** -->
-		<div class="homeElements" id="input-container">
+		<div class="elements" id="pac-container">
 			<form>
-				<div class="pac-container">
-					<input class="controls homeElements startedAForm" id="pac-input" type="text" placeholder="Search a location here">
-				</div> <!-- .pac-container -->
+					<input class="controls elements" id="pac-input" type="text" placeholder="Search a location here">
 			</form>
-		</div> <!-- #input-container -->
-
+		</div> <!-- #pac-container -->
 
 	</div> <!-- .container -->
 
@@ -68,7 +70,7 @@
 		<p style="color: #fff8e0">You can also choose to share other details about your assault that will help us warn others and help our community better understand the reality of sexual assault.</p>
 		<p style="color: #9bd130"> All entries are 100% anonymous.</p>
 		<button type="button" class="buttons btn greenBtn" id="seeMap">See the Map</button>
-		<button type="button" class="buttons btn answerBtn" id="addEvent">Add Your Assault</button>
+		<button type="button" class="buttons btn" id="addEvent">Add Your Assault</button>
   </div> <!-- #homePage-overlay -->
 
 	<div class="form-overlay" id="hamburger-overlay">
@@ -80,11 +82,11 @@
 <!-- *FORM START WITH LOCATION SPECIFITY PAGE* -->
 	<div class="form-overlay" id="locationForm">
 		<h3 style="margin-bottom: 20px">How specifically do you recall the location of the assault?</h3>
-    <input type="button" class="buttons navyBtn" value="The state" onClick="navyBtnFunction($('#locationForm'))"/>
-    <input type="button" class="buttons navyBtn" value="The city" onClick="navyBtnFunction($('#locationForm'))"/>
-    <input type="button" class="buttons navyBtn" value="Campus/Neighborhood" onClick="navyBtnFunction($('#locationForm'))"/>
-    <input type="button" class="buttons navyBtn" value="The address" onClick="navyBtnFunction($('#locationForm'))"/>
-    <input type="button" class="buttons navyBtn" value="I don't know" onClick="navyBtnFunction($('#locationForm'))"/>
+    <input type="button" class="buttons navyBtn" value="The state"/>
+    <input type="button" class="buttons navyBtn" value="The city" />
+    <input type="button" class="buttons navyBtn" value="Campus/Neighborhood" />
+    <input type="button" class="buttons navyBtn" value="The address" />
+    <input type="button" class="buttons navyBtn" value="I don't know" />
 
 		<div class="flowControls">
 			<button type="button" class="buttons exitBtn"></button>
@@ -102,16 +104,10 @@
   	<a href="#" id="privacy-policy">Privacy Policy</a>
 	</div> <!-- #form-start-overlay -->
 
-  <!-- #form-guidance -->
-  <div class="form-overlay" id="form-guidance">
-    <div id="guidance-container">
-    </div> <!-- #guidnace-container -->
-     <button type="button" class="btn buttons greenBtn" id="gotIt">Got It!</button>
-  </div> <!-- #form-guidance -->
 <!--***USER GENDER *************************************** -->
-	<div class="form-overlay" id="userGender">
+	<div data-value="userGender" class="form-overlay" id="userGender">
 		<h3>What is your gender?</h3>
-    <input type="button" class="buttons answerBtn" value="Female" onClick="aB()" />
+    <input type="button" class="buttons answerBtn" value="Female"/>
   	<input type="button" class="buttons answerBtn" value="Male"/>
     <input type="button" class="buttons answerBtn" value="Transgender Female"/>
     <input type="button" class="buttons answerBtn" value="Transgender Male"/>

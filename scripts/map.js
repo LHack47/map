@@ -1,5 +1,7 @@
 var firebaseRef = new Firebase("https://maptester.firebaseio.com/");
 
+var currentPage, nextPage, userKey;
+
 var userObject = {};
 /* SEND OBJECT TO FIREBASE */
   function post(){
@@ -25,12 +27,6 @@ var userObject = {};
     };
     function fadeThisOut(element){
       element.fadeOut("slow");
-    };
-
-    function navyBtnFunction(element){
-      element.fadeOut("slow");
-      $("#pac-input").show();
-      $("#addPrompt").show();
     };
 
 /* SEARCH BOX + MAP*/
@@ -126,8 +122,8 @@ var userObject = {};
         //question-window open
       questionWindow.setContent( "<div id='pinDrop-window'>" +
       "<h3>Report a sexual assault at this location?</h3>"+
-     "<button type='button' class='btn btnGreen btn-clicked' id='fireBase-no'>No</button>"+
-      "<button type='button' class='btn btnGreen btn-clicked' id='fireBase-yes'>Yes</button>" +
+     "<button type='button' class='btn btn-default btn-clicked' id='fireBase-no'>No</button>"+
+      "<button type='button' class='btn btn-default btn-clicked' id='fireBase-yes'>Yes</button>" +
       "</div>"); // #pinDrop-window 
         questionWindow.open(map, marker);
         if(infoWindow.open()){
@@ -141,8 +137,8 @@ var userObject = {};
         fadeThisOut($("#pinDrop-window"));
         fadeThisIn($("#form-start-overlay"));
         questionWindow.close();
-        $("#addPrompt").hide();
-        $("#pac-input").hide();
+        $(".addAssault-Elements").hide();
+       
 
       });
 
@@ -181,7 +177,7 @@ var userObject = {};
        userObject.userLocation = {lat: e.latLng.lat(), lng: e.latLng.lng()};
        geocodeThis();
         fadeThisOut($("#pinDrop-window"));
-        fadeThisOut($("#startedAForm"));
+        fadeThisOut($(".elements"));
         fadeThisIn($("#form-start-overlay"));
         questionWindow.close();
       });
