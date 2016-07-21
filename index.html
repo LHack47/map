@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Survivors.io</title>
+	<meta charset="UTF-8">
+
+	<meta name=viewport content="width=device-width, initial-scale=1">
+
+    <!-- FIREBASE CDN -->
+    <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+
+    <!-- JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <!-- FONT FAMILY JOSEFIN SANS -->
+    <link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+
+    <!-- Custom Css Page -->
+    <link rel ="stylesheet" type ="text/css" href ="styles/custom.css">
+
+    <!-- Custom Javascript Page -->
+	<script src="scripts/custom.js" type="text/javascript"></script>
+
+	<!-- Map Javascript Page -->
+	<script src="scripts/map.js" type="text/javascript"></script>
+
+</head>
+<body>
+<!--HOMEPAGE-->
+    <!--Google Map-->
+    <div id="googleMap">
+	</div> <!-- #googleMap -->
+
+    <!--Navbar-->
+    <div class="home-elements" id="navbar">
+      	<img id="logo" src="">
+		<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+	</div> <!-- #navbar -->	
+
+    <!--Searchbox-->
+        <input class="controls home-elements" id="pac-input" type="text" placeholder="Search a location here">
+
+
+    <!--Homepage Overlay-->
+    <div id="homepage-overlay">
+        <h3 style="color: #fff8e0">Welcome to Survivors.io!</h3>
+        <h4 style="color: #67ccde">We made this map to help tell the real story of rape culture.</h4>
+        <p style="color: #fff8e0"> You can record an assault you've experienced by inputing the approximate location.</p>
+        <p style="color: #fff8e0">You can also choose to share other details about your assault that will help us warn others and help our community better understand the reality of sexual assault.</p>
+        <p style="color: #9bd130"> All entries are 100% anonymous.</p>
+        <button type="button" class="btn buttons greenBtn" id="seeMap">see the map</button>
+        <br>
+        <button type="button" class="btn buttons grayBtn" id="addEvent">add your assault</button>
+    </div> <!-- #homepage-overlay -->
+
+    <!--Hamburger Overlay-->
+    <div class="form-overlay" id="hamburger-overlay">
+        <p onClick="fadeThisIn($('#locationForm')), fadeThisOut($('#hamburger-overlay'))"> + Add an Assault Report</p>
+        <a href="http://www.anniecannons.com"><h2>About Us</h2></a>
+        <a href="http://www.nsvrc.org/"><h2>Resources</h2></a>
+    </div> <!-- #hamburger-overlay -->
+
+    <!--Homepage Text-->
+    <div class = "mapPrompts" id="seePrompt">
+        <p>Click any record dot to view the assault details reported to us.</p>
+    </div> <!-- #seePrompt -->
+
+    <div class = "mapPrompts" id="addPrompt">
+        <p>Please drop a pin or enter a location to begin your assault record.</p>
+    </div> <!-- #seePrompt -->	
+<!--END HOMEPAGE-->
+
+<!--START FORM-->
+<form id="resetForm">
+<!--LOCATION-->
+<div class="form-overlay" id="locationForm">
+    <h3 style="margin-bottom: 20px">How specifically do you recall the location of the assault?</h3>
+    <input type="button" class="buttons navyBtn" value="The State"/>
+    <input type="button" class="buttons navyBtn" value="The City"/>
+    <input type="button" class="buttons navyBtn" value="The Campus/Neighborhood"/>
+    <input type="button" class="buttons navyBtn" value="The Address"/>
+    <input type="button" class="buttons navyBtn" value="I don't know"/>
+    <!--buttons-->
+    <img src="images/Close-1.png" class="exitBtn">
+</div> <!-- #locationForm -->
+
+<!--Add more details question page-->
+<div class="form-overlay" id="form-start-overlay">
+	<h3 id="">Would you share other details that might help us illuminate the reality of sexual assualt for others?</h3>
+	<p style="color: #fff8e0">This is still anonymous.</p>
+	<br>
+ 	<input type="button" class="btn buttons grayBtn" id="accept" value= "OK">
+    <img src="images/Close-1.png" class="exitBtn" id="deny" onClick="exitPage()">
+  	<a href="#" id="privacy-policy">Privacy Policy</a>
+</div> <!-- #form-start-overlay -->
+
+
+<!--PAGE 1 - USER GENDER-->
+<div class="form-overlay" id="userGender" data-value="userGender">
+	<h3>Please Tell Us About Yourself.</h3>
+	<p>What is your gender?</p>
+    <input type="button" class="buttons answerBtn" value="Female"/>
+  	<input type="button" class="buttons answerBtn" value="Male"/>
+    <input type="button" class="buttons answerBtn" value="Transgender Female"/>
+    <input type="button" class="buttons answerBtn" value="Transgender Male"/>
+    <input type="button" class="buttons answerBtn" value="It's complicated"/>
+	<input type="button" class="buttons answerBtn" value="I'd Rather Not Say"/>
+    <!--buttons-->
+	<img src="images/Close-1.png" class="exitBtn" id="deny">
+	<button type="button" class="skipBtn">Skip</button>
+</div>  <!-- #page1 -->
+
+<!-- Page 2 UserAge-->
+<div class="form-overlay multiBtn" id="userAge" data-value="userAge">
+	<h3>When it happened, I was:</h3>
+    <input type="button" class="buttons answerBtn ageBtn"  value="0-5"/>
+  	<input type="button" class="buttons answerBtn ageBtn"  value="6-10"/>
+    <input type="button" class="buttons answerBtn ageBtn"  value="11-15"/>
+    <input type="button" class="buttons answerBtn ageBtn"  value="16-18"/>
+	<input type="button" class="buttons answerBtn ageBtn"  value="19-22"/>
+	<input type="button" class="buttons answerBtn ageBtn"  value="23-28"/>
+	<input type="button" class="buttons answerBtn ageBtn"  value="29-34"/>
+	<input type="button" class="buttons answerBtn ageBtn"  value="35-44"/>
+	<input type="button" class="buttons answerBtn ageBtn"  value="45-54"/>
+	<input type="button" class="buttons answerBtn ageBtn"  value="55+"/>
+	<input type="button" class="buttons answerBtn ageBtn"  value="I don't know"</input>
+	<input type="button" class="buttons answerBtn ageBtn"  value="I'd rather not say"/>
+    <!--buttons-->
+	<img src="images/redArrow.png" class="backBtn">
+	<img src="images/Close-1.png" class="exitBtn" id="deny">
+	<button type="button" class="skipBtn">Skip</button>
+</div> <!-- #userAge -->
+
+<!-- Page 3 Number of Attackers-->
+<div class="form-overlay" id="multipleAttackers" data-value="multipleAttackers">
+	<h3>Were you attacked by more than one person?</h3>
+	<input type="button" class="buttons answerBtn"  value="Yes"/>
+    <input type="button" class="buttons answerBtn"  value="No"/>
+	<input type="button" class="buttons answerBtn"  value="I Don't know"/>
+	<input type="button" class="buttons answerBtn"  value="I'd Rather Not Say"/>
+    <!--buttons-->
+	<img src="images/redArrow.png" class="backBtn">
+	<img src="images/Close-1.png" class="exitBtn" id="deny">
+	<button type="button" class="skipBtn">Skip</button>
+</div> <!--#page4 -->
+
+<!-- Page 4 Attacker Gender-->
+<div class="form-overlay" id="AttackerGender" data-value= "attackerGender">
+	<h3>About Your Attacker</h3>
+	<p>What was the attacker's gender?</p>
+    <input type="button" class="buttons answerBtn" value="Female"/>
+    <input type="button" class="buttons answerBtn" value="Male"/>
+    <input type="button" class="buttons answerBtn" value="Transgender Female"/>
+    <input type="button" class="buttons answerBtn" value="Transgender Male"/>
+	<input type="button" class="buttons answerBtn" value="I don't know"/>
+	<input type="button" class="buttons answerBtn" value="I'd rather not say"/>
+    <!--buttons-->
+	<img src="images/redArrow.png" class="backBtn">
+	<img src="images/Close-1.png" class="exitBtn" id="deny">
+	<button type="button" class="skipBtn">Skip</button>
+</div> <!-- #page4 -->
+
+<!-- Page 5 Relationship to Attacker-->
+<div class="form-overlay multiBtn" id="relationship" data-value="relationshipToAttacker">
+	<p>How would you describe your relationship with your attacker(s)?</p>
+    <input type="button" class="buttons answerBtn ageBtn"  value="Stranger"/>
+    <input type="button" class="buttons answerBtn ageBtn"  value="Aquaintance"/>    
+    <input type="button" class="buttons answerBtn ageBtn"  value="Friend"/>
+    <input type="button" class="buttons answerBtn ageBtn"  value="Coworker"/>
+    <input type="button" class="buttons answerBtn ageBtn"  value="Family Member"/>
+    <input type="button" class="buttons answerBtn ageBtn"  value="Partner/Spouse"/>
+    <input type="button" class="buttons answerBtn ageBtn"  value="Police officer"/>
+	<input type="button" class="buttons answerBtn ageBtn"  value="I'd rather not say"/>
+    <!--buttons-->
+	<img src="images/redArrow.png" class="backBtn">
+	<img src="images/Close-1.png" class="exitBtn" id="deny">
+	<button type="button" class="skipBtn">Skip</button>
+		
+</div> <!-- page 5 #realtionship -->
+
+<!-- Page 6 Date Specificity -->
+<div class="form-overlay" id="dateSpecificity" data-value="dateSpecificity">
+	<h3>Can you describe when this happened...</h3>
+    <input type="button" class="buttons answerBtn"  value="By the decade"/>
+    <input type="button" class="buttons answerBtn"  value="By the year"/>
+    <input type="button" class="buttons answerBtn"  value="By the month range"/>
+    <input type="button" class="buttons answerBtn"  value="By the date"/>
+    <input type="button" class="buttons answerBtn"  value="I don't know"/>
+    <!--buttons-->
+	<img src="images/redArrow.png" class="backBtn">
+	<img src="images/Close-1.png" class="exitBtn" id="deny">
+	<button type="button" class="skipBtn">Skip</button>
+</div> <!--  page 6 dateSpecificity -->
+
+<!-- Page 7 DATE RANGE -->
+<div class="form-overlay" id="dateRange" data-value="dateRange">
+	<h3>About The Circumstances..</h3>
+	<p>Please indicate the date or time period when this assault occurred:</p>
+     <!-- **DATE INPUT**** -->
+    <input type="date" class="dates" id="dateStart" size="23"/>
+	<input type="date" class="dates" id="dateEnd" size="23"/>
+	 <!--buttons-->
+	<img src="images/redArrow.png" class="backBtn">
+	<img src="images/Close-1.png" class="exitBtn" id="deny">
+	<button type="button" class="skipBtn">Skip</button>
+	</div> <!-- #dateRange -->
+
+<!-- Page 8 Multiple Assaults -->
+<div class="form-overlay" id="multipleAssaults" data-value="multipleAssaults">
+  	<h3>Did you experience more than one assault at this place in this period of time?</h3>
+    <input type="button" class="buttons answerBtn"  value="Yes"/>
+    <input type="button" class="buttons answerBtn"  value="No"/>
+	<input type="button" class="buttons answerBtn"  value="I don't know"/>
+	<input type="button" class="buttons answerBtn"  value="I'd rather not say"/>
+    <!--buttons-->
+	<img src="images/redArrow.png" class="backBtn">
+	<img src="images/Close-1.png" class="exitBtn" id="deny">
+	<button type="button" class="skipBtn">Skip</button>
+</div> <!-- #multipleAssaults -->
+
+<!-- Page 9 School Campus -->
+  <div class="form-overlay" id="schoolCampus" data-value="schoolCampus">
+    <h3>Just a couple more questions...</h3>
+    <p>Were you on a school campus? </p>
+    <input type="button" class="buttons answerBtn"  value="Yes"/>
+  	<input type="button" class="buttons answerBtn"  value="No"/>
+	<input type="button" class="buttons answerBtn"  value="I don't know"/>
+	<input type="button" class="buttons answerBtn"  value="I'd Rather Not Say"/>
+     <!--buttons-->
+	<img src="images/redArrow.png" class="backBtn">
+	<img src="images/Close-1.png" class="exitBtn" id="deny">
+	<button type="button" class="skipBtn">Skip</button>
+  </div> <!-- #schoolCampus -->
+
+<!-- Page 9.1 School Campus -->
+<!--<div class="form-overlay" id="yesCampus">
+    <h3>Please tell us which campus and any related details.</h3>
+    <div class="form-group">
+    <label for="comment">Comment:</label>
+    <textarea class="form-control resetComments" rows="8" id="yesCampus-c-box"></textarea>
+    </div> <!-- .form-group -->
+    <!--<button type="button" class="buttons greenBtn commentBtn">Save comment</button> GO'S TO NEXT PAGE & saves the value of the comment box
+
+    <img src="images/redArrow.png" class="backBtn">
+    <img src="images/Close-1.png" class="exitBtn" id="deny">
+    <button type="button" class="skipBtn">Skip</button>-->
+<!--</div>  #yesCampus -->
+
+<!-- Page 10 Reported -->
+<div class="form-overlay" id="reported" data-value="reported">
+    <h3>Did you report this assault to any authority? (Most don't)</h3>
+    <input type="button" class="buttons answerBtn"  value="Yes"/>
+    <input type="button" class="buttons answerBtn"  value="No"/>
+    <!--buttons-->
+	<img src="images/redArrow.png" class="backBtn">
+	<img src="images/Close-1.png" class="exitBtn" id="deny">
+	<button type="button" class="skipBtn">Skip</button> 
+  </div> <!-- #reported -->
+
+
+<!--*** Reported to Whom -->
+  <!--<div class="form-overlay" id="reportedTo">
+    <h3>To whom did you report this assault to?</h3>
+ 		<input type="button" class="buttons answerBtn"  value="Police"/>
+    <input type="button" class="buttons answerBtn"  value="Campus cops"/>
+    <input type="button" class="buttons answerBtn"  value="Other"/>
+       
+  </div>  #reportedTo -->
+
+<!--<div class="form-overlay" id="persecuted">
+    <h3>Was your attacker prosecuted?</h3>
+    <input type="button" class="buttons answerBtn"  value="Yes"/>
+    <input type="button" class="buttons answerBtn"  value="No"/>
+		<input type="button" class="buttons answerBtn"  value="I don't know'"/>
+
+  </div>  #prosecuted-->
+
+	
+<!-- ***CONFIRM SUBMIT************************ -->
+<div class="form-overlay" id="confirmSubmit">
+	<h3>Thanks for speaking up!</h3>
+	<p>Please confirm you want to add your record to our database.</p>
+	<textarea class="form-control resetComments" rows="5" id="endComment" placeholder=""></textarea>
+    
+    <button type="button" class="btn greenBtn end-submit" onClick="post()">Add my anonymous record</button>
+		<p>Just trying us out?</p>
+    <button type="button" class="btn navyBtn end-restart" onclick="">Return without saving</button>
+
+ 		<div class="formControls">
+			<button type="button" class="backBtn"></button>
+    </div> <!-- .formControls -->
+	</div> <!-- #confirmSubmit -->
+
+<!--Quit without reporting-->
+	<div class="form-overlay" id="confirmExit">
+		<h3>Are you sure you want to quit without reporting?</h3>
+    <input type="button" class="buttons blueBtn"  value="Yes"/>
+    <input type="button" class="buttons blueBtn"  value="No"/>
+
+ 		<div class="formControls">
+			<button type="button" class="backBtn"></button>
+    </div> <!-- .formControls -->
+	</div> <!-- #confirmExit -->
+	</div> <!-- #resetForm -->
+
+<!--THank you-->
+<div class="form-overlay" id="form-thankYou">
+	<h3>Thanks for being brave and sharing to help others!</h3>
+	<p>We'll fight sexual assault by adding your report to the map and analyzing its contents for outreach and awareness campaigns. 
+	<button class="buttons greenBtn" id="">Return to Map</button>
+    <a href="http//wwww.AnnieCannons.com">
+        <div>
+            <p>More about the AnnieCannons team that built this</p>
+        </div>
+	</a>
+	</div> <!-- #form-thankYou -->
+
+</form>
+<!-- SEARCH BOX API -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBR4zok3yXv8syWZ2bkle_SZh5YJJD4UcQ&libraries=places&callback=initAutocomplete"
+         async defer></script>
+</body>
+</html>
