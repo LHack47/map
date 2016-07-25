@@ -1,6 +1,6 @@
 var firebaseRef = new Firebase("https://maptester.firebaseio.com/");
 
-var currentPage, nextPage, userKey;
+var currentPage, nextPage, previousPage, userKey;
 
 var userObject = {};
 /* SEND OBJECT TO FIREBASE */
@@ -9,6 +9,10 @@ var userObject = {};
     userObject = {};
      document.getElementById("resetForm").reset();
   } //function post()
+
+  function exit(){
+    document.getElementById("resetForm").reset();
+  }
 
     function geocodeThis(){
       var geocoder = new google.maps.Geocoder;
@@ -135,11 +139,10 @@ var userObject = {};
         userObject.userLocation = {lat: place.geometry.location.lat(), lng: place.geometry.location.lng()};
         geocodeThis();
         fadeThisOut($("#pinDrop-window"));
-        fadeThisIn($("#form-start-overlay"));
         questionWindow.close();
         $(".addAssault-Elements").hide();
-       
-
+        $("#transparent-overlay").show();
+        fadeThisIn($("#confirmStart"));        
       });
 
       $("#pinDrop-window > #fireBase-no").on("click", function(){
@@ -177,9 +180,10 @@ var userObject = {};
        userObject.userLocation = {lat: e.latLng.lat(), lng: e.latLng.lng()};
        geocodeThis();
         fadeThisOut($("#pinDrop-window"));
-        fadeThisOut($(".elements"));
-        fadeThisIn($("#form-start-overlay"));
         questionWindow.close();
+        fadeThisOut($(".addAssault-Elements"));
+        $("#transparent-overlay").show();
+        fadeThisIn($("#confirmStart"));
       });
       $("#pinDrop-window > #fireBase-no").on("click", function(){
         questionWindow.close();
@@ -205,7 +209,6 @@ var infoWindow = new google.maps.InfoWindow();
   //info box when you click a pin
 // TODO: TAKE OUT CALL BACK FUNCTION AND PUT INSIDE A CLICK HANDLER FUNCTION!
     google.maps.event.addListener(marker, 'click', function() {
-      
       infoWindow.setContent(
        '<div id="infoContent">'+
        '<p><strong>Assault Location: </strong> <br>'+ eventObject.address + '<br>' + 
@@ -218,11 +221,11 @@ var infoWindow = new google.maps.InfoWindow();
        '<strong>Multiple attackers?: </strong>' +
        eventObject.attackedBy + ' <br> ' + 
        '<strong>The attacker was a(n): </strong>' +
-       eventObject.attackerRelationship + ' <br> ' + 
+       eventObject.relationship + ' <br> ' + 
        '<strong>Multiple assaults here?: </strong>' +
        eventObject.multipleAssaults + '<br>' +
        '<strong>Date range: </strong>' + '<br>' +
-       eventObject.dateStart + ' -- '+ eventObject.dateEnd + "<br>" + 
+       eventObject.dateRange1 + ' , '+ eventObject.dateRange2 + "<br>" + 
        '<strong>On a school campus: </strong>' +
        eventObject.schoolCampus + ' <br> ' + 
        '<strong>reported?: </strong>' +
