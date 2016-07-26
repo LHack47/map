@@ -8,6 +8,7 @@ body{
 	text-align: center;
 	font-family: 'Josefin Sans';
 	font-weight: normal;
+	align-items: center;
 }
 
 .container {
@@ -137,8 +138,10 @@ form {
 }
 
 #mapAddBtn {
+	width: 120px;
 	position: absolute;
 	/*display: initial;*/
+	font-size: 100%;
 	bottom: 20%;
 	left: 0;
 	right: 0;
@@ -198,9 +201,9 @@ form {
 }
 
 #homePage-overlay {
-	width: 100vw;
-	height: 100vh;
-	top: 0;
+	/*width: 100vw;*/
+	/*height: 100vh;*/
+	/*top: 0;*/
 	line-height: 1.4;
 }
 

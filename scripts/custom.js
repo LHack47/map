@@ -7,7 +7,7 @@ $(document).ready(function(){
   $("#transparent-overlay").hide();
 
   $("#homePage-overlay").show();
-  // $("#dateSpecificity").show();
+  // $("#thankYou").show();
 
 
 /* HAMBURGER OVERLAY   HAMBURGER OVERLAY */
@@ -29,6 +29,11 @@ $(document).ready(function(){
 
   $("#addEvent").on("click", function(){
     fadeThisOut($("#homePage-overlay"));
+    fadeThisIn($("#locationForm"));
+  });
+
+  $("#mapAddBtn").on("click", function(){
+    fadeThisOut($(".seeMap-Elements"));
     fadeThisIn($("#locationForm"));
   });
 
