@@ -47,11 +47,19 @@ body{
 }
 
 #logo {
-	width: 180px;
+	/*width: 180px;*/
 	display: table-cell; 
 	vertical-align: middle; 
 	text-align: left;
+	margin: 0;
 }
+
+/*#survivors {
+	color: #9bd130;
+	display: table-cell; 
+	vertical-align: middle; 
+	text-align: left;
+}*/
 
 .glyphicon-menu-hamburger {
 	font-size: 35px;

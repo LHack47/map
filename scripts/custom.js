@@ -5,8 +5,8 @@ $(document).ready(function(){
   $(".form-comments").hide();
   $(".elements").hide();
   $("#transparent-overlay").hide();
-  // $("#homePage-overlay").show();
-  $("#dateRange1").show();
+  $("#homePage-overlay").show();
+  // $("#dateRange1").show();
   
 
 
@@ -22,10 +22,11 @@ $(document).ready(function(){
     fadeThisIn($(".seeMap-Elements"));
   });
 
-  // $("#hamburgerAddBtn").click(function(){
-  //   fadeThisOut($("#hamburger-overlay"));
-  //   fadeThisIn($("#locationForm"));
-  // });
+  $("#hamburgerAddBtn").click(function(){
+    // fadeThisOut($("#hamburger-overlay"));
+    fadeThisOut($(".seeMap-Elements"));
+    fadeThisIn($("#locationForm"));
+  });
  // homePage-overlay
   $("#seeMap").on("click", function(){
     fadeThisOut($("#homePage-overlay"));
