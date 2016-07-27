@@ -3,16 +3,14 @@ var firebaseRef = new Firebase("https://maptester.firebaseio.com/");
 var currentPage, nextPage, previousPage, userKey;
 
 var userObject = {};
+
+var mapObject = {};
 /* SEND OBJECT TO FIREBASE */
   function post(){
     firebaseRef.push(userObject);//firebaseRef.push
     userObject = {};
      document.getElementById("resetForm").reset();
   } //function post()
-
-  function exit(){
-    document.getElementById("resetForm").reset();
-  }
 
     function geocodeThis(){
       var geocoder = new google.maps.Geocoder;
@@ -21,7 +19,7 @@ var userObject = {};
           if (status === google.maps.GeocoderStatus.OK) {
               userObject.address = results[0].formatted_address;
             } else {
-              console.log('No results found');
+              console.log('No results found for that location');
           }
         });
       }; //geocodeThis()
@@ -92,7 +90,7 @@ var userObject = {};
     // Create the search box and link it to the UI element.
     var input = document.getElementById('pac-input');
     var searchBox = new google.maps.places.SearchBox(input);
-    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+    // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
   // Bias the SearchBox results towards current map's viewport.
    var questionWindow = new google.maps.InfoWindow;
     map.addListener('bounds_changed', function() {
@@ -110,12 +108,14 @@ var userObject = {};
       var bounds = new google.maps.LatLngBounds();
       places.forEach(function(place) {
 
+      if(mapObject.addingPin = true){
         // Create a marker for each place.
         var marker = new google.maps.Marker({
           position: place.geometry.location,
           map: map,
           icon: pinIcon + "redStar.png"
         });
+      } //mapObject.addingPin
 
         if (place.geometry.viewport) {
           // Only geocodes have viewport.
@@ -123,6 +123,8 @@ var userObject = {};
         } else {
           bounds.extend(place.geometry.location);
         }
+
+      if(mapObject.addingPin = true){
         //question-window open
       questionWindow.setContent( "<div id='pinDrop-window'>" +
       "<h3>Report a sexual assault at this location?</h3>"+
@@ -142,7 +144,7 @@ var userObject = {};
         questionWindow.close();
         $(".addAssault-Elements").hide();
         $("#transparent-overlay").show();
-        fadeThisIn($("#confirmStart"));        
+        fadeThisIn($("#confirmStart"));     mapObject.addingPin = false;
       });
 
       $("#pinDrop-window > #fireBase-no").on("click", function(){
@@ -150,17 +152,19 @@ var userObject = {};
         //REMOVE MARKER WHEN USER SELECTS NO
         marker.setVisible(false);
       });
-    }); //place.forEach
+    } //mapObject.addingPin
+    }); //places.forEach
     map.fitBounds(bounds);
       // console.log(bounds);
     }); //searchBox.addListener
      // Add marker on user click
   map.addListener('click', function(e) {
-    var marker = new google.maps.Marker({
-    position: {lat: e.latLng.lat(), lng: e.latLng.lng()},
-    map: map,
-    icon: pinIcon + "redStar.png"
-    }); // var marker
+    if(mapObject.addingPin = true){
+      var marker = new google.maps.Marker({
+        position: {lat: e.latLng.lat(), lng: e.latLng.lng()},
+        map: map,
+       icon: pinIcon + "redStar.png"
+      }); // var marker
      //info box when you click map
     questionWindow.setContent( 
       "<div id='pinDrop-window'>" +
@@ -184,11 +188,13 @@ var userObject = {};
         fadeThisOut($(".addAssault-Elements"));
         $("#transparent-overlay").show();
         fadeThisIn($("#confirmStart"));
+        mapObject.addingPin = false;
       });
       $("#pinDrop-window > #fireBase-no").on("click", function(){
         questionWindow.close();
         marker.setVisible(false);
       });
+      } //mapObject
     }); //map.addListener
 
 var infoWindow = new google.maps.InfoWindow();
@@ -206,6 +212,11 @@ var infoWindow = new google.maps.InfoWindow();
       map: map,
       icon: pinIcon + "redStar.png"
     });
+
+  function exit(){
+    document.getElementById("resetForm").reset();
+    marker.setVisible(false);
+  }
   //info box when you click a pin
 // TODO: TAKE OUT CALL BACK FUNCTION AND PUT INSIDE A CLICK HANDLER FUNCTION!
     google.maps.event.addListener(marker, 'click', function() {
@@ -216,24 +227,34 @@ var infoWindow = new google.maps.InfoWindow();
        eventObject.userGender + ' <br> '+ 
        '<strong>Age upon assault: </strong>' +
        eventObject.userAge +'<br>'+ 
-       '<strong>Attacker Gender: </strong>' +
-       eventObject.attackerGender +'<br>'+
        '<strong>Multiple attackers?: </strong>' +
        eventObject.attackedBy + ' <br> ' + 
-       '<strong>The attacker was a(n): </strong>' +
+       '<strong>Attacker(s) Gender: </strong>' +
+       eventObject.attackerGender +'<br>'+ 
+       '<strong>The attacker(s) was a(n): </strong>' +
        eventObject.relationship + ' <br> ' + 
-       '<strong>Multiple assaults here?: </strong>' +
-       eventObject.multipleAssaults + '<br>' +
        '<strong>Date range: </strong>' + '<br>' +
-       eventObject.dateRange1 + ' , '+ eventObject.dateRange2 + "<br>" + 
+       eventObject.dateRange1 + ' , '+ eventObject.dateRange2 + "<br>" +
+       '<strong>Multiple assaults here?: </strong>' +
+       eventObject.multipleAssaults + '<br>' + 
        '<strong>On a school campus: </strong>' +
        eventObject.schoolCampus + ' <br> ' + 
-       '<strong>reported?: </strong>' +
+       '<strong>Reported?: </strong>' +
        eventObject.reported + '<br>' +
+       '<strong>Reported to?: </strong>' +
+       eventObject.reportedTo + '<br>' +
+       '<strong>Were they persecuted?: </strong>' +
+       eventObject.persecuted + '<br>' +
        '</p></div>'
 
 // TODO: IF USER SAYS THEY DONT WANT TO ADD FURTHER DETAILS, SHOW ADDRESS AND SAY "NO FURTHER DETAILS" ONLY. (IF STATEMENT?)
       );
+      // for(key in eventObject){
+      //   if(key === undefined || "Not reported"){
+      //     delete eventObject[key];
+      //   } 
+      // };
+
       infoWindow.open(map, marker);
         if(questionWindow.open()){
           questionWindow.close();

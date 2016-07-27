@@ -54,7 +54,7 @@ body{
 }
 
 .glyphicon-menu-hamburger {
-	font-size: 22px;
+	font-size: 35px;
 	color: #264653;
 	font-weight: normal;
 	text-shadow: 1px 1px 2px black;
@@ -70,13 +70,15 @@ body{
 	flex-direction: column;
 }
 
-#hamburger-overlay a {
+#hamburger-overlay a h3 {
 	color: #9bd130;
 	text-decoration: none;
+	cursor: pointer;
+	z-index: 3;
 }
 
-#hamburger-overlay a:hover {
-	color: #fff8e0;
+#hamburger-overlay a:hover h3:hover {
+	color: #f25f5c;
 }
 
 /* SEARCH BOX START*/
@@ -96,22 +98,24 @@ body{
 }
 
 .controls {
+	/*margin-top: 80px;*/
 	border: 1px solid transparent;
 	border-radius: 2px 0 0 2px;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	outline: none;
 	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+	z-index: 2;
 }
 
 #pac-input {
-	position: absolute;
-	display: initial;
+	/*position: ;*/
+	/*display: initial;*/
 	width: 300px;
-	height: 40px;
-	z-index: 3;
+	height: 35px;
+	z-index: 2;
 	background-color: #fff;
-	font-size: 20px;
+	font-size: 18px;
 	color: rgb(50,50,50);
 	font-weight: 300;
 	/*margin-left: 12px;*/
@@ -282,7 +286,7 @@ form {
 }
 /* HOME PAGE END */
 
-.form-overlay , .form-comments > h3, p, div, button{
+.form-overlay , .form-comments h3 p div button{
 	z-index: 2;
 }
 
@@ -328,7 +332,7 @@ form {
 	color: #264653;
 }
 
-.answerBtn{
+.answerBtn , #notCampusBtn, #dateBtn1, #dateBtn2, .noDateBtn {
 	background-color: rgba(255, 248, 224, 0.65);
 	color: #264653;
 	width: 250px;
@@ -346,6 +350,15 @@ form {
 	height: 60px;
 	background-color: rgba(103, 204, 222, 0.65);
 	border: none;
+}
+
+#notReportedBtn{
+	background-color: rgba(255, 248, 224, 0.65);
+	color: #264653;
+	width: 250px;
+	height: 50px;
+	border: none;
+	margin-bottom: 7px;
 }
 
 .smallBtn {
@@ -369,10 +382,6 @@ form {
 	border: none;
 }
 
-/*.saveDate {
-	margin-top: 20%;
-}*/
-
 .flowControls{
 	width: 90%;
 	height: 40px;
@@ -383,7 +392,7 @@ form {
 	bottom: 4%;
 }
 
-.backBtn{
+.backBtn , #date2-backBtn, #multipleA-backBtn, #reportedBackBtn , #submitBackBtn, #confirmExit-backBtn {
 	width: 40px;
 	height: 40px;
 	border: none;
@@ -401,7 +410,7 @@ form {
 	/*position: absolute;*/
 	width: 40px;
 	height: 40px;
-	background: url("images/close.png");
+	background: url("images/Close.png");
 	background-size: 100%;
 	color: #fff8e0;
 	-webkit-filter: drop-shadow(1px 1px 2px black);
@@ -421,7 +430,7 @@ form {
 	text-shadow: 1px 1px 2px black;
 }
 
-.skipBtn{
+.skipBtn , #dateSpec-skipBtn , #date1-skipBtn, #campus-skipBtn{
 	background-color: transparent;
 	border: none;
 	color: #f25f5c;
@@ -489,7 +498,7 @@ form {
     margin-right: auto;
 }
 
-.form-overlay , .form-Comments > p{
+.form-overlay , .form-Comments p{
 	max-width: 600px;
 }
 
@@ -508,7 +517,7 @@ form {
    	flex-direction: column;
 }
 
-#confirmExit > .blueBtn {
+#confirmExit .blueBtn {
 	height: 55px;
 	font-size: 115%;
 	font-weight: bold;
@@ -553,7 +562,7 @@ form {
 	}
 
 	.glyphicon-menu-hamburger {
-		font-size: 35px;
+		font-size: 22px;
 	}
 
 	.flowControls {

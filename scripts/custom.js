@@ -5,9 +5,10 @@ $(document).ready(function(){
   $(".form-comments").hide();
   $(".elements").hide();
   $("#transparent-overlay").hide();
+  // $("#homePage-overlay").show();
+  $("#dateRange1").show();
+  
 
-  $("#homePage-overlay").show();
-  // $("#thankYou").show();
 
 
 /* HAMBURGER OVERLAY   HAMBURGER OVERLAY */
@@ -16,15 +17,20 @@ $(document).ready(function(){
     fadeThisOut($(".elements"));
   });
 
-  $("#hamburger-overlay").on("click", function(){
+  $("#hamburger-overlay").click(function(){
     fadeThisOut($("#hamburger-overlay"));
     fadeThisIn($(".seeMap-Elements"));
   });
+
+  // $("#hamburgerAddBtn").click(function(){
+  //   fadeThisOut($("#hamburger-overlay"));
+  //   fadeThisIn($("#locationForm"));
+  // });
  // homePage-overlay
   $("#seeMap").on("click", function(){
     fadeThisOut($("#homePage-overlay"));
     fadeThisIn($(".seeMap-Elements"));
-    // fadeThisIn($("#seePrompt"));
+    mapObject.addingPin = false;
   });
 
   $("#addEvent").on("click", function(){
@@ -62,6 +68,7 @@ $(document).ready(function(){
     $("#locationForm").fadeOut(1000);
     $(".addAssault-Elements").show();
     userObject.locationSpec = $(this).val();
+    mapObject.addingPin = true;
   });
  
   $(".answerBtn").click(function(){
@@ -71,9 +78,6 @@ $(document).ready(function(){
    nextPage.fadeIn(1500);
    userKey = $(this).parent().data("value");
    userObject[userKey] = $(this).val();
-
-//  console.log(userObject);
-//  console.log("its working");
  });
 
 /* FLOW CONTROL BUTTONS*****************/
@@ -91,10 +95,12 @@ $(document).ready(function(){
  });
 
   $(".skipBtn").click(function(){
-   currentPage = $(this).parent().parent();
-   nextPage = $(this).parent().parent().next();
-   currentPage.fadeOut("slow");
-   nextPage.fadeIn("slow");
+    currentPage = $(this).parent().parent();
+    nextPage = $(this).parent().parent().next();
+    currentPage.fadeOut("slow");
+    nextPage.fadeIn("slow");
+    userKey = $(this).parent().data("value");
+    userObject[userKey] = "Not reported";
   });
 
   $("#exitLocationSpec").click(function(){
@@ -104,11 +110,23 @@ $(document).ready(function(){
  /* END CONTROL BUTTONS************* */
 
 /* DATE PAGES ********************** */
+  $("#dateSpec-skipBtn").click(function(){
+    currentPage = $(this).parent().parent();
+    nextPage = $("#multipleAssaults");
+    currentPage.fadeOut("slow");
+    nextPage.fadeIn("slow");
+    userKey = $(this).parent().data("value");
+    userObject[userKey] = "Not reported";
+  });
+
+
   $("#dateBtn1").click(function(){
    currentPage = $(this).parent();
    nextPage = $("#dateRange1");
    currentPage.fadeOut(1500);
    nextPage.fadeIn(1500);
+   userKey = $(this).parent().data("value");
+   userObject[userKey] = $(this).val();
  });
 
  $("#dateBtn2").click(function(){
@@ -116,6 +134,8 @@ $(document).ready(function(){
    nextPage = $("#dateRange2");
    currentPage.fadeOut(1500);
    nextPage.fadeIn(1500);
+   userKey = $(this).parent().data("value");
+   userObject[userKey] = $(this).val();
  });
 
   $(".noDateBtn").click(function(){
@@ -133,6 +153,16 @@ $(document).ready(function(){
    userKey = $(this).parent().data("value");
    userObject[userKey] = $("#dateStart1").val() + " - " + $("#dateEnd1").val();
   });
+
+ $("#date1-skipBtn").click(function(){
+    currentPage = $(this).parent().parent();
+    nextPage = $("#multipleAssaults");
+    currentPage.fadeOut("slow");
+    nextPage.fadeIn("slow");
+    userKey = $(this).parent().data("value");
+    userObject[userKey] = "Not reported";
+  });
+
 
   $("#saveDate2").click(function(){
    currentPage = $(this).parent();
@@ -174,6 +204,15 @@ $("#date2-backBtn").click(function(){
    nextPage.fadeIn(1500);
    userKey = $(this).parent().data("value");
    userObject[userKey] = $("#campusC-box").val();
+  });
+
+  $("#campus-skipBtn").click(function(){
+    currentPage = $(this).parent().parent();
+    nextPage = $("#reported");
+    currentPage.fadeOut("slow");
+    nextPage.fadeIn("slow");
+    userKey = $(this).parent().data("value");
+    userObject[userKey] = "Not reported";
   });
 
 /* REPORTED CONTROL BUTTONS ******* */
@@ -221,16 +260,19 @@ $("#date2-backBtn").click(function(){
   /* CONFRIM EXIT PAGE ************* */
   $("#exitSubmit").click(function(){
    currentPage = $(this).parent();
+   $(".form-overlay").fadeOut(1500);
    nextPage = $("#confirmSubmit");
    currentPage.fadeOut(1500);
    nextPage.fadeIn(1500);
   });
 
   $("#exitDelete").click(function(){
-    currentPage = $(this).parent();
-    currentPage.fadeOut(1500);
-    $("#homePage-overlay").fadeIn(1500);
+    // currentPage = $(this).parent();
+    // currentPage.fadeOut(1500);
+    $(".form-overlay").fadeOut(1500);
+    $(".seeMap-Elements").fadeIn(1500);
     $("#transparent-overlay").hide();
+    mapObject.addingPin = false;
   });
 
   $("#confirmExit-backBtn").click(function(){
@@ -240,9 +282,9 @@ $("#date2-backBtn").click(function(){
 
 
   $("#exitThanks").click(function(){
-    currentPage = $(this).parent();
-    currentPage.fadeOut(1500);
+    $(".form-overlay").fadeOut(1300);
     $(".seeMap-Elements").fadeIn(1500);
     $("#transparent-overlay").hide();
+    mapObject.addingPin = false;
   });
 }); /* DOCUMENT.READY(FUNCTION() */
