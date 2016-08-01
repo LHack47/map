@@ -14,7 +14,7 @@ $(document).ready(function(){
     fadeThisOut($(".elements"));
   });
 
-  $("#hamOverlay-btn").click(function(){
+  $("#exitHamburger").click(function(){
     fadeThisOut($("#hamburger-overlay"));
     fadeThisIn($(".seeMap-Elements"));
   });
