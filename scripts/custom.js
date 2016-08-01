@@ -17,13 +17,13 @@ $(document).ready(function(){
     fadeThisOut($(".elements"));
   });
 
-  $("#hamburger-overlay").click(function(){
+  $("#hamOverlay-btn").click(function(){
     fadeThisOut($("#hamburger-overlay"));
     fadeThisIn($(".seeMap-Elements"));
   });
 
   $("#hamburgerAddBtn").click(function(){
-    // fadeThisOut($("#hamburger-overlay"));
+    fadeThisOut($("#hamburger-overlay"));
     fadeThisOut($(".seeMap-Elements"));
     fadeThisIn($("#locationForm"));
   });
