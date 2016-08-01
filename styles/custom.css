@@ -318,7 +318,6 @@ form {
 }
 
 .buttons{
-	color:#fff8e0;
 	padding: 10px;
 	border: none;
 	border-radius: 10px;
@@ -328,7 +327,7 @@ form {
 }
 
 .buttons:hover{
-	color: #fff8e0;
+	color: #264653;
 }
 
 .navyBtn{
@@ -342,8 +341,17 @@ form {
 	border-radius: 30px;
 }
 
+.navyBtn:hover {
+	color: #fff8e0;
+}
+
 .blueBtn{
 	background-color: rgba(103,204, 222, 0.95);
+	color: #264653;
+}
+
+.blueBtn:hover {
+	color: #fff8e0;
 }
 
 .greenBtn{
@@ -351,7 +359,7 @@ form {
 	color: #264653;
 }
 
-.answerBtn , #notCampusBtn, #dateBtn1, #dateBtn2, .noDateBtn {
+.answerBtn , .notCampusBtn, .dateBtn1, .dateBtn2, .noDateBtn {
 	background-color: rgba(255, 248, 224, 0.65);
 	color: #264653;
 	width: 250px;
@@ -462,16 +470,18 @@ form {
 	text-shadow: 1.5px 1.5px 2px black;
 }
 
-#privacy-policy {
+.privacy-policy {
 	color: #f25f5c;
 	position: absolute;
-	bottom: 3%;
+	bottom: 13%;
+	display: block;
 	left: 10%;
 	text-decoration: none;
 }
 
-#privacy-policy:hover{
+.privacy-policy:hover{
 	color: #67ccde;
+	text-decoration: none;
 }
 
 #form-guidance {

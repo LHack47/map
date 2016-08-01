@@ -6,9 +6,6 @@ $(document).ready(function(){
   $(".elements").hide();
   $("#transparent-overlay").hide();
   $("#homePage-overlay").show();
-  // $("#dateRange1").show();
-  
-
 
 
 /* HAMBURGER OVERLAY   HAMBURGER OVERLAY */
@@ -43,13 +40,6 @@ $(document).ready(function(){
     fadeThisOut($(".seeMap-Elements"));
     fadeThisIn($("#locationForm"));
   });
-
-  $("#exitLocationspec").on("click", function(){
-    fadeThisOut($("#locationForm"));
-    fadeThisIn($("#homePage-overlay"));
-  });
-
-
 
 /* USER DENYS TO ADD MORE DETAILS */
   $("#deny").on("click", function(){
@@ -121,7 +111,7 @@ $(document).ready(function(){
   });
 
 
-  $("#dateBtn1").click(function(){
+  $(".dateBtn1").click(function(){
    currentPage = $(this).parent();
    nextPage = $("#dateRange1");
    currentPage.fadeOut(1500);
@@ -130,7 +120,7 @@ $(document).ready(function(){
    userObject[userKey] = $(this).val();
  });
 
- $("#dateBtn2").click(function(){
+ $(".dateBtn2").click(function(){
    currentPage = $(this).parent();
    nextPage = $("#dateRange2");
    currentPage.fadeOut(1500);
@@ -189,7 +179,7 @@ $("#date2-backBtn").click(function(){
  });
 
  /* SCHOOL CAMPUS CONTROL BUTTONS */
-  $("#notCampusBtn").click(function(){
+  $(".notCampusBtn").click(function(){
     currentPage = $(this).parent();
     nextPage = $("#reported");
     currentPage.fadeOut(1500);
