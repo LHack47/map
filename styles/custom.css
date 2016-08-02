@@ -38,28 +38,28 @@ body{
 	position: relative;
 	width: 100vw;
 	height: 65px;
-	background-color: rgba(255,255,255, 0.8);
-	/*z-index: 1;*/
+	background-color: transparent;
 	display: table;
 	padding: 0 20px;
-	box-shadow: 2px 0px 2px grey;
-	/*clear: both;*/
 }
 
 #logo {
-	/*width: 180px;*/
-	display: table-cell; 
+	/*display: table-cell; */
 	vertical-align: middle; 
-	text-align: left;
-	margin: 0;
+	display: inline-block;
+	float: left;
+	
 }
 
-/*#survivors {
+#survivors {
 	color: #9bd130;
-	display: table-cell; 
+	text-shadow: 0.5px 0.5px 4px black;
+	/*color: #f25f5c;*/
+	/*display: table-cell; */
 	vertical-align: middle; 
-	text-align: left;
-}*/
+	display: inline-block;
+	float: left;
+}
 
 .glyphicon-menu-hamburger {
 	font-size: 35px;
@@ -124,9 +124,9 @@ body{
 	z-index: 2;
 	padding: 5px;
 	left: 0;
-	right: 0;
+	/*right: 0;
 	margin-left: auto;
-	margin-right: auto;
+	margin-right: auto;*/
 }
 
 .controls {
@@ -178,7 +178,7 @@ form {
 	position: absolute;
 	/*display: initial;*/
 	font-size: 100%;
-	bottom: 20%;
+	bottom: 4%;
 	left: 0;
 	right: 0;
 	margin-right: auto;
@@ -195,7 +195,7 @@ form {
 	font-weight: 500;
 	border-radius: 2px;
 	box-shadow: 0px 2px 2px grey;
-	bottom: 4%;
+	bottom: 20%;
 	padding: 15px;
 	left: 0;
 	right: 0;
@@ -241,15 +241,6 @@ form {
 	/*height: 100vh;*/
 	/*top: 0;*/
 	line-height: 1.4;
-}
-
-#transparent-overlay {
-	position: absolute;
-	top: 0;
-	width: 100vw;
-	height: 100vh;
-	background-color: transparent;
-	z-index: 1;
 }
 
 .datePage {
@@ -308,13 +299,15 @@ form {
 
 .gm-style-iw:parent{
 	z-index: 2;
+	max-width: 320px;
+	margin-top: 50px;
 }
 
 #infoContent{
 	color: black;
 	font-size: 140%;
 	word-wrap: normal;
-	max-width: 280px;
+	
 }
 /* HOME PAGE END */
 
@@ -549,6 +542,8 @@ form {
    	align-items: center;
    	justify-content: center;
    	flex-direction: column;
+	background-color: #264653;
+	z-index: 3;
 }
 
 #confirmExit {
@@ -570,6 +565,7 @@ form {
    	align-items: center;
    	justify-content: center;
    	flex-direction: column;
+	background-color: #264653;
 }
 
 #annieC {
@@ -596,6 +592,10 @@ form {
 		height: 100vh;
 		top: 0;
 		padding: 10px 13px;
+	}
+
+	.gm-style-iw:parent {
+		max-height: 300px;
 	}
 
 	#pac-input{

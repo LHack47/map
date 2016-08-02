@@ -108,7 +108,7 @@ var mapObject = {};
       var bounds = new google.maps.LatLngBounds();
       places.forEach(function(place) {
 
-      if(mapObject.addingPin = true){
+      if(mapObject.addingPin === true){
         // Create a marker for each place.
         var marker = new google.maps.Marker({
           position: place.geometry.location,
@@ -159,7 +159,7 @@ var mapObject = {};
     }); //searchBox.addListener
      // Add marker on user click
   map.addListener('click', function(e) {
-    if(mapObject.addingPin = true){
+    if(mapObject.addingPin === true){
       var marker = new google.maps.Marker({
         position: {lat: e.latLng.lat(), lng: e.latLng.lng()},
         map: map,
@@ -233,7 +233,7 @@ var infoWindow = new google.maps.InfoWindow();
        eventObject.attackerGender +'<br>'+ 
        '<strong>The attacker(s) was a(n): </strong>' +
        eventObject.relationship + ' <br> ' + 
-       '<strong>Date range: </strong>' + '<br>' +
+       '<strong>Date range: </strong>' +
        eventObject.dateRange1 + ' , '+ eventObject.dateRange2 + "<br>" +
        '<strong>Multiple assaults here?: </strong>' +
        eventObject.multipleAssaults + '<br>' + 
@@ -262,4 +262,5 @@ var infoWindow = new google.maps.InfoWindow();
         }
     }); // addListender(marker)
   }); //firebase.on function
+
 } //initAutocomplete()
