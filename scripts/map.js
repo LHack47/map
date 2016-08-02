@@ -37,24 +37,9 @@ function fadeThisOut(element){
     element.fadeOut("slow");
 };
 
-//Function to start form 
-function navyBtnFunction(){
-    $("#locationForm").fadeOut("slow");
-    $(".home-elements").show();
-    $("#addPrompt").show();
-    mapObject.seeMap = false;
-    userObject.locationSpecificity = $("#locationForm input").val();
-    console.log(userObject);
-};
-
-//Sending user to exit page
-function exitPage () {
-
-}
 
 //Moving through pages
 var current_fs, next_fs, previous_fs, userKey;
-
 
 /* SEARCH BOX + MAP*/
  function initAutocomplete() {
@@ -174,8 +159,9 @@ var current_fs, next_fs, previous_fs, userKey;
         fadeThisOut($("#pinDrop-window"));
         fadeThisIn($("#form-start-overlay"));
         questionWindow.close();
-        $(".homepage-elements").hide();
-        $(".mapPrompts").hide();  
+        $("#pac-input").hide();
+        $(".mapPrompts").hide();
+        mapObject.seeMap = true;  
       });
 
       $("#pinDrop-window > #fireBase-no").on("click", function(){
@@ -223,8 +209,9 @@ var current_fs, next_fs, previous_fs, userKey;
         fadeThisOut($("#pinDrop-window"));
         fadeThisIn($("#form-start-overlay"));
         questionWindow.close();
-        $(".homepage-elements").hide();
+        $("#pac-input").hide();
         $(".mapPrompts").hide(); 
+        mapObject.seeMap = true; 
       });
       $("#pinDrop-window > #fireBase-no").on("click", function(){
         questionWindow.close();
@@ -257,25 +244,23 @@ var infoWindow = new google.maps.InfoWindow();
        '<p><strong>Assault Location: </strong> <br>'+ eventObject.address + '<br>' + 
        '<strong>Survivor Gender: </strong>' +
        eventObject.userGender + ' <br> '+ 
-       '<strong>Age upon assault: </strong>' +
+       '<strong>Age Upon Assault: </strong>' +
        eventObject.userAge +'<br>'+ 
        '<strong>Attacker Gender: </strong>' +
        eventObject.attackerGender +'<br>'+
-       '<strong>Multiple attackers?: </strong>' +
+       '<strong>Multiple Attackers?: </strong>' +
        eventObject.multipleAttackers + ' <br> ' + 
-       '<strong>The attacker was a(n): </strong>' +
+       '<strong>The Attacker Was A(n): </strong>' +
        eventObject.relationshipToAttacker + ' <br> ' + 
-       '<strong>Multiple assaults here?: </strong>' +
+       '<strong>Multiple Assaults Here?: </strong>' +
        eventObject.multipleAssaults + '<br>' +
-       '<strong>Date range: </strong>' + '<br>' +
+       '<strong>Date Range: </strong>' + '<br>' +
        eventObject.dateStart + ' -- '+ eventObject.dateEnd + "<br>" + 
-       '<strong>On a school campus: </strong>' +
+       '<strong>On A School Campus: </strong>' +
        eventObject.schoolCampus + ' <br> ' + 
-       '<strong>reported?: </strong>' +
+       '<strong>Reported: </strong>' +
        eventObject.reported + '<br>' +
        '</p></div>'
-
-// TODO: IF USER SAYS THEY DONT WANT TO ADD FURTHER DETAILS, SHOW ADDRESS AND SAY "NO FURTHER DETAILS" ONLY. (IF STATEMENT?)
       );
       infoWindow.open(map, marker);
         if(questionWindow.open()){
