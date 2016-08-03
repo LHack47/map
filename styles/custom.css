@@ -9,7 +9,7 @@ body{
 	font-weight: normal;
 }
 
-/*HOMEPAGE*/
+/**********HOMEPAGE***********/
 
 #googleMap {
 	position: absolute;
@@ -25,37 +25,38 @@ body{
     top: 0;
 	width: 100%;
 	height: 60px;
-	/*background-color: rgba(255,255,255, 0.8);*/
+	background-color: rgba(255,255,255, 0.8);
 	z-index: 1;
 	padding: 0 20px;
-	/*box-shadow: 2px 0px 2px grey;*/
+	box-shadow: 2px 0px 2px grey;
 }
 
 .logo {
 	position:absolute;
 	margin: 0;
-    left: 0;
+    left: 1%;
 	z-index: 2;
+	height: 75%;
+	top:15%;
 }
 
 .logoText {
 	position:absolute;
 	margin: 0;
-    left: 5%;
-	top:45%;
+    left: 4%;
+	top:40%;
 	z-index: 2;
-	text-shadow: 2px 2px 2px black;
+	/*text-shadow: 2px 2px 2px black;*/
 }
 
 .glyphicon-menu-hamburger {
 	position: absolute;
-    top:10px;
+    top:15px;
     right:10px;
     font-size: 30px;
 	color: #264653;
 	font-weight: normal;
 	text-shadow: 1px 1px 2px black;
-    /*right: 0;*/
 }
 
 #homepage-overlay {
@@ -74,6 +75,7 @@ body{
 	text-shadow: 1px 1px 2px black;
 } 
 
+/**********HAMBURGER OVERLAY***********/
 #hamburger-overlay {
    	align-content: center;
     justify-content: center;
@@ -98,7 +100,7 @@ body{
 	color: #f25f5c;
 }
 
-/*Search Box */
+/********** SEARCH BOX ***********/
 .controls {
 	margin-top: 65px;
 	border: 1px solid transparent;
@@ -148,18 +150,18 @@ body{
 	width: 345px;
 }
 
-/*HOMEPAGE ELEMENTS*/
+/********** HOMEPAGE ELEMENTS ***********/
 .mapPrompts{
 	display: none;
 	position: absolute;
 	width: 300px;
-	height: 75px;
+	height: 100px;
 	background-color: #264653;
 	color: #fff8e0;
 	font-weight: 500;
 	border-radius: 2px;
 	box-shadow: 0px 2px 2px grey;
-	bottom: 4%;
+	bottom: 3%;
 	padding: 15px;
 	left: 0;
 	right: 0;
@@ -176,7 +178,7 @@ body{
 	z-index: 3;
 }
 
-/*BUTTONS*/
+/********** BUTTONS ***********/
 
 .buttons{
 	color:#fff8e0;
@@ -245,7 +247,7 @@ body{
 	color: #264653;
 }
 
-.answerBtn, .answerDateBtn, .subfieldBtn{
+.answerBtn, .dateBtn1, .dateBtn2, .noDateBtn, .notCampusBtn, #notReportedBtn{
 	background-color: rgba(255, 248, 224, 0.65);
 	color: #264653;
 	width: 250px;
@@ -260,11 +262,28 @@ body{
 	background-color: #67ccde;
 }
 
-.exitBtn{
+/********** FLOW CONTROLS ***********/
+
+.flowControls{
+	width: 90%;
+	height: 40px;
 	position: absolute;
-	bottom: 7%;
-	width: 50px;
-	height: 50px;
+	left: 0;
+	right: 0;
+	margin: 15px auto 0px;
+	bottom: 4%;
+}
+
+.exitBtn, .exitLocationBtn{
+	/*position: absolute;*/
+	width: 40px;
+	height: 40px;
+	background: url("images/Close-1.png");
+	background-size: 100%;
+	color: #fff8e0;
+	-webkit-filter: drop-shadow(1px 1px 2px black);
+	filter: drop-shadow(2px 2px 2px black);
+	border-radius: 100%;
 	padding: 7px;
 	display: table-cell; 
     vertical-align: middle; 
@@ -272,52 +291,33 @@ body{
 	right: 0;
 	margin-left: auto;
     margin-right: auto;
-	-webkit-filter: drop-shadow(5px 5px 5px #222);
-  	filter: drop-shadow(5px 5px 5px #222);
 }
 
-.exitLocationBtn{
-	position: absolute;
-	bottom: 7%;
-	width: 50px;
-	height: 50px;
-	padding: 7px;
+.backBtn, #date2-backBtn, #multipleA-backBtn, #reportedBackBtn {
+	width: 40px;
+	height: 40px;
+	border: none;
+	background: url("images/redArrow.png");
+	background-size: 100%;
+	padding: 0;
 	display: table-cell; 
-    vertical-align: middle; 
-	left: 0;
-	right: 0;
-	margin-left: auto;
-    margin-right: auto;
-	-webkit-filter: drop-shadow(5px 5px 5px #222);
-  	filter: drop-shadow(5px 5px 5px #222);
-}
+    vertical-align: middle;
+	float: left;
+	-webkit-filter: drop-shadow(2px 2px 2px black);
+	filter: drop-shadow(2px 2px 2px black);
+	}
 
-.backBtn{
-	position: absolute;
-	bottom: 7%;
-	width: 50px;
-	height: 50px;
-	padding: 7px;
-	display: table-cell; 
-    vertical-align: middle; 
-	left: 10%;
-	-webkit-filter: drop-shadow(5px 5px 5px #222);
-  	filter: drop-shadow(5px 5px 5px #222);
-}
-
-.skipBtn{
-	position: absolute;
-	bottom: 6%;
-	width: 50px;
-	height: 50px;
-	padding: 7px;
-	display: table-cell; 
-    vertical-align: middle; 
-	right: 10%;
-	font-size: 25px;
-	color: #f25f5c;
+.skipBtn, #dateSpec-skipBtn, #date1-skipBtn, #campus-skipBtn{
 	background-color: transparent;
-	/*text-shadow: 5px 5px 5px 5px #222;*/
+	border: none;
+	color: #f25f5c;
+	padding: 0;
+	font-size: 24px;
+	font-weight: 600;
+	display: table-cell; 
+    vertical-align: middle;
+	float: right; 
+	text-shadow: 1.5px 1.5px 2px black;
 }
 
 .exitFinalBtn {
@@ -331,7 +331,7 @@ body{
 	border-radius: 30px;
 }
 
-/*Adding a pin*/
+/********** ADDING A PIN ***********/
 #pinDrop-window {
 	font-size: 100%;
 	width: 170px;
@@ -342,7 +342,7 @@ body{
 	font-size: 170%;
 }
 
-/*Selecting to add location*/
+/********** ADDING A LOCATION ***********/
 #fireBase-no {
 	margin-right: 8%;
 	
@@ -368,19 +368,22 @@ body{
 	max-width: 400px;
 }
 
-/*PRIVACY POLICY*/
-#privacy-policy {
+/********** PRIVACY POLICY ***********/
+.privacy-policy {
 	color: #f25f5c;
 	position: absolute;
-	bottom: 3%;
+	bottom: 13%;
+	display: block;
 	left: 10%;
 	text-decoration: none;
 }
 
-#privacy-policy:hover{
+.privacy-policy:hover{
 	color: #67ccde;
+	text-decoration: none;
 }
-/*FORM*/
+
+/********** FORM ***********/
 .form-overlay {
     width: 50vw;
 	height: 80vh;
@@ -403,24 +406,25 @@ body{
 	display: inline-block;
 }
 
+/********** MEDIA QUERIES ***********/
 @media screen and (max-width: 700px) {
 	.form-overlay {
-		width: 100%;
-		height: 100%;
+		width: 100vw;
+		height: 100vh;
 		top:0;
 	}
 
 	#homepage-overlay {
-		width:100%;
-		height:100%;
+		width:100vw;
+		height:100vh;
 		top:0;
 		background-color: rgba(38, 70, 83, 0.98);
 	}
 
-	.greenBtn{
+	/*.greenBtn{
 		margin-top: 30px;
 		height: 10%;
-	}
+	}*/
 
 	.grayBtn {
 		margin-top: 30px;
@@ -432,10 +436,9 @@ body{
 	.logoText {
 		position:absolute;
 		margin: 0;
-    	left: 15%;
+    	left: 10%;
 		top:45%;
 		z-index: 2;
-		text-shadow: 2px 2px 2px black;
 	}
 	
 	.ageBtn {
