@@ -37,27 +37,28 @@ body{
 #navBar{
 	position: relative;
 	width: 100vw;
-	height: 65px;
-	background-color: transparent;
-	display: table;
+	height: 60px;
+	background-color: rgba(255, 255, 255, .8);
+	/*box-shadow: 2px 2px 6px grey;*/
+	box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
 	padding: 0 20px;
+	display: table;
+    justify-content: center;
 }
 
 #logo {
-	/*display: table-cell; */
+	width: 50px;
+	display: table-cell;
 	vertical-align: middle; 
-	display: inline-block;
+	justify-content: center;
 	float: left;
 	
 }
 
 #survivors {
 	color: #9bd130;
-	text-shadow: 0.5px 0.5px 4px black;
-	/*color: #f25f5c;*/
-	/*display: table-cell; */
+	display: table-cell; 
 	vertical-align: middle; 
-	display: inline-block;
 	float: left;
 }
 
@@ -91,7 +92,7 @@ body{
 	color: #9bd130;
 }
 
-#hamburger-overlay > h2:hover h3:hover {
+#hamburger-overlay > h2:hover , h3:hover {
 	color: #f25f5c;
 	text-decoration: none;
 }
@@ -106,10 +107,7 @@ body{
 }
 
 #exitHamburger{
-	font-size: 20px;
-	position: absolute;
-	top: 3%;
-	right: 4%;
+	color: #67ccde;
 	cursor: pointer;
 }
 
@@ -136,7 +134,7 @@ body{
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	outline: none;
-	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 	z-index: 2;
 }
 
@@ -175,27 +173,30 @@ form {
 
 #mapAddBtn {
 	width: 120px;
+	background-color: #9bd130;
 	position: absolute;
 	/*display: initial;*/
 	font-size: 100%;
-	bottom: 4%;
+	/*bottom: 4%;*/
 	left: 0;
 	right: 0;
 	margin-right: auto;
 	margin-left: auto;
+	box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 #seePrompt{
 	/*display: none;*/
 	position: absolute;
 	width: 300px;
-	height: 75px;
+	height: 90px;
 	background-color: #264653;
 	color: #fff8e0;
 	font-weight: 500;
 	border-radius: 2px;
-	box-shadow: 0px 2px 2px grey;
-	bottom: 20%;
+	/*box-shadow: 0px 2px 2px grey;*/
+	box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+	bottom: 6%;
 	padding: 15px;
 	left: 0;
 	right: 0;
@@ -300,14 +301,14 @@ form {
 .gm-style-iw:parent{
 	z-index: 2;
 	max-width: 320px;
-	margin-top: 50px;
+	top: 100px;
 }
 
 #infoContent{
 	color: black;
+	max-height: 350px;
 	font-size: 140%;
 	word-wrap: normal;
-	
 }
 /* HOME PAGE END */
 
@@ -365,7 +366,7 @@ form {
 	color: #264653;
 }
 
-.answerBtn , .notCampusBtn, .dateBtn1, .dateBtn2, .noDateBtn {
+.answerBtn , .notCampusBtn, .dateBtn1, .dateBtn2, .noDateBtn , .prosecutedBtn{
 	background-color: rgba(255, 248, 224, 0.65);
 	color: #264653;
 	width: 250px;
@@ -463,7 +464,7 @@ form {
 	text-shadow: 1px 1px 2px black;
 }
 
-.skipBtn , #dateSpec-skipBtn , #date1-skipBtn, #campus-skipBtn{
+.skipBtn , #dateSpec-skipBtn , #date1-skipBtn, #campus-skipBtn , #reportSkipBtn{
 	background-color: transparent;
 	border: none;
 	color: #f25f5c;
@@ -594,8 +595,8 @@ form {
 		padding: 10px 13px;
 	}
 
-	.gm-style-iw:parent {
-		max-height: 300px;
+	.gm-style-iw:parent{
+		top: auto;
 	}
 
 	#pac-input{

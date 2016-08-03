@@ -27,7 +27,7 @@ $(document).ready(function(){
   $("#seeMap").on("click", function(){
     fadeThisOut($("#homePage-overlay"));
     fadeThisIn($(".seeMap-Elements"));
-    $("#seePrompt").delay(12000).fadeOut(500);
+    // $("#seePrompt").delay(12000).fadeOut(500);
     mapObject.addingPin = false;
   });
 
@@ -89,7 +89,7 @@ $(document).ready(function(){
     nextPage = $(this).parent().parent().next();
     currentPage.fadeOut("slow");
     nextPage.fadeIn("slow");
-    userKey = $(this).parent().data("value");
+    userKey = $(this).parent().parent().data("value");
     userObject[userKey] = "Not reported";
   });
 
@@ -105,7 +105,7 @@ $(document).ready(function(){
     nextPage = $("#multipleAssaults");
     currentPage.fadeOut("slow");
     nextPage.fadeIn("slow");
-    userKey = $(this).parent().data("value");
+    userKey = $(this).parent().parent().data("value");
     userObject[userKey] = "Not reported";
   });
 
@@ -149,7 +149,7 @@ $(document).ready(function(){
     nextPage = $("#multipleAssaults");
     currentPage.fadeOut("slow");
     nextPage.fadeIn("slow");
-    userKey = $(this).parent().data("value");
+    userKey = $(this).parent().parent().data("value");
     userObject[userKey] = "Not reported";
   });
 
@@ -201,7 +201,7 @@ $("#date2-backBtn").click(function(){
     nextPage = $("#reported");
     currentPage.fadeOut("slow");
     nextPage.fadeIn("slow");
-    userKey = $(this).parent().data("value");
+    userKey = $(this).parent().parent().data("value");
     userObject[userKey] = "Not reported";
   });
 
@@ -209,7 +209,7 @@ $("#date2-backBtn").click(function(){
   $("#notReportedBtn").click(function(){
    currentPage = $(this).parent();
    nextPage = $("#confirmSubmit");
-   currentPage.fadeOut(1500);
+  //  currentPage.fadeOut(1500);
    nextPage.fadeIn(1500);
   }); 
 
@@ -220,22 +220,38 @@ $("#date2-backBtn").click(function(){
    previousPage.fadeIn(1500);
   });
 
+  $("#reportSkipBtn").click(function(){
+    // currentPage = $(this).parent().parent();
+    nextPage = $("#confirmSubmit");
+    // currentPage.fadeOut("slow");
+    nextPage.fadeIn("slow");
+    userKey = $(this).parent().parent().data("value");
+    userObject[userKey] = "Not reported";
+  });
+
+  $(".prosecutedBtn").click(function(){
+  //  currentPage = $(this).parent();
+   nextPage = $(this).parent().next();
+  //  currentPage.fadeOut(1500);
+   nextPage.fadeIn(1500);
+   userKey = $(this).parent().data("value");
+   userObject[userKey] = $(this).val();
+ });
+
 /* CONFIRM SUBMIT ****************** */
   $("#submit").click(function(){
    currentPage = $(this).parent();
    nextPage = $("#thankYou");
    currentPage.fadeOut(1500);
    nextPage.fadeIn(1500);
-   userKey = $(this).parent().data("value");
-   userObject[userKey] = $("#lastComment").val();
-
-   console.log(userObject);
+  //  console.log(userObject);
   });
 
   $("#restart").click(function(){
-   currentPage = $(this).parent();
+    $(".form-overlay").fadeOut(1300);
+  //  currentPage = $(this).parent();
    nextPage = $("#homePage-overlay");
-   currentPage.fadeOut(1500);
+  //  currentPage.fadeOut(1500);
    nextPage.fadeIn(1500);
   });
 

@@ -10,7 +10,15 @@ var mapObject = {};
     firebaseRef.push(userObject);//firebaseRef.push
     userObject = {};
      document.getElementById("resetForm").reset();
-  } //function post()
+     console.log(userObject);
+  } //function post() for any exit and submit button
+
+  function submitPost(){
+    userKey = $("#submit").parent().data("value");
+    // console.log(userKey);
+    userObject[userKey] = $("#lastComment").val();
+    console.log(userKey);
+  } // submitPost() for last submit button
 
     function geocodeThis(){
       var geocoder = new google.maps.Geocoder;
@@ -152,6 +160,10 @@ var mapObject = {};
         //REMOVE MARKER WHEN USER SELECTS NO
         marker.setVisible(false);
       });
+            function exit(){
+        document.getElementById("resetForm").reset();
+        marker.setVisible(false);
+      }
     } //mapObject.addingPin
     }); //places.forEach
     map.fitBounds(bounds);
@@ -194,6 +206,10 @@ var mapObject = {};
         questionWindow.close();
         marker.setVisible(false);
       });
+      function exit(){
+        document.getElementById("resetForm").reset();
+        marker.setVisible(false);
+      }
       } //mapObject
     }); //map.addListener
 
@@ -213,47 +229,55 @@ var infoWindow = new google.maps.InfoWindow();
       icon: pinIcon + "redStar.png"
     });
 
-  function exit(){
-    document.getElementById("resetForm").reset();
-    marker.setVisible(false);
-  }
   //info box when you click a pin
 // TODO: TAKE OUT CALL BACK FUNCTION AND PUT INSIDE A CLICK HANDLER FUNCTION!
+
+  
+
+
     google.maps.event.addListener(marker, 'click', function() {
+
       infoWindow.setContent(
        '<div id="infoContent">'+
-       '<p><strong>Assault Location: </strong> <br>'+ eventObject.address + '<br>' + 
-       '<strong>Survivor Gender: </strong>' +
-       eventObject.userGender + ' <br> '+ 
-       '<strong>Age upon assault: </strong>' +
-       eventObject.userAge +'<br>'+ 
-       '<strong>Multiple attackers?: </strong>' +
-       eventObject.attackedBy + ' <br> ' + 
-       '<strong>Attacker(s) Gender: </strong>' +
-       eventObject.attackerGender +'<br>'+ 
-       '<strong>The attacker(s) was a(n): </strong>' +
-       eventObject.relationship + ' <br> ' + 
-       '<strong>Date range: </strong>' +
-       eventObject.dateRange1 + ' , '+ eventObject.dateRange2 + "<br>" +
-       '<strong>Multiple assaults here?: </strong>' +
-       eventObject.multipleAssaults + '<br>' + 
-       '<strong>On a school campus: </strong>' +
-       eventObject.schoolCampus + ' <br> ' + 
-       '<strong>Reported?: </strong>' +
-       eventObject.reported + '<br>' +
-       '<strong>Reported to?: </strong>' +
-       eventObject.reportedTo + '<br>' +
-       '<strong>Were they persecuted?: </strong>' +
-       eventObject.persecuted + '<br>' +
-       '</p></div>'
+      //  '<p><strong>Assault Location: </strong> <br>'+ eventObject.address + '<br>' + 
+      //  '<strong>Survivor Gender: </strong>' +
+      //  eventObject.userGender + ' <br> '+ 
+      //  '<strong>Age upon assault: </strong>' +
+      //  eventObject.userAge +'<br>'+ 
+      //  '<strong>Multiple attackers?: </strong>' +
+      //  eventObject.attackedBy + ' <br> ' + 
+      //  '<strong>Attacker(s) Gender: </strong>' +
+      //  eventObject.attackerGender +'<br>'+ 
+      //  '<strong>The attacker(s) was a(n): </strong>' +
+      //  eventObject.relationship + ' <br> ' + 
+      //  '<strong>Date range: </strong>' +
+      //  eventObject.dateRange1 + ' , '+ eventObject.dateRange2 + "<br>" +
+      //  '<strong>Multiple assaults here?: </strong>' +
+      //  eventObject.multipleAssaults + '<br>' + 
+      //  '<strong>On a school campus: </strong>' +
+      //  eventObject.schoolCampus + ' <br> ' + 
+      //  '<strong>Reported?: </strong>' +
+      //  eventObject.reported + '<br>' +
+      //  '<strong>Reported to?: </strong>' +
+      //  eventObject.reportedTo + '<br>' +
+      //  '<strong>Were they prosecuted?: </strong>' +
+      //  eventObject.prosecuted + '<br>' +
+      //  '<strong>Comments: </strong>' +
+      //  eventObject.submitReport + '<br>' +
+      //  '</p> 
+      '</div>'
+      ); //.setContent 
 
-// TODO: IF USER SAYS THEY DONT WANT TO ADD FURTHER DETAILS, SHOW ADDRESS AND SAY "NO FURTHER DETAILS" ONLY. (IF STATEMENT?)
-      );
-      // for(key in eventObject){
-      //   if(key === undefined || "Not reported"){
-      //     delete eventObject[key];
-      //   } 
-      // };
+      var check = eventObject.hasOwnProperty("userLocation");
+
+      var value = eventObject.key;
+
+      for (var key in eventObject){ 
+        $('#infoContent').append("<p><strong> " + key + ": " + eventObject[key] + "</strong></p>");
+        if(check === true){
+          delete eventObject.userLocation;
+        }
+      };
 
       infoWindow.open(map, marker);
         if(questionWindow.open()){

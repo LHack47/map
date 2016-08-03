@@ -48,9 +48,9 @@
 
 			<div class="elements seeMap-Elements" id="seePrompt">
 				<p>Click any record dot to view the assault details reported to us.</p>
-			</div> <!-- .seeMapElements #seePrompt -->
 
-			<button type="button" class="elements seeMap-Elements buttons btn greenBtn" id="mapAddBtn">Add Assault</button>
+				<button type="button" class="elements seeMap-Elements buttons btn greenBtn" id="mapAddBtn">Add Assault</button>
+			</div> <!-- .seeMapElements #seePrompt -->
 
 			<div class="elements addAssault-Elements" id="addPrompt">
 				<p>Please drop a pin or enter a location to begin your assault record.</p>
@@ -80,12 +80,11 @@
   </div> <!-- #homePage-overlay -->
 <!-- **HAMBURGER OVERLAY **************** -->
 	<div class="form-overlay" id="hamburger-overlay">
-		<span class="glyphicon glyphicon-remove" id="exitHamburger" aria-hidden="true"></span>
-
 		<!--<div id="hamOverlay-btn"></div>-->
 			<h3 id="hamburgerAddBtn"> + Assault Report</h3>
 			<a href="http://www.Anniecannons.com"><h2>About Us</h2></a>
 			<a href="http://www.nsvrc.org/"><h2>Resources</h2></a>
+			<h2 id="exitHamburger">See the map</h2>
 	</div> <!-- #hamburger-overlay -->
 
 <form id="resetForm">
@@ -130,14 +129,14 @@
 		<br>
     <input type="button" class="buttons answerBtn" value="It's complicated"/>
 		<br>
-		<input type="button" class="buttons answerBtn" value="I'd Rather Not Say"/>
+		<input type="button" class="buttons answerBtn" value="I'd rather not say"/>
 
 		<a href="#" class="privacy-policy">Privacy Policy</a> 
 
 		<div class="flowControls">
 			<button type="button" class="backBtn"></button>
 			<button type="button" class="buttons exitBtn"></button>
-			<button type="button" class="skipBtn">Skip</button>
+			<button type="button" class="skipBtn">skip</button>
 		</div> <!-- .flowControls -->
 	</div>  <!-- #page1 -->
 
@@ -168,7 +167,7 @@
 		<div class="flowControls agecontrols">
 			<button type="button" class="backBtn"></button>
 			<button type="button" class="buttons exitBtn"></button>
-			<button type="button" class="skipBtn">Skip</button>
+			<button type="button" class="skipBtn">skip</button>
 		</div> <!-- .flowControls -->
 	</div> <!-- #userAge -->
 <!-- ** MULTIPLE ATTACKERS ************* -->
@@ -180,25 +179,31 @@
 			<br>
 			<input type="button" class="buttons answerBtn"  value="I Don't know"/>
 			<br>
-			<input type="button" class="buttons answerBtn"  value="I'd Rather Not Say"/>
+			<input type="button" class="buttons answerBtn"  value="I'd rather not say"/>
 
 			<a href="#" class="privacy-policy">Privacy Policy</a> 
 
 			<div class="flowControls">
 				<button type="button" class="backBtn"></button>
 				<button type="button" class="buttons exitBtn"></button>
-				<button type="button" class="skipBtn">Skip</button>
+				<button type="button" class="skipBtn">skip</button>
 			</div> <!-- .flowControls -->
 		</div> <!--#attackedBy -->
 <!--***ATTACKER GENDER***************** -->
   <div data-value="attackerGender" class="form-overlay" id="attackerGender">
 		<h3>What was the attacker's gender?</h3>
         <input type="button" class="buttons answerBtn" value="Female"/>
+				<br>
         <input type="button" class="buttons answerBtn" value="Male"/>
+				<br>
         <input type="button" class="buttons answerBtn" value="Transgender Female"/>
+				<br>
         <input type="button" class="buttons answerBtn" value="Transgender Male"/>
+				<br>
         <input type="button" class="buttons answerBtn" value="It's complicated"/>
+				<br>
 				<input type="button" class="buttons answerBtn" value="I don't know"/>
+				<br>
 				<input type="button" class="buttons answerBtn" value="I'd rather not say"/>
 
 				<a href="#" class="privacy-policy">Privacy Policy</a> 
@@ -206,7 +211,7 @@
 				<div class="flowControls">
 					<button type="button" class="backBtn"></button>
 					<button type="button" class="buttons exitBtn"></button>
-					<button type="button" class="skipBtn">Skip</button>
+					<button type="button" class="skipBtn">skip</button>
 			</div> <!-- .flowControls -->
 		</div> <!-- #attackerGender -->
 <!-- ** REPORTED ********************** -->
@@ -229,16 +234,20 @@
 			<div class="flowControls">
 				<button type="button" class="backBtn"></button>
 				<button type="button" class="buttons exitBtn"></button>
-				<button type="button" class="skipBtn">Skip</button>
+				<button type="button" class="skipBtn">skip</button>
 			</div> <!-- .flowControls -->
   	</div> <!-- #realtionship -->
 <!-- ** DATE SPECIFICITY ***************** -->
 	<div data-value="dateSpecificity" class="form-overlay" id="dateSpecificity">
 			<h3>Can you describe when this happened...</h3>
       <input type="button" class="buttons dateBtn1" value="By the decade"/>
+			<br>
     	<input type="button" class="buttons dateBtn1" value="By the year"/>
+			<br>
       <input type="button" class="buttons dateBtn2"  value="By the month range"/>
+			<br>
       <input type="button" class="buttons dateBtn2" value="By the date"/>
+			<br>
       <input type="button" class="buttons noDateBtn" value="I don't know"/>
 
 			<a href="#" class="privacy-policy">Privacy Policy</a> 
@@ -246,7 +255,7 @@
 			<div class="flowControls">
 				<button type="button" class="backBtn"></button>
 				<button type="button" class="buttons exitBtn"></button>
-				<button type="button" id="dateSpec-skipBtn">Skip</button>
+				<button type="button" id="dateSpec-skipBtn">skip</button>
 			</div> <!-- .flowControls -->
   	</div> <!-- #dateSpecificity -->
 <!--DATE RANGE (MONTH/YEAR)*************** -->
@@ -267,7 +276,7 @@
 		<div class="flowControls">
 			<button type="button" class="backBtn"></button>
 			<button type="button" class="buttons exitBtn"></button>
-			<button type="button" id="date1-skipBtn">Skip</button>
+			<button type="button" id="date1-skipBtn">skip</button>
 		</div> <!-- .flowControls -->
 	</div> <!-- #monthDate -->
 <!--DATE RANGE (DATE)******************** -->
@@ -288,15 +297,18 @@
 		<div class="flowControls">
 			<button type="button" id="date2-backBtn"></button>
 			<button type="button" class="buttons exitBtn"></button>
-			<button type="button" class="skipBtn">Skip</button>
+			<button type="button" class="skipBtn">skip</button>
 		</div> <!-- .flowControls -->
 	</div> <!-- #wholeDate -->
 <!--MULTIPLE ASSAULTS********************* -->
 	<div data-value="multipleAssaults" class="form-overlay" id="multipleAssaults">
   	<h3>Did you experience more than one assault at this place in this period of time?</h3>
     <input type="button" class="buttons answerBtn"  value="Yes"/>
+		<br>
     <input type="button" class="buttons answerBtn"  value="No"/>
+		<br>
 		<input type="button" class="buttons answerBtn"  value="I don't know"/>
+		<br>
 		<input type="button" class="buttons answerBtn"  value="I'd rather not say"/>
 
 		<a href="#" class="privacy-policy">Privacy Policy</a> 
@@ -304,7 +316,7 @@
 		<div class="flowControls">
 			<button type="button" id="multipleA-backBtn"></button>
 			<button type="button" class="buttons exitBtn"></button>
-			<button type="button" class="skipBtn">Skip</button>
+			<button type="button" class="skipBtn">skip</button>
 		</div> <!-- .flowControls -->
   </div> <!-- #multipleAssaults -->
 
@@ -313,16 +325,19 @@
     <h3>Just a couple more questions...</h3>
     <p>Were you on a school campus? </p>
     <input type="button" class="buttons answerBtn" value="Yes"/>
+		<br>
   	<input type="button" class="buttons notCampusBtn" value="No"/>
+		<br>
 		<input type="button" class="buttons notCampusBtn" value="I don't know"/>
-		<input type="button" class="buttons notCampusBtn" value="I'd Rather Not Say"/>
+		<br>
+		<input type="button" class="buttons notCampusBtn" value="I'd rather not say"/>
 
 		<a href="#" class="privacy-policy">Privacy Policy</a> 
 
 		<div class="flowControls">
 			<button type="button" class="backBtn"></button>
 			<button type="button" class="buttons exitBtn"></button>
-			<button type="button" id="campus-skipBtn">Skip</button>
+			<button type="button" id="campus-skipBtn">skip</button>
 		</div> <!-- .flowControls -->  
   </div> <!-- #schoolCampus -->
 <!-- * CAMPUS INFO ********************** -->
@@ -333,14 +348,14 @@
   		<textarea class="form-control resetComments" rows="8" id="campusC-box"></textarea>
 		</div> <!-- .form-group -->
 
-		<button type="button" class="buttons blueBtn mediumBtn" id="saveCampusBtn">Save</button>
+		<button type="button" class="buttons blueBtn mediumBtn" id="saveCampusBtn">Ok</button>
 
 		<a href="#" class="privacy-policy">Privacy Policy</a> 
 
 		<div class="flowControls">
 			<button type="button" class="backBtn"></button>
 			<button type="button" class="buttons exitBtn"></button>
-			<button type="button" class="skipBtn">Skip</button>
+			<button type="button" class="skipBtn">skip</button>
 		</div> <!-- .flowControls --> 
 	</div> <!-- #campusInfo -->
 <!-- #REPORTED *************************** -->
@@ -355,7 +370,7 @@
 		<div class="flowControls">
 			<button type="button" id="reportedBackBtn"></button>
 			<button type="button" class="buttons exitBtn"></button>
-			<button type="button" class="skipBtn">Skip</button>
+			<button type="button" id="reportSkipBtn">skip</button>
 		</div> <!-- .flowControls -->  
   </div> <!-- #reported -->
 
@@ -363,7 +378,9 @@
   <div data-value="reportedTo" class="form-overlay" id="reportedTo">
     <h3>To whom did you report this assault to?</h3>
  		<input type="button" class="buttons answerBtn" value="Police"/>
+		 <br>
     <input type="button" class="buttons answerBtn" value="Campus cops"/>
+		<br>
     <input type="button" class="buttons answerBtn" value="Other"/>
 
 		<a href="#" class="privacy-policy">Privacy Policy</a> 
@@ -371,36 +388,38 @@
 		<div class="flowControls">
 			<button type="button" class="backBtn"></button>
 			<button type="button" class="buttons exitBtn"></button>
-			<button type="button" class="skipBtn">Skip</button>
+			<button type="button" class="skipBtn">skip</button>
 		</div> <!-- .flowControls --> 
   </div> <!-- #reportedTo -->
 
-<div data-value="persecuted" class="form-overlay" id="persecuted">
-    <h3>Was your attacker persecuted?</h3>
-    <input type="button" class="buttons answerBtn"  value="Yes"/>
-    <input type="button" class="buttons answerBtn"  value="No"/>
-		<input type="button" class="buttons answerBtn"  value="I don't know'"/>
+<div data-value="prosecuted" class="form-overlay" id="persecuted">
+    <h3>Was your attacker prosecuted?</h3>
+    <input type="button" class="buttons prosecutedBtn"  value="Yes"/>
+		<br>
+    <input type="button" class="buttons prosecutedBtn"  value="No"/>
+		<br>
+		<input type="button" class="buttons prosecutedBtn"  value="I don't know'"/>
 
 		<a href="#" class="privacy-policy">Privacy Policy</a> 
 
 		<div class="flowControls">
 			<button type="button" class="backBtn"></button>
 			<button type="button" class="buttons exitBtn"></button>
-			<button type="button" class="skipBtn">Skip</button>
+			<button type="button" class="skipBtn">skip</button>
 		</div> <!-- .flowControls -->  
 		
-  </div> <!-- #persecuted-->
+  </div> <!-- #prosecuted-->
+
 	
 <!-- ***CONFIRM SUBMIT********************* -->
-	<div data-value="submitReport" class="form-overlay" id="confirmSubmit">
-		<h3>Thanks for speaking up!</h3>
-		<h4>Is there anything else you'd share that might help others avoid the same kind of assault?</h4>
+	<div data-value="submitReport_Comments" class="form-overlay" id="confirmSubmit">
+		<h3>Please confirm that you would like to submit your anonymous report.</h3>
 		<textarea class="form-control resetComments" rows="2" id="lastComment" placeholder="comments, questions, concerns..."></textarea>
     <br>
-    <button type="button" class="buttons blueBtn" id="submit" onclick="post()">Add my anonymous record</button>
+    <button type="button" class="buttons blueBtn" id="submit" onclick="submitPost(); post();">Submit</button>
 	
 		<p style="margin-top: 15px; margin-bottom: 0;">Just trying us out?</p>
-    <button type="button" class="buttons blueBtn" id="restart" onclick="exit()">Return without saving</button>
+    <button type="button" class="buttons blueBtn" id="restart" onclick="exit()">Don't submit</button>
 
 		<a href="#" class="privacy-policy">Privacy Policy</a>
 
