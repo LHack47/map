@@ -14,6 +14,15 @@ function post(){
     document.getElementById("resetForm").reset();
 } 
 
+//Function to send object to firebase after final submit (with comment)
+function submitPost(){
+    userKey = $(this).parent().data("value");
+    userObject[userKey] = $("#endComment").val();
+    firebaseRef.push(userObject);//firebaseRef.push
+    userObject = {};
+    document.getElementById("resetForm").reset();
+} 
+
 //Function to geocode location
 function geocodeThis(){
     var geocoder = new google.maps.Geocoder;
@@ -96,7 +105,7 @@ var current_fs, next_fs, previous_fs, userKey;
            streetViewControl: false
     }); //styles
 
-    var pinIcon = "images/";
+    var pinIcon = "styles/images/";
 
     // Create the search box and link it to the UI element.
     var input = document.getElementById('pac-input');
@@ -161,6 +170,7 @@ var current_fs, next_fs, previous_fs, userKey;
         questionWindow.close();
         $("#pac-input").hide();
         $(".mapPrompts").hide();
+        $(".home-elements").hide();
         mapObject.seeMap = true;  
       });
 
@@ -211,6 +221,7 @@ var current_fs, next_fs, previous_fs, userKey;
         questionWindow.close();
         $("#pac-input").hide();
         $(".mapPrompts").hide(); 
+        $(".home-elements").hide();
         mapObject.seeMap = true; 
       });
       $("#pinDrop-window > #fireBase-no").on("click", function(){
@@ -240,6 +251,7 @@ var infoWindow = new google.maps.InfoWindow();
     google.maps.event.addListener(marker, 'click', function() {
       
       infoWindow.setContent(
+        // '<div id="infoContent"><p>'+ JSON.stringify(eventObject, null, "\t").replace(/\"/g, "") + '<p><div>'
        '<div id="infoContent">'+
        '<p><strong>Assault Location: </strong> <br>'+ eventObject.address + '<br>' + 
        '<strong>Survivor Gender: </strong>' +
@@ -255,7 +267,7 @@ var infoWindow = new google.maps.InfoWindow();
        '<strong>Multiple Assaults Here?: </strong>' +
        eventObject.multipleAssaults + '<br>' +
        '<strong>Date Range: </strong>' + '<br>' +
-       eventObject.dateStart + ' -- '+ eventObject.dateEnd + "<br>" + 
+       eventObject.dateStart1 + ' -- '+ eventObject.dateEnd1 + "<br>" + 
        '<strong>On A School Campus: </strong>' +
        eventObject.schoolCampus + ' <br> ' + 
        '<strong>Reported: </strong>' +

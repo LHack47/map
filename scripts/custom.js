@@ -47,6 +47,13 @@ $(document).ready(function(){
     fadeThisIn($("#seePrompt"));
   });
 
+// Homepage
+  $("#addEventHomepage").on("click", function(){
+    fadeThisIn($("#locationForm"));
+    $(".home-elements").hide();
+    $(".mapPrompts").hide();
+  });
+
 /* USER DENYS TO ADD MORE DETAILS */
   $("#deny").on("click", function(){
     fadeThisOut($("#form-start-overlay"));
@@ -80,16 +87,6 @@ $(document).ready(function(){
     //  console.log(userObject);
   });
 
-  $(".answerDateBtn").on("click", function() {
-     current_fs = $(this).parent();
-	   next_fs = $(this).parent().next();
-     current_fs.fadeOut("slow");
-	   next_fs.fadeIn("slow"); 
-     userKey = $(this).parent().data("value");
-     userObject[userKey] = $("#dateStart").val() + " - " + $("#dateEnd").val();
-    //  console.log(userObject);
-  });
-
   $(".subfieldBtn").on("click", function() {
      $("#yesCampus").show();
      $("#schoolCampus input").hide(); 
@@ -97,19 +94,133 @@ $(document).ready(function(){
   });
 
   $(".backBtn").on("click", function() {
-      current_fs = $(this).parent();
-	    previous_fs = $(this).parent().prev();
+      current_fs = $(this).parent().parent();
+	    previous_fs = $(this).parent().parent().prev();
       current_fs.hide();
 	    previous_fs.show(); 
   });
 
   $(".skipBtn").on("click", function() {
-    current_fs = $(this).parent();
-	  next_fs = $(this).parent().next();
+    current_fs = $(this).parent().parent();
+	  next_fs = $(this).parent().parent().next();
     current_fs.fadeOut("slow");
 	  next_fs.fadeIn("slow"); 
+    userKey = $(this).parent().parent().data("value");
+    userObject[userKey] = "Not recorded";
+  });
+
+//Subfields
+/* DATE PAGES ********************** */
+  $("#dateSpec-skipBtn").click(function(){
+    currentPage = $(this).parent().parent();
+    nextPage = $("#multipleAssaults");
+    currentPage.fadeOut("slow");
+    nextPage.fadeIn("slow");
     userKey = $(this).parent().data("value");
-    userObject[userKey] = "no-record";
+    userObject[userKey] = "Not reported";
+  });
+
+  $(".dateBtn1").click(function(){
+   currentPage = $(this).parent();
+   nextPage = $("#dateRange1");
+   currentPage.fadeOut(1500);
+   nextPage.fadeIn(1500);
+   userKey = $(this).parent().data("value");
+   userObject[userKey] = $(this).val();
+ });
+
+ $(".dateBtn2").click(function(){
+   currentPage = $(this).parent();
+   nextPage = $("#dateRange2");
+   currentPage.fadeOut(1500);
+   nextPage.fadeIn(1500);
+   userKey = $(this).parent().data("value");
+   userObject[userKey] = $(this).val();
+ });
+
+  $(".noDateBtn").click(function(){
+   currentPage = $(this).parent();
+   nextPage = $("#multipleAssaults");
+   currentPage.fadeOut(1500);
+   nextPage.fadeIn(1500);
+ });
+
+  $("#saveDate1").click(function(){
+   currentPage = $(this).parent();
+   nextPage = $("#multipleAssaults");
+   currentPage.fadeOut(1500);
+   nextPage.fadeIn(1500);
+   userKey = $(this).parent().data("value");
+   userObject[userKey] = $("#dateStart1").val() + " - " + $("#dateEnd1").val();
+  });
+
+ $("#date1-skipBtn").click(function(){
+    currentPage = $(this).parent().parent();
+    nextPage = $("#multipleAssaults");
+    currentPage.fadeOut("slow");
+    nextPage.fadeIn("slow");
+    userKey = $(this).parent().data("value");
+    userObject[userKey] = "Not reported";
+  });
+
+
+  $("#saveDate2").click(function(){
+   currentPage = $(this).parent();
+   nextPage = $("#multipleAssaults");
+   currentPage.fadeOut(1500);
+   nextPage.fadeIn(1500);
+   userKey = $(this).parent().data("value");
+   userObject[userKey] = $("#dateStart2").val() + " - " + $("#dateEnd2").val();
+ });
+
+$("#date2-backBtn").click(function(){
+   currentPage = $(this).parent().parent();
+   previousPage = $("#dateSpecificity");
+   currentPage.fadeOut(1500);
+   previousPage.fadeIn(1500);
+ });
+
+/* SCHOOL CAMPUS CONTROL BUTTONS */
+  $(".notCampusBtn").click(function(){
+    currentPage = $(this).parent();
+    nextPage = $("#reported");
+    currentPage.fadeOut(1500);
+    nextPage.fadeIn(1500);
+    userKey = $(this).parent().data("value");
+    userObject[userKey] = $(this).val();
+  });
+
+  $("#saveCampusBtn").click(function(){
+   currentPage = $(this).parent();
+   nextPage = $(this).parent().next();
+   currentPage.fadeOut(1500);
+   nextPage.fadeIn(1500);
+   userKey = $(this).parent().parent().data("value");
+   userObject[userKey] = $("#campusC-box").val();
+  });
+
+  $("#campus-skipBtn").click(function(){
+    currentPage = $(this).parent().parent();
+    nextPage = $("#reported");
+    currentPage.fadeOut("slow");
+    nextPage.fadeIn("slow");
+    userKey = $(this).parent().data("value");
+    userObject[userKey] = "Not reported";
+  });
+
+/* REPORTED CONTROL BUTTONS ******* */
+  $("#notReportedBtn").click(function(){
+   currentPage = $(this).parent();
+   nextPage = $("#confirmSubmit");
+   currentPage.fadeOut(1500);
+   nextPage.fadeIn(1500);
+  }); 
+
+  $("#reportedBackBtn").click(function(){
+   currentPage = $(this).parent().parent();
+   previousPage = $("#schoolCampus");
+   currentPage.fadeOut(1500);
+   previousPage.fadeIn(1500);
   });
 
 //Exit Buttons
@@ -118,20 +229,22 @@ $(document).ready(function(){
   });
 
   $("#confirmExit > #exitYes").on("click", function() {
-      $(".form-overlay").fadeOut();
-      $("#seePrompt").fadeIn();
-      $("#pac-input").fadeIn();
+    $(".form-overlay").fadeOut();
+    $("#seePrompt").fadeIn();
+    $("#pac-input").fadeIn();
+    fadeThisIn($(".home-elements"));
   });
 
   $("#confirmExit > #exitNo").on("click", function() {
-      $("#confirmExit").hide();
+    $("#confirmExit").hide();
   });
 
   $("#confirmExit > #exitYesDelete").on("click", function() {
-      document.getElementById("resetForm").reset();
-      $(".form-overlay").fadeOut();
-      $("#seePrompt").fadeIn();
-      $("#pac-input").fadeIn();
+    document.getElementById("resetForm").reset();
+    $(".form-overlay").fadeOut();
+    $("#seePrompt").fadeIn();
+    $("#pac-input").fadeIn();
+    fadeThisIn($(".home-elements"));
   });
     
 // Submit
@@ -143,17 +256,10 @@ $(document).ready(function(){
   })
 
   $("#end-return").on("click", function(){
-    fadeThisOut($(".form-overlay"));
-    fadeThisOut($("#homepage-overlay"));
+    $(".form-overlay").hide();
     fadeThisIn($(".home-elements"));
     fadeThisIn($("#seePrompt"));
     mapObject.seeMap = true;
-  });
-
-//Subforms
-  
-  $("#campus-yes").on("click", function() {
-    $("#yesCampus").fadeIn("slow");
   });
 
 });
