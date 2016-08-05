@@ -10,15 +10,13 @@ var mapObject = {};
     firebaseRef.push(userObject);//firebaseRef.push
     userObject = {};
      document.getElementById("resetForm").reset();
-     console.log(userObject);
   } //function post() for any exit and submit button
 
   function submitPost(){
     userKey = $("#submit").parent().data("value");
-    // console.log(userKey);
     userObject[userKey] = $("#lastComment").val();
-    console.log(userKey);
   } // submitPost() for last submit button
+
 
     function geocodeThis(){
       var geocoder = new google.maps.Geocoder;
@@ -151,7 +149,6 @@ var mapObject = {};
         fadeThisOut($("#pinDrop-window"));
         questionWindow.close();
         $(".addAssault-Elements").hide();
-        $("#transparent-overlay").show();
         fadeThisIn($("#confirmStart"));     mapObject.addingPin = false;
       });
 
@@ -160,14 +157,9 @@ var mapObject = {};
         //REMOVE MARKER WHEN USER SELECTS NO
         marker.setVisible(false);
       });
-            function exit(){
-        document.getElementById("resetForm").reset();
-        marker.setVisible(false);
-      }
     } //mapObject.addingPin
     }); //places.forEach
     map.fitBounds(bounds);
-      // console.log(bounds);
     }); //searchBox.addListener
      // Add marker on user click
   map.addListener('click', function(e) {
@@ -198,7 +190,6 @@ var mapObject = {};
         fadeThisOut($("#pinDrop-window"));
         questionWindow.close();
         fadeThisOut($(".addAssault-Elements"));
-        $("#transparent-overlay").show();
         fadeThisIn($("#confirmStart"));
         mapObject.addingPin = false;
       });
@@ -206,10 +197,7 @@ var mapObject = {};
         questionWindow.close();
         marker.setVisible(false);
       });
-      function exit(){
-        document.getElementById("resetForm").reset();
-        marker.setVisible(false);
-      }
+
       } //mapObject
     }); //map.addListener
 
@@ -230,54 +218,92 @@ var infoWindow = new google.maps.InfoWindow();
     });
 
   //info box when you click a pin
-// TODO: TAKE OUT CALL BACK FUNCTION AND PUT INSIDE A CLICK HANDLER FUNCTION!
-
-  
-
-
     google.maps.event.addListener(marker, 'click', function() {
 
-      infoWindow.setContent(
-       '<div id="infoContent">'+
-      //  '<p><strong>Assault Location: </strong> <br>'+ eventObject.address + '<br>' + 
-      //  '<strong>Survivor Gender: </strong>' +
-      //  eventObject.userGender + ' <br> '+ 
-      //  '<strong>Age upon assault: </strong>' +
-      //  eventObject.userAge +'<br>'+ 
-      //  '<strong>Multiple attackers?: </strong>' +
-      //  eventObject.attackedBy + ' <br> ' + 
-      //  '<strong>Attacker(s) Gender: </strong>' +
-      //  eventObject.attackerGender +'<br>'+ 
-      //  '<strong>The attacker(s) was a(n): </strong>' +
-      //  eventObject.relationship + ' <br> ' + 
-      //  '<strong>Date range: </strong>' +
-      //  eventObject.dateRange1 + ' , '+ eventObject.dateRange2 + "<br>" +
-      //  '<strong>Multiple assaults here?: </strong>' +
-      //  eventObject.multipleAssaults + '<br>' + 
-      //  '<strong>On a school campus: </strong>' +
-      //  eventObject.schoolCampus + ' <br> ' + 
-      //  '<strong>Reported?: </strong>' +
-      //  eventObject.reported + '<br>' +
-      //  '<strong>Reported to?: </strong>' +
-      //  eventObject.reportedTo + '<br>' +
-      //  '<strong>Were they prosecuted?: </strong>' +
-      //  eventObject.prosecuted + '<br>' +
-      //  '<strong>Comments: </strong>' +
-      //  eventObject.submitReport + '<br>' +
-      //  '</p> 
-      '</div>'
-      ); //.setContent 
+      var uL = eventObject.hasOwnProperty("userLocation");
+      var cI = eventObject.hasOwnProperty("campusInfo");
+      var sC = eventObject.hasOwnProperty("submitReport_Comments");
+      var cI = eventObject.hasOwnProperty("prosecuted");
+      var rT = eventObject.hasOwnProperty("reportedTo");
 
-      var check = eventObject.hasOwnProperty("userLocation");
+      // function removeThem(){
+      //   var toRemove = [uL, cI, sC, cI, rT];
+      //   for(var i = 0; i <= eventObject.length; i++){
+      //     if(eventObject.toRemove[i] === true){
+      //       delete eventObject.toRemove[i];
+      //     }
+      //   }
+      // };
 
-      var value = eventObject.key;
+      //  removeThem();
 
+      var outer = document.createElement('div');
+      var inner = document.createElement('div');
+      $(inner).attr("id", "infoContent");
+      var content = "";
       for (var key in eventObject){ 
-        $('#infoContent').append("<p><strong> " + key + ": " + eventObject[key] + "</strong></p>");
-        if(check === true){
+        content = content + "<p><strong> " + key + ": " + eventObject[key] + "</strong></p>";
+
+        if(uL === true){
           delete eventObject.userLocation;
+        } 
+        if(sC === true){
+          delete eventObject.submitReport_Comments;
         }
       };
+
+      $(inner).html(content);
+      $(outer).append(inner);
+      infoWindow.setContent($(outer).html());
+      
+      // infoWindow.setContent(
+      //  '<div id="infoContent">'+'</div>'); //.setContent 
+      // var divy = document.createElement('div');
+      // divy.id = 'infoContent';
+
+      //  for (var key in eventObject){ 
+      //   // var divy =  '<div id="infoContent">'+'</div>';
+      //     $('#infoContent').append("<p><strong> " + key + ": " + eventObject[key] + "</strong></p>");
+      //     if(check === true){
+      //     delete eventObject.userLocation;
+      //     }
+      //   };
+
+      //  divy = divy.toString();
+
+
+      // infoWindow.setContent(divy); //.setContent
+
+      // infoWindow.setContent(
+      //  '<div id="infoContent">'+
+      // //  '<p><strong>Assault Location: </strong> <br>'+ eventObject.address + '<br>' + 
+      // //  '<strong>Survivor Gender: </strong>' +
+      // //  eventObject.userGender + ' <br> '+ 
+      // //  '<strong>Age upon assault: </strong>' +
+      // //  eventObject.userAge +'<br>'+ 
+      // //  '<strong>Multiple attackers?: </strong>' +
+      // //  eventObject.attackedBy + ' <br> ' + 
+      // //  '<strong>Attacker(s) Gender: </strong>' +
+      // //  eventObject.attackerGender +'<br>'+ 
+      // //  '<strong>The attacker(s) was a(n): </strong>' +
+      // //  eventObject.relationship + ' <br> ' + 
+      // //  '<strong>Date range: </strong>' +
+      // //  eventObject.dateRange1 + ' , '+ eventObject.dateRange2 + "<br>" +
+      // //  '<strong>Multiple assaults here?: </strong>' +
+      // //  eventObject.multipleAssaults + '<br>' + 
+      // //  '<strong>On a school campus: </strong>' +
+      // //  eventObject.schoolCampus + ' <br> ' + 
+      // //  '<strong>Reported?: </strong>' +
+      // //  eventObject.reported + '<br>' +
+      // //  '<strong>Reported to?: </strong>' +
+      // //  eventObject.reportedTo + '<br>' +
+      // //  '<strong>Were they prosecuted?: </strong>' +
+      // //  eventObject.prosecuted + '<br>' +
+      // //  '<strong>Comments: </strong>' +
+      // //  eventObject.submitReport + '<br>' +
+      // //  '</p> 
+      // '</div>'
+      // ); //.setContent 
 
       infoWindow.open(map, marker);
         if(questionWindow.open()){
@@ -288,3 +314,8 @@ var infoWindow = new google.maps.InfoWindow();
   }); //firebase.on function
 
 } //initAutocomplete()
+
+      function exit(){
+        document.getElementById("resetForm").reset();
+        marker.setVisible(false);
+      }

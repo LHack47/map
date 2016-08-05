@@ -56,7 +56,7 @@
 				<p>Please drop a pin or enter a location to begin your assault record.</p>
 			</div> <!-- #addPrompt -->	
 			<div class="flowControls elements addAssault-Elements">	
-				<button type="button" class="buttons exitBtn" id="mapExit-button"></button>
+				<button type="button" class="buttons" id="exitMap"></button>
 			</div>
 			
 <!-- **************SEARCH BOX************** -->
@@ -102,7 +102,7 @@
     <input type="button" class="buttons navyBtn" value="I don't know"/>
 
 		<div class="flowControls">
-			<button type="button" class="buttons exitBtn" id="exitLocationSpec"></button>
+			<button type="button" class="buttons" id="exitLocationSpec"></button>
 		</div> <!-- .flowControls -->
 	</div> <!-- #locationForm -->
 <!-- **MORE DETAILS? PAGE #CONFIRMSTART***** -->
@@ -110,11 +110,13 @@
 		<h3 id="">Would you like to tell us more about the circumstances?</h3>
 		<h4 style="color: #fff8e0">This is still anonymous and takes less than 3 minutes. Before you submit your form you’ll have a chance to add comments to your record that clarify your answers or add details.</h4>
 		<br>
-		<div class="btn-group btn-group-lg" role="group" aria-label="...">
-  			<button type="button" class="btn buttons blueBtn" id="deny" onclick="post()">No</button>
- 			  <button type="button" class="btn buttons blueBtn" id="accept">Yes</button>
-  	</div> <!-- .btn-group-lg -->
+ 		<button type="button" class="btn buttons blueBtn" id="accept">Ok</button>
+
   	<a href="#" class="privacy-policy">Privacy Policy</a>
+
+		<div class="flowControls">	
+			<button type="button" class="buttons exitBtn"></button>
+		</div>
 	</div> <!-- #confirmStart -->
 <!--***USER GENDER ********************** -->
 	<div data-value="userGender" class="form-overlay" id="userGender">
@@ -159,7 +161,6 @@
 		<input type="button" class="buttons answerBtn smallBtn"  value="55+"/>
 		<br>
 		<input type="button" class="buttons answerBtn mediumBtn" value="I don't know"/>
-		<br>
 		<input type="button" class="buttons answerBtn mediumBtn" value="I'd rather not say"/>
 
 		<a href="#" class="privacy-policy">Privacy Policy</a> 
@@ -392,7 +393,7 @@
 		</div> <!-- .flowControls --> 
   </div> <!-- #reportedTo -->
 
-<div data-value="prosecuted" class="form-overlay" id="persecuted">
+<div data-value="prosecuted" class="form-overlay" id="prosecuted">
     <h3>Was your attacker prosecuted?</h3>
     <input type="button" class="buttons prosecutedBtn"  value="Yes"/>
 		<br>
@@ -419,7 +420,7 @@
     <button type="button" class="buttons blueBtn" id="submit" onclick="submitPost(); post();">Submit</button>
 	
 		<p style="margin-top: 15px; margin-bottom: 0;">Just trying us out?</p>
-    <button type="button" class="buttons blueBtn" id="restart" onclick="exit()">Don't submit</button>
+    <button type="button" class="buttons blueBtn mediumBtn" id="restart" onclick="exit()">Exit</button>
 
 		<a href="#" class="privacy-policy">Privacy Policy</a>
 

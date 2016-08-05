@@ -79,7 +79,7 @@ body{
 	flex-direction: column;
 }
 
-#hamburger-overlay > h3 h2 {
+#hamburger-overlay h3 h2 {
 	color: #9bd130 !important;
 	text-decoration: none;
 	cursor: pointer;
@@ -87,17 +87,17 @@ body{
 	
 }
 
-#hamburger-overlay > a {
+#hamburger-overlay a {
 	text-decoration: none;
 	color: #9bd130;
 }
 
-#hamburger-overlay > h2:hover , h3:hover {
+#hamburger-overlay h2.blueBtn:hover h3:hover {
 	color: #f25f5c;
 	text-decoration: none;
 }
 
-#hamburger-overlay > a:hover {
+#hamburger-overlay a:hover {
 	text-decoration: none;
 	color: #f25f5c;
 }
@@ -255,7 +255,7 @@ form {
 	width: 230px;
 	height: 60px;
 	color: #264653;
-	border-radius: 30px;
+	border-radius: 20px;
 	margin-top: 10px;
 }
 
@@ -269,7 +269,7 @@ form {
 	box-shadow: 2px 2px 2px black;
 }
 
-#mapExit-button {
+#exitMap {
 	position: absolute;
 	bottom: 4%;
 }
@@ -296,16 +296,19 @@ form {
 .gm-style-iw{
 	font-family: "Josefin Sans";
 	clear: both;
+	max-height: 350px;
+	color: black !important;
+	font-size: 140%;
 }
 
-.gm-style-iw:parent{
+.gm-style-iw div div div div{
 	z-index: 2;
 	max-width: 320px;
-	top: 100px;
+	bottom: 100px;
 }
 
 #infoContent{
-	color: black;
+	color: black !important;
 	max-height: 350px;
 	font-size: 140%;
 	word-wrap: normal;
@@ -325,9 +328,9 @@ form {
 }
 
 .buttons{
-	padding: 10px;
+	padding: 10px 15px;
 	border: none;
-	border-radius: 10px;
+	border-radius: 20px;
 	font-weight: 600;
 	font-size: 100%;
 	box-shadow: 2px 2px 2px black;
@@ -353,6 +356,7 @@ form {
 }
 
 .blueBtn{
+	height: 50px;
 	background-color: rgba(103,204, 222, 0.95);
 	color: #264653;
 }
@@ -416,6 +420,15 @@ form {
 	border: none;
 }
 
+#accept , #submit{
+	width: 200px;
+	height: 50px;
+}
+
+#accept:hover {
+	color: #fff8e0;
+}
+
 .flowControls{
 	width: 90%;
 	height: 40px;
@@ -440,7 +453,7 @@ form {
 	filter: drop-shadow(2px 2px 2px black);
 }
 
-.exitBtn{
+.exitBtn , #exitLocationSpec , #exitMap{
 	/*position: absolute;*/
 	width: 40px;
 	height: 40px;
@@ -504,13 +517,6 @@ form {
 	background-position: center;
 }
 
-#gotIt {
-	width: 135px;
-	font-size: 120%;
-	position: center;
-	float: bottom;
-}
-
 #dateContainer {
 	margin-bottom: 10px;
 }
@@ -564,7 +570,6 @@ form {
 #thankYou {
 	display: flex;
    	align-items: center;
-   	justify-content: center;
    	flex-direction: column;
 	background-color: #264653;
 }
@@ -581,7 +586,7 @@ form {
 	text-decoration: none;
 }
 
-#annieC > h4 {
+#annieC h4 {
 	text-shadow: none;
 	font-weight: bold;
 }
@@ -595,8 +600,13 @@ form {
 		padding: 10px 13px;
 	}
 
-	.gm-style-iw:parent{
-		top: auto;
+
+	/*#infoContent{ 
+		max-height: 250px;
+	}*/
+
+	.gm-style-iw{
+		max-height: 250px;
 	}
 
 	#pac-input{

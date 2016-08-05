@@ -6,7 +6,6 @@ $(document).ready(function(){
   $(".elements").hide();
   $("#homePage-overlay").show();
 
-
 /* HAMBURGER OVERLAY   HAMBURGER OVERLAY */
   $(".glyphicon-menu-hamburger").on("click", function(){
     fadeThisIn($("#hamburger-overlay"));
@@ -89,13 +88,16 @@ $(document).ready(function(){
     nextPage = $(this).parent().parent().next();
     currentPage.fadeOut("slow");
     nextPage.fadeIn("slow");
-    userKey = $(this).parent().parent().data("value");
-    userObject[userKey] = "Not reported";
   });
 
   $("#exitLocationSpec").click(function(){
     fadeThisOut($("#locationForm"));
     fadeThisIn($("#homePage-overlay"));
+  });
+
+  $("#exitMap").click(function(){
+      $(".elements").hide();
+      fadeThisIn($("#homePage-overlay"));
   });
  /* END CONTROL BUTTONS************* */
 
@@ -105,8 +107,6 @@ $(document).ready(function(){
     nextPage = $("#multipleAssaults");
     currentPage.fadeOut("slow");
     nextPage.fadeIn("slow");
-    userKey = $(this).parent().parent().data("value");
-    userObject[userKey] = "Not reported";
   });
 
 
@@ -149,8 +149,6 @@ $(document).ready(function(){
     nextPage = $("#multipleAssaults");
     currentPage.fadeOut("slow");
     nextPage.fadeIn("slow");
-    userKey = $(this).parent().parent().data("value");
-    userObject[userKey] = "Not reported";
   });
 
 
@@ -201,8 +199,6 @@ $("#date2-backBtn").click(function(){
     nextPage = $("#reported");
     currentPage.fadeOut("slow");
     nextPage.fadeIn("slow");
-    userKey = $(this).parent().parent().data("value");
-    userObject[userKey] = "Not reported";
   });
 
 /* REPORTED CONTROL BUTTONS ******* */
@@ -225,8 +221,6 @@ $("#date2-backBtn").click(function(){
     nextPage = $("#confirmSubmit");
     // currentPage.fadeOut("slow");
     nextPage.fadeIn("slow");
-    userKey = $(this).parent().parent().data("value");
-    userObject[userKey] = "Not reported";
   });
 
   $(".prosecutedBtn").click(function(){
@@ -267,9 +261,8 @@ $("#date2-backBtn").click(function(){
   });
 
   $("#exitDelete").click(function(){
-    $(".form-overlay").fadeOut(1500);
+    $(".form-overlay").fadeOut("slow");
     $(".seeMap-Elements").fadeIn(1500);
-    $("#transparent-overlay").hide();
     mapObject.addingPin = false;
   });
 
