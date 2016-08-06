@@ -18,9 +18,6 @@ function post(){
 function submitPost(){
     userKey = "submitComment";
     userObject[userKey] = $("#endComment").val();
-    firebaseRef.push(userObject);//firebaseRef.push
-    userObject = {};
-    document.getElementById("resetForm").reset();
 } 
 
 //Function to geocode location
@@ -29,7 +26,7 @@ function geocodeThis(){
     var latLng = userObject.userLocation;
     geocoder.geocode({'location': latLng}, function(results, status) {
         if (status === google.maps.GeocoderStatus.OK) {
-            userObject.Address = results[0].formatted_address;
+            userObject["Assault approximate Address"] = results[0].formatted_address;
         } else {
             console.log('No results found');
         }
@@ -155,6 +152,9 @@ var current_fs, next_fs, previous_fs, userKey;
         "<button type='button' class='btn btn-default btn-clicked' id='fireBase-no'>No</button>"+
          "<button type='button' class='btn btn-default btn-clicked' id='fireBase-yes'>Yes</button>" +
         "</div>"); // #pinDrop-window 
+        if(marker.setVisible){
+          marker.setVisible(false);
+        }
         questionWindow.open(map, marker);
         if(infoWindow.open()){
         infoWindow.close();

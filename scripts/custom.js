@@ -73,7 +73,8 @@ $(document).ready(function(){
       $("#addPrompt").show();
       $("#exitMap").show();
       mapObject.seeMap = false;
-      userObject.locationSpecificity = $(this).val();
+      userKey = $(this).parent().data("value");
+      userObject[userKey] = $(this).val();
   })
 
 
