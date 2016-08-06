@@ -170,6 +170,14 @@ $("#date2-backBtn").click(function(){
  });
 
 /* SCHOOL CAMPUS CONTROL BUTTONS */
+  $("#multipleA-backBtn").click(function(){
+   currentPage = $(this).parent().parent();
+   previousPage = $("#dateSpecificity");
+   currentPage.fadeOut(1500);
+   previousPage.fadeIn(1500);
+ });
+
+ /* SCHOOL CAMPUS CONTROL BUTTONS */
   $(".notCampusBtn").click(function(){
     currentPage = $(this).parent();
     nextPage = $("#reported");
@@ -280,3 +288,4 @@ $("#date2-backBtn").click(function(){
   });
 
 });
+

@@ -295,3 +295,4 @@ var infoWindow = new google.maps.InfoWindow();
     }); // addListender(marker)
   }); //firebase.on function
 } //initAutocomplete()
+

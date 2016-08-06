@@ -10,13 +10,13 @@ body{
 }
 
 /**********HOMEPAGE***********/
-
 #googleMap {
 	position: absolute;
 	z-index: 0;
 	width: 100vw;
 	height: 100vh;
 	left: 0;
+<<<<<<< HEAD
     top:0;
 }
 
@@ -427,11 +427,6 @@ body{
 		background-color: rgba(38, 70, 83, 0.98);
 	}
 
-	/*.greenBtn{
-		margin-top: 30px;
-		height: 10%;
-	}*/
-
 	.grayBtn {
 		margin-top: 30px;
 		width: 80%;
@@ -452,3 +447,4 @@ body{
 	}
 
 }
+
