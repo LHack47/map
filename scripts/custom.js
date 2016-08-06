@@ -3,7 +3,7 @@ $(document).ready(function(){
   $("#hamburger-overlay").hide();
   $(".home-elements").hide();
   $(".form-overlay").hide();
-  $("#yesCampus").hide();
+   $("#exitMap").hide();
 
 /* HAMBURGER OVERLAY */
   $(".glyphicon-menu-hamburger").on("click", function(){
@@ -71,6 +71,7 @@ $(document).ready(function(){
       $("#locationForm").fadeOut("slow");
       $(".home-elements").show();
       $("#addPrompt").show();
+      $("#exitMap").show();
       mapObject.seeMap = false;
       userObject.locationSpecificity = $(this).val();
   })
@@ -87,12 +88,6 @@ $(document).ready(function(){
     //  console.log(userObject);
   });
 
-  $(".subfieldBtn").on("click", function() {
-     $("#yesCampus").show();
-     $("#schoolCampus input").hide(); 
-    //  $("#schoolCampus p").hide();
-  });
-
   $(".backBtn").on("click", function() {
       current_fs = $(this).parent().parent();
 	    previous_fs = $(this).parent().parent().prev();
@@ -105,8 +100,6 @@ $(document).ready(function(){
 	  next_fs = $(this).parent().parent().next();
     current_fs.fadeOut("slow");
 	  next_fs.fadeIn("slow"); 
-    userKey = $(this).parent().parent().data("value");
-    userObject[userKey] = "Not recorded";
   });
 
 //Subfields
@@ -116,8 +109,6 @@ $(document).ready(function(){
     nextPage = $("#multipleAssaults");
     currentPage.fadeOut("slow");
     nextPage.fadeIn("slow");
-    userKey = $(this).parent().data("value");
-    userObject[userKey] = "Not reported";
   });
 
   $(".dateBtn1").click(function(){
@@ -159,8 +150,6 @@ $(document).ready(function(){
     nextPage = $("#multipleAssaults");
     currentPage.fadeOut("slow");
     nextPage.fadeIn("slow");
-    userKey = $(this).parent().data("value");
-    userObject[userKey] = "Not reported";
   });
 
 
@@ -195,7 +184,7 @@ $("#date2-backBtn").click(function(){
    nextPage = $(this).parent().next();
    currentPage.fadeOut(1500);
    nextPage.fadeIn(1500);
-   userKey = $(this).parent().parent().data("value");
+   userKey = $(this).parent().data("value");
    userObject[userKey] = $("#campusC-box").val();
   });
 
@@ -204,8 +193,6 @@ $("#date2-backBtn").click(function(){
     nextPage = $("#reported");
     currentPage.fadeOut("slow");
     nextPage.fadeIn("slow");
-    userKey = $(this).parent().data("value");
-    userObject[userKey] = "Not reported";
   });
 
 /* REPORTED CONTROL BUTTONS ******* */
@@ -223,6 +210,22 @@ $("#date2-backBtn").click(function(){
    previousPage.fadeIn(1500);
   });
 
+  $("#reportSkipBtn").click(function(){
+    currentPage = $(this).parent().parent();
+    nextPage = $("#confirmSubmit");
+    currentPage.fadeOut("slow");
+    nextPage.fadeIn("slow");
+  });
+
+  $(".prosecutedBtn").click(function(){
+  //  currentPage = $(this).parent();
+   nextPage = $(this).parent().next();
+  //  currentPage.fadeOut(1500);
+   nextPage.fadeIn(1500);
+   userKey = $(this).parent().data("value");
+   userObject[userKey] = $(this).val();
+ });
+
 //Exit Buttons
   $(".exitBtn").on("click", function() {
     $("#confirmExit").show();
@@ -235,7 +238,7 @@ $("#date2-backBtn").click(function(){
     fadeThisIn($(".home-elements"));
   });
 
-  $("#confirmExit > #exitNo").on("click", function() {
+  $("#exitNo").on("click", function() {
     $("#confirmExit").hide();
   });
 
@@ -246,9 +249,22 @@ $("#date2-backBtn").click(function(){
     $("#pac-input").fadeIn();
     fadeThisIn($(".home-elements"));
   });
+
+  $("#exitMap").click(function(){
+      $(".home-elements").hide();
+      $("#addPrompt").hide();
+      $("#exitMap").hide();
+      fadeThisIn($("#homepage-overlay"));
+  });
     
 // Submit
       
+  $("#submitBackBtn").click(function(){
+   currentPage = $(this).parent().parent();
+   currentPage.fadeOut(1500);
+   fadeThisIn($("#reported"));
+  });
+
   $(".end-submit").on("click", function() {
     $("#confirmSubmit").hide();
     $("#form-thankYou").show();
@@ -257,6 +273,7 @@ $("#date2-backBtn").click(function(){
 
   $("#end-return").on("click", function(){
     $(".form-overlay").hide();
+    $("#home-overlay").hide();
     fadeThisIn($(".home-elements"));
     fadeThisIn($("#seePrompt"));
     mapObject.seeMap = true;

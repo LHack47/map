@@ -16,7 +16,7 @@ function post(){
 
 //Function to send object to firebase after final submit (with comment)
 function submitPost(){
-    userKey = $(this).parent().data("value");
+    userKey = "submitComment";
     userObject[userKey] = $("#endComment").val();
     firebaseRef.push(userObject);//firebaseRef.push
     userObject = {};
@@ -29,7 +29,7 @@ function geocodeThis(){
     var latLng = userObject.userLocation;
     geocoder.geocode({'location': latLng}, function(results, status) {
         if (status === google.maps.GeocoderStatus.OK) {
-            userObject.address = results[0].formatted_address;
+            userObject.Address = results[0].formatted_address;
         } else {
             console.log('No results found');
         }
@@ -171,6 +171,7 @@ var current_fs, next_fs, previous_fs, userKey;
         $("#pac-input").hide();
         $(".mapPrompts").hide();
         $(".home-elements").hide();
+        $("#exitMap").hide();
         mapObject.seeMap = true;  
       });
 
@@ -222,6 +223,7 @@ var current_fs, next_fs, previous_fs, userKey;
         $("#pac-input").hide();
         $(".mapPrompts").hide(); 
         $(".home-elements").hide();
+        $("#exitMap").hide();
         mapObject.seeMap = true; 
       });
       $("#pinDrop-window > #fireBase-no").on("click", function(){
@@ -246,34 +248,45 @@ var infoWindow = new google.maps.InfoWindow();
       map: map,
       icon: pinIcon + "redStar.png"
     });
+
   //info box when you click a pin
-// TODO: TAKE OUT CALL BACK FUNCTION AND PUT INSIDE A CLICK HANDLER FUNCTION!
-    google.maps.event.addListener(marker, 'click', function() {
+      google.maps.event.addListener(marker, 'click', function() {
+        //Items not to be in InfoWindow
+        var uL = eventObject.hasOwnProperty("userLocation");
+        var cI = eventObject.hasOwnProperty("campusInfo");
+        var sC = eventObject.hasOwnProperty("submitComment");
+        var p = eventObject.hasOwnProperty("prosecuted");
+        var rT = eventObject.hasOwnProperty("reportedTo");
+        //Creating info window content
+        var outer = document.createElement('div');
+        var inner = document.createElement('div');
+        $(inner).attr("id", "infoContent");
+        var content = "";
+        for (var key in eventObject){ 
+          content = content + "<strong> " + key + ": </strong>" + eventObject[key]+ "<br>";
+
+          if(uL === true){
+            delete eventObject.userLocation;
+          } 
+          if(cI === true){
+            delete eventObject.campusInfo;
+          }
+          if(sC === true){
+            delete eventObject.submitComment;
+          }
+          if(p === true){
+            delete eventObject.prosecuted;
+          }
+          if(rT === true){
+            delete eventObject.reportedTo;
+          }
+
+        };
+        //Setting info window content
+        $(inner).html(content);
+        $(outer).append(inner);
+        infoWindow.setContent($(outer).html());
       
-      infoWindow.setContent(
-        // '<div id="infoContent"><p>'+ JSON.stringify(eventObject, null, "\t").replace(/\"/g, "") + '<p><div>'
-       '<div id="infoContent">'+
-       '<p><strong>Assault Location: </strong> <br>'+ eventObject.address + '<br>' + 
-       '<strong>Survivor Gender: </strong>' +
-       eventObject.userGender + ' <br> '+ 
-       '<strong>Age Upon Assault: </strong>' +
-       eventObject.userAge +'<br>'+ 
-       '<strong>Attacker Gender: </strong>' +
-       eventObject.attackerGender +'<br>'+
-       '<strong>Multiple Attackers?: </strong>' +
-       eventObject.multipleAttackers + ' <br> ' + 
-       '<strong>The Attacker Was A(n): </strong>' +
-       eventObject.relationshipToAttacker + ' <br> ' + 
-       '<strong>Multiple Assaults Here?: </strong>' +
-       eventObject.multipleAssaults + '<br>' +
-       '<strong>Date Range: </strong>' + '<br>' +
-       eventObject.dateStart1 + ' -- '+ eventObject.dateEnd1 + "<br>" + 
-       '<strong>On A School Campus: </strong>' +
-       eventObject.schoolCampus + ' <br> ' + 
-       '<strong>Reported: </strong>' +
-       eventObject.reported + '<br>' +
-       '</p></div>'
-      );
       infoWindow.open(map, marker);
         if(questionWindow.open()){
           questionWindow.close();
