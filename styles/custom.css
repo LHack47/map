@@ -60,11 +60,12 @@ body{
 
 #homepage-overlay {
 	width: 50vw;
-	height: 80vh;
+	height: 85vh;
 	background-color: rgba(38, 70, 83, 0.95);
+	box-shadow: 2px 0px 2px black;
 	padding: 15px;
 	position: absolute;
-	top: 10%;
+	top: 7%;
 	z-index: 1;
 	left: 0;
 	right: 0;
@@ -80,6 +81,7 @@ body{
 #hamburger-overlay {
    	align-content: center;
     justify-content: center;
+	color: #fff8e0;
 }
 
 #hamburger-overlay a {
@@ -87,18 +89,23 @@ body{
 	font-size: 20px;
 }
 
-#hamburger-overlay p {
+#hamburger-overlay h2 {
 	font-size: 25px;
 }
 
-#hamburger-overlay > p:hover {
+#hamburger-overlay h2:hover {
 	color: #f25f5c;
 	text-decoration: none;
+	cursor: pointer;
 }
 
-#hamburger-overlay > a:hover {
+#hamburger-overlay a:hover {
 	text-decoration: none;
 	color: #f25f5c;
+}
+
+#hamburgerReturn {
+	color: #9bd130;
 }
 
 /********** SEARCH BOX ***********/
@@ -174,9 +181,12 @@ body{
 	width:100%;
 	padding: 10px;
 	background-color: #264653;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 	top:0;
 	height: 60px;
 	z-index: 3;
+	align-items: center;
+	justify-content: center;
 }
 
 #exitMap {
@@ -209,6 +219,10 @@ body{
 	box-shadow: none;
 	margin-bottom: 7px;
 	border-radius: 30px;
+}
+
+.navyBtn:hover {
+	color: #fff8e0;
 }
 
 .blueBtn{
@@ -260,8 +274,8 @@ body{
 	height: 45px;
 	box-shadow: none;
 	border: none;
-	margin-top: 7px;
-	margin-bottom: 7px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 .answerBtn:focus {
@@ -270,7 +284,11 @@ body{
 
 .ageBtn {
 		width: 45%;
-	}
+}
+
+#annieCannons {
+	height: 70px;
+}
 
 /********** FLOW CONTROLS ***********/
 
@@ -284,7 +302,7 @@ body{
 	bottom: 4%;
 }
 
-.exitBtn, .exitLocationBtn, #exitMap{
+.exitBtn, .exitLocationBtn, #exitMapBtn{
 	/*position: absolute;*/
 	width: 40px;
 	height: 40px;
@@ -330,6 +348,10 @@ body{
 	text-shadow: 1.5px 1.5px 2px black;
 }
 
+.end-submit {
+	margin: 10px !important;
+}
+
 .exitFinalBtn {
 	width: 250px;
 	height: 60px;
@@ -339,6 +361,11 @@ body{
 	box-shadow: none;
 	margin-bottom: 7px;
 	border-radius: 30px;
+	font-size: 100%;
+}
+
+.exitFinalBtn:hover{
+	color: #fff8e0;
 }
 
 /********** ADDING A PIN ***********/
@@ -397,11 +424,12 @@ body{
 /********** FORM ***********/
 .form-overlay {
     width: 50vw;
-	height: 80vh;
+	height: 85vh;
 	background-color: rgba(38, 70, 83, 0.95);
+	box-shadow: 2px 0px 2px black;
 	padding: 15px;
 	position: absolute;
-	top: 10%;
+	top: 7%;
 	z-index: 1;
 	left: 0;
 	right: 0;
@@ -416,7 +444,6 @@ body{
 .multiBtn {
 	display: inline-block;
 }
-
 /********** MEDIA QUERIES ***********/
 @media screen and (max-width: 700px) {
 	.form-overlay {
