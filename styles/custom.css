@@ -16,7 +16,6 @@ body{
 	width: 100vw;
 	height: 100vh;
 	left: 0;
-<<<<<<< HEAD
     top:0;
 }
 
@@ -312,7 +311,7 @@ body{
 	filter: drop-shadow(2px 2px 2px black);
 	}
 
-.skipBtn, #dateSpec-skipBtn, #date1-skipBtn, #campus-skipBtn, #reportedSkipBtn{
+.skipBtn, #dateSpec-skipBtn, #date1-skipBtn, #campus-skipBtn, #reportSkipBtn{
 	background-color: transparent;
 	border: none;
 	color: #f25f5c;
@@ -413,6 +412,39 @@ body{
 }
 
 /********** MEDIA QUERIES ***********/
+@media screen and (max-width: 1024px) {
+	.form-overlay {
+		width: 70vw;
+		height: 80vh;
+		
+	}
+
+	#homepage-overlay {
+		width:70vw;
+		height:80vh;
+		background-color: rgba(38, 70, 83, 0.98);
+	}
+
+	.grayBtn {
+		margin-top: 30px;
+		width: 80%;
+		color: #264653;
+		height: 10%;
+	}
+
+	.logoText {
+		position:absolute;
+		margin: 0;
+    	left: 10%;
+		top:45%;
+		z-index: 2;
+	}
+	
+	.ageBtn {
+		width: 45%;
+	}
+
+}
 @media screen and (max-width: 700px) {
 	.form-overlay {
 		width: 100vw;
@@ -447,4 +479,6 @@ body{
 	}
 
 }
+
+
 

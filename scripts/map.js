@@ -14,13 +14,10 @@ function post(){
     document.getElementById("resetForm").reset();
 } 
 
-//Function to send object to firebase after final submit (with comment)
+//Function to send comment to object
 function submitPost(){
     userKey = "submitComment";
     userObject[userKey] = $("#endComment").val();
-    firebaseRef.push(userObject);//firebaseRef.push
-    userObject = {};
-    document.getElementById("resetForm").reset();
 } 
 
 //Function to geocode location
@@ -29,7 +26,7 @@ function geocodeThis(){
     var latLng = userObject.userLocation;
     geocoder.geocode({'location': latLng}, function(results, status) {
         if (status === google.maps.GeocoderStatus.OK) {
-            userObject.Address = results[0].formatted_address;
+            userObject["Assault Approximate Address"] = results[0].formatted_address;
         } else {
             console.log('No results found');
         }
@@ -136,6 +133,7 @@ var current_fs, next_fs, previous_fs, userKey;
         var marker = new google.maps.Marker({
           position: place.geometry.location,
           map: map,
+          draggable: true,
           icon: pinIcon + "redStar.png"
         });
         } //closing the if statement
@@ -150,7 +148,7 @@ var current_fs, next_fs, previous_fs, userKey;
         //Creating the if statement for the 'view only' map
         if (mapObject.seeMap === false) {  
         //question-window open
-        questionWindow.setContent( "<div id='pinDrop-window'>" +
+        questionWindow.setContent( "<div id='pinDrop-window'>" + 
         "<h3>Report a sexual assault at this location?</h3>"+
         "<button type='button' class='btn btn-default btn-clicked' id='fireBase-no'>No</button>"+
          "<button type='button' class='btn btn-default btn-clicked' id='fireBase-yes'>Yes</button>" +
@@ -197,12 +195,13 @@ var current_fs, next_fs, previous_fs, userKey;
     var marker = new google.maps.Marker({
     position: {lat: e.latLng.lat(), lng: e.latLng.lng()},
     map: map,
+    draggable: true,
     icon: pinIcon + "redStar.png"
     }); // var marker
      //info box when you click map
-    questionWindow.setContent( 
-      "<div id='pinDrop-window'>" +
-      "<h3>Report a sexual assault at this location?  </h3>"+
+   questionWindow.setContent( 
+      "<div id='pinDrop-window'>" + 
+      "<h3>Report a sexual assault at this location?  </h3>"+ 
       "<button type='button' class='btn btn-default btn-clicked' id='fireBase-no'>No</button>"+
       "<button type='button' class='btn btn-default btn-clicked' id='fireBase-yes'>Yes</button>" +
       "</div>"); // #pinDrop-window 
@@ -213,6 +212,7 @@ var current_fs, next_fs, previous_fs, userKey;
           infoWindow.close();
         }
       $(".gm-style-iw").next("div").hide();
+      
  //ADD PINDROP OVERLAY 
       $("#pinDrop-window > #fireBase-yes").on("click", function(){
        userObject.userLocation = {lat: e.latLng.lat(), lng: e.latLng.lng()};
@@ -236,7 +236,7 @@ var current_fs, next_fs, previous_fs, userKey;
 
 var infoWindow = new google.maps.InfoWindow();
 
-//DROP A MARKER WHEN MAP IS CLICKED 
+//Pull all the firebase data for the info pins
   firebaseRef.on("child_added", function(snapshot, prevChildKey) {
     // Get latitude and longitude from the cloud.
     var eventObject = snapshot.val();
