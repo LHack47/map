@@ -14,7 +14,7 @@ function post(){
     document.getElementById("resetForm").reset();
 } 
 
-//Function to send comment to object
+//Function to send object to firebase after final submit (with comment)
 function submitPost(){
     userKey = "submitComment";
     userObject[userKey] = $("#endComment").val();
@@ -148,7 +148,7 @@ var current_fs, next_fs, previous_fs, userKey;
         //Creating the if statement for the 'view only' map
         if (mapObject.seeMap === false) {  
         //question-window open
-        questionWindow.setContent( "<div id='pinDrop-window'>" + 
+        questionWindow.setContent( "<div id='pinDrop-window'>" +
         "<h3>Report a sexual assault at this location?</h3>"+
         "<button type='button' class='btn btn-default btn-clicked' id='fireBase-no'>No</button>"+
          "<button type='button' class='btn btn-default btn-clicked' id='fireBase-yes'>Yes</button>" +
@@ -199,9 +199,9 @@ var current_fs, next_fs, previous_fs, userKey;
     icon: pinIcon + "redStar.png"
     }); // var marker
      //info box when you click map
-   questionWindow.setContent( 
-      "<div id='pinDrop-window'>" + 
-      "<h3>Report a sexual assault at this location?  </h3>"+ 
+    questionWindow.setContent( 
+      "<div id='pinDrop-window'>" +
+      "<h3>Report a sexual assault at this location?  </h3>"+
       "<button type='button' class='btn btn-default btn-clicked' id='fireBase-no'>No</button>"+
       "<button type='button' class='btn btn-default btn-clicked' id='fireBase-yes'>Yes</button>" +
       "</div>"); // #pinDrop-window 
@@ -212,7 +212,7 @@ var current_fs, next_fs, previous_fs, userKey;
           infoWindow.close();
         }
       $(".gm-style-iw").next("div").hide();
-      
+
  //ADD PINDROP OVERLAY 
       $("#pinDrop-window > #fireBase-yes").on("click", function(){
        userObject.userLocation = {lat: e.latLng.lat(), lng: e.latLng.lng()};
@@ -236,7 +236,6 @@ var current_fs, next_fs, previous_fs, userKey;
 
 var infoWindow = new google.maps.InfoWindow();
 
-//Pull all the firebase data for the info pins
   firebaseRef.on("child_added", function(snapshot, prevChildKey) {
     // Get latitude and longitude from the cloud.
     var eventObject = snapshot.val();

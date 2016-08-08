@@ -3,7 +3,7 @@ $(document).ready(function(){
   $("#hamburger-overlay").hide();
   $(".home-elements").hide();
   $(".form-overlay").hide();
-   $("#exitMap").hide();
+  $("#exitMap").hide();
 
 /* HAMBURGER OVERLAY */
   $(".glyphicon-menu-hamburger").on("click", function(){
@@ -219,7 +219,7 @@ $("#date2-backBtn").click(function(){
    previousPage.fadeIn(1500);
   });
 
-  $("#reportSkipBtn").click(function(){
+  $("#reportedSkipBtn").click(function(){
     currentPage = $(this).parent().parent();
     nextPage = $("#confirmSubmit");
     currentPage.fadeOut("slow");
@@ -259,7 +259,7 @@ $("#date2-backBtn").click(function(){
     fadeThisIn($(".home-elements"));
   });
 
-  $("#exitMap").click(function(){
+  $("#exitMapBtn").click(function(){
       $(".home-elements").hide();
       $("#addPrompt").hide();
       $("#exitMap").hide();
@@ -282,11 +282,10 @@ $("#date2-backBtn").click(function(){
 
   $("#end-return").on("click", function(){
     $(".form-overlay").hide();
-    $("#home-overlay").hide();
     fadeThisIn($(".home-elements"));
     fadeThisIn($("#seePrompt"));
     mapObject.seeMap = true;
   });
 
-});
+}); //document.ready
 
