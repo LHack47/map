@@ -444,6 +444,16 @@ body{
 .multiBtn {
 	display: inline-block;
 }
+
+/********** MEDIA QUERIES ***********/
+@media screen and (max-width: 1024px) {
+	.form-overlay {
+		width: 70vw;
+		height: 85vh;
+	}
+}
+
+
 /********** MEDIA QUERIES ***********/
 @media screen and (max-width: 700px) {
 	.form-overlay {

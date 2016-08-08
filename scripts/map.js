@@ -26,7 +26,7 @@ function geocodeThis(){
     var latLng = userObject.userLocation;
     geocoder.geocode({'location': latLng}, function(results, status) {
         if (status === google.maps.GeocoderStatus.OK) {
-            userObject["Assault approximate Address"] = results[0].formatted_address;
+            userObject["Assault Approximate Address"] = results[0].formatted_address;
         } else {
             console.log('No results found');
         }
@@ -133,7 +133,8 @@ var current_fs, next_fs, previous_fs, userKey;
         var marker = new google.maps.Marker({
           position: place.geometry.location,
           map: map,
-          icon: pinIcon + "redStar.png"
+          icon: pinIcon + "redStar.png",
+          draggable: true
         });
         } //closing the if statement
 
@@ -197,7 +198,8 @@ var current_fs, next_fs, previous_fs, userKey;
     var marker = new google.maps.Marker({
     position: {lat: e.latLng.lat(), lng: e.latLng.lng()},
     map: map,
-    icon: pinIcon + "redStar.png"
+    icon: pinIcon + "redStar.png",
+    draggable: true
     }); // var marker
      //info box when you click map
     questionWindow.setContent( 
