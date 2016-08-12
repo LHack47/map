@@ -68,7 +68,7 @@ $(document).ready(function(){
   });
 
   $(".navyBtn").on("click", function(){
-      $("#locationForm").fadeOut("slow");
+      $("#locationForm").fadeOut(1500);
       $(".home-elements").show();
       $("#addPrompt").show();
       $("#exitMap").show();
@@ -82,8 +82,8 @@ $(document).ready(function(){
   $(".answerBtn").on("click", function() {
      current_fs = $(this).parent();
 	   next_fs = $(this).parent().next();
-     current_fs.fadeOut("slow");
-	   next_fs.fadeIn("slow"); 
+     current_fs.fadeOut(1500);
+	   next_fs.fadeIn(1500); 
      userKey = $(this).parent().data("value");
      userObject[userKey] = $(this).val();
     //  console.log(userObject);
@@ -99,8 +99,8 @@ $(document).ready(function(){
   $(".skipBtn").on("click", function() {
     current_fs = $(this).parent().parent();
 	  next_fs = $(this).parent().parent().next();
-    current_fs.fadeOut("slow");
-	  next_fs.fadeIn("slow"); 
+    current_fs.fadeOut(1500);
+	  next_fs.fadeIn(1500); 
   });
 
 //Subfields
@@ -108,8 +108,8 @@ $(document).ready(function(){
   $("#dateSpec-skipBtn").click(function(){
     currentPage = $(this).parent().parent();
     nextPage = $("#multipleAssaults");
-    currentPage.fadeOut("slow");
-    nextPage.fadeIn("slow");
+    currentPage.fadeOut(1500);
+    nextPage.fadeIn(1500);
   });
 
   $(".dateBtn1").click(function(){
@@ -149,8 +149,8 @@ $(document).ready(function(){
  $("#date1-skipBtn").click(function(){
     currentPage = $(this).parent().parent();
     nextPage = $("#multipleAssaults");
-    currentPage.fadeOut("slow");
-    nextPage.fadeIn("slow");
+    currentPage.fadeOut(1500);
+    nextPage.fadeIn(1500);
   });
 
 
@@ -200,8 +200,8 @@ $("#date2-backBtn").click(function(){
   $("#campus-skipBtn").click(function(){
     currentPage = $(this).parent().parent();
     nextPage = $("#reported");
-    currentPage.fadeOut("slow");
-    nextPage.fadeIn("slow");
+    currentPage.fadeOut(1500);
+    nextPage.fadeIn(1500);
   });
 
 /* REPORTED CONTROL BUTTONS ******* */
@@ -222,8 +222,8 @@ $("#date2-backBtn").click(function(){
   $("#reportedSkipBtn").click(function(){
     currentPage = $(this).parent().parent();
     nextPage = $("#confirmSubmit");
-    currentPage.fadeOut("slow");
-    nextPage.fadeIn("slow");
+    currentPage.fadeOut(1500);
+    nextPage.fadeIn(1500);
   });
 
   $(".prosecutedBtn").click(function(){
